@@ -1,0 +1,59 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp", "AnimeDbWebApp\AnimeDbWebApp.csproj", "{7C054A10-AC29-4BBF-8441-760D3F9C8E6B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6F6EF0DC-34CE-4AD6-9904-7CA01829CEFA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1FF19E40-E967-4F30-81F9-782982DD7E8F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Data", "AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj", "{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Models", "AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj", "{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Common", "AnimeDbWebApp.Common\AnimeDbWebApp.Common.csproj", "{8F31B2CE-8257-4D0D-98EE-23AE681598C5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.ViewModels", "AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj", "{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C054A10-AC29-4BBF-8441-760D3F9C8E6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C054A10-AC29-4BBF-8441-760D3F9C8E6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C054A10-AC29-4BBF-8441-760D3F9C8E6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C054A10-AC29-4BBF-8441-760D3F9C8E6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F31B2CE-8257-4D0D-98EE-23AE681598C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F31B2CE-8257-4D0D-98EE-23AE681598C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F31B2CE-8257-4D0D-98EE-23AE681598C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F31B2CE-8257-4D0D-98EE-23AE681598C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7C054A10-AC29-4BBF-8441-760D3F9C8E6B} = {6F6EF0DC-34CE-4AD6-9904-7CA01829CEFA}
+		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21} = {1FF19E40-E967-4F30-81F9-782982DD7E8F}
+		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75} = {1FF19E40-E967-4F30-81F9-782982DD7E8F}
+		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9} = {6F6EF0DC-34CE-4AD6-9904-7CA01829CEFA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D289D47-F8B8-4B60-9F9A-4FAFC32FCC2C}
+	EndGlobalSection
+EndGlobal
