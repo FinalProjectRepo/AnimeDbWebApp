@@ -56,9 +56,11 @@ namespace AnimeDbWebApp.Models
         public Status Status { get; set; }
 
         [Comment("Airing start date")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime? StartDate { get; set; }
 
         [Comment("Last episode aired date")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime? EndDate { get; set; }
 
         [Required]
@@ -74,6 +76,7 @@ namespace AnimeDbWebApp.Models
         [Required]
         [Comment("Populairty/liked score of anime")]
         [Range(MinScore, MaxScore)]
+        [Column(TypeName = "DECIMAL(4,2)")]
         public double? Score { get; set; }
 
         [Required]
@@ -102,10 +105,10 @@ namespace AnimeDbWebApp.Models
         public Type Type { get; set; } = null!;
 
         public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];
-        public ICollection<AnimeLicensor> AnimeLicensors { get; set; } = [];
+        public ICollection<AnimeLicensor> AnimesLicensors { get; set; } = [];
         public ICollection<AnimeStudio> AnimesStudios { get; set; } = [];
         public ICollection<GenreForAnime> Genres { get; set; } = [];
-        public ICollection<AnimeRelation> AnimeRelations { get; set; } = [];
+        public ICollection<AnimeRelation> AnimesRelations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
     }
 }

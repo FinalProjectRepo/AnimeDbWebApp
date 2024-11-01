@@ -9,13 +9,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{6F6EF0DC-34C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{1FF19E40-E967-4F30-81F9-782982DD7E8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Data", "AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj", "{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Data", "AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj", "{83671E03-0DCA-4FA5-8B37-84E62F7E2A21}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Models", "AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj", "{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Models", "AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj", "{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Common", "AnimeDbWebApp.Common\AnimeDbWebApp.Common.csproj", "{8F31B2CE-8257-4D0D-98EE-23AE681598C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Common", "AnimeDbWebApp.Common\AnimeDbWebApp.Common.csproj", "{8F31B2CE-8257-4D0D-98EE-23AE681598C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.ViewModels", "AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj", "{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.ViewModels", "AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj", "{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.DTOs", "AnimeDbWebApp.DTOs\AnimeDbWebApp.DTOs.csproj", "{626A3387-AC5E-46F0-9B56-89619D349419}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{626A3387-AC5E-46F0-9B56-89619D349419}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{626A3387-AC5E-46F0-9B56-89619D349419}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{626A3387-AC5E-46F0-9B56-89619D349419}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{626A3387-AC5E-46F0-9B56-89619D349419}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{83671E03-0DCA-4FA5-8B37-84E62F7E2A21} = {1FF19E40-E967-4F30-81F9-782982DD7E8F}
 		{7D2F5EE0-E97B-4F0E-A6A5-58DAACDDCE75} = {1FF19E40-E967-4F30-81F9-782982DD7E8F}
 		{152FAB80-6FE2-486B-B7C2-66BE3E4681E9} = {6F6EF0DC-34CE-4AD6-9904-7CA01829CEFA}
+		{626A3387-AC5E-46F0-9B56-89619D349419} = {1FF19E40-E967-4F30-81F9-782982DD7E8F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D289D47-F8B8-4B60-9F9A-4FAFC32FCC2C}

@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 using static AnimeDbWebApp.Common.ValidationConstants.AuthorValidations;
 
@@ -41,6 +42,7 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Date of birth")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime Birthdate { get; set; }
 
         [Comment("Aditional information about person")]

@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System;
 
 using static AnimeDbWebApp.Common.ValidationConstants.ProducerValidations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AnimeDbWebApp.Models
 {
@@ -15,28 +16,29 @@ namespace AnimeDbWebApp.Models
         public int Id { get; set; }
 
         [Comment("Url link to mal site of producer")]
-        [StringLength(MaxUrlLength)]
+        [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
 
         [Required]
         [Comment("English name of the studio")]
-        [StringLength(MaxNameLength)]
+        [MaxLength(MaxNameLength)]
         public string Name { get; set; } = null!;
 
         [Required]
         [Comment("Japanese name of the studio")]
-        [StringLength(MaxJpNameLength)]
+        [MaxLength(MaxJpNameLength)]
         public string JpName { get; set; } = null!;
 
         [Comment("Anime poster url")]
-        [StringLength(MaxImgUrlLength)]
+        [MaxLength(MaxImgUrlLength)]
         public string? ImgUrl { get; set; }
 
         [Comment("Date the studio is established")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime Established { get; set; }
 
         [Comment("Information about producer")]
-        [StringLength(MaxAboutLength)]
+        [MaxLength(MaxAboutLength)]
         public string? About { get; set; }
 
         public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];

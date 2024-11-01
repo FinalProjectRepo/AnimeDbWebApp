@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
-using System;
 
 namespace AnimeDbWebApp.Models
 {
@@ -49,15 +49,18 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Date manga started publishing")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime? StartDate { get; set; } = null!;
 
         [Required]
         [Comment("Date manga ended publishing")]
+        [Column(TypeName = "DATETIME2")]
         public DateTime? EndDate { get; set; } = null!;
 
         [Required]
         [Comment("Manga score")]
         [Range(MinScore, MaxScore)]
+        [Column(TypeName = "DECIMAL(4,2)")]
         public double? Score { get; set; }
 
         [Required]
