@@ -24,10 +24,9 @@ namespace AnimeDbWebApp.Models
         [MaxLength(MaxNameLength)]
         public string Name { get; set; } = null!;
 
-        [Required]
         [Comment("Japanese name of the studio")]
         [MaxLength(MaxJpNameLength)]
-        public string JpName { get; set; } = null!;
+        public string? JpName { get; set; } = null!;
 
         [Comment("Anime poster url")]
         [MaxLength(MaxImgUrlLength)]
@@ -35,10 +34,9 @@ namespace AnimeDbWebApp.Models
 
         [Comment("Date the studio is established")]
         [Column(TypeName = "DATETIME2")]
-        public DateTime Established { get; set; }
+        public DateTime? Established { get; set; }
 
         [Comment("Information about producer")]
-        [MaxLength(MaxAboutLength)]
         public string? About { get; set; }
 
         public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];

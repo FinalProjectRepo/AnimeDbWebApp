@@ -11,7 +11,25 @@ namespace AnimeDbWebApp.Mapping
             foreach (var type in inputTypes)
             {
                 var outputType = outputTypes.FirstOrDefault(t => t.Name == type.Name);
-                if (outputType != null) outputType.SetValue(output, type.GetValue(input));
+                if (outputType == null || type.GetValue(input) == null) continue;
+
+                if (type.PropertyType != outputType.PropertyType)
+                {
+                    string inputValue = $"{type.GetValue(input)}";
+                    bool success = false;
+                    if (outputType.PropertyType == typeof(DateTime?) || outputType.PropertyType == typeof(DateTime))
+                    {
+                        success = DateTime.TryParse(inputValue, out DateTime outputValue);
+                        if (success) outputType.SetValue(output, outputValue);
+                    }
+                    else if (outputType.PropertyType == typeof(int?) || outputType.PropertyType == typeof(int))
+                    {
+                        success = int.TryParse(inputValue, out int outputValue);
+                        if (success) outputType.SetValue(output, outputValue);
+                    }
+                    else outputType.SetValue(output, null);
+                }
+                else outputType.SetValue(output, type.GetValue(input));
             }
         }
     }

@@ -3,12 +3,10 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace AnimeDbWebApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedEntitiesAndTypeData : Migration
+    public partial class AddedEntities : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,7 +24,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     GivenName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Anime title in english translated"),
                     FamilyName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Anime title in japanese characters"),
                     Birthdate = table.Column<DateTime>(type: "DATETIME2", nullable: false, comment: "Date of birth"),
-                    About = table.Column<string>(type: "nvarchar(3999)", maxLength: 3999, nullable: true, comment: "Aditional information about person")
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Aditional information about person")
                 },
                 constraints: table =>
                 {
@@ -70,7 +68,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     JpName = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Japanese name of the studio"),
                     ImgUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Anime poster url"),
                     Established = table.Column<DateTime>(type: "DATETIME2", nullable: false, comment: "Date the studio is established"),
-                    About = table.Column<string>(type: "nvarchar(3999)", maxLength: 3999, nullable: true, comment: "Information about producer")
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Information about producer")
                 },
                 constraints: table =>
                 {
@@ -111,8 +109,8 @@ namespace AnimeDbWebApp.Data.Migrations
                     Rating = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Age restriction for anime"),
                     Score = table.Column<decimal>(type: "DECIMAL(4,2)", nullable: false, comment: "Populairty/liked score of anime"),
                     Rank = table.Column<int>(type: "int", nullable: false, comment: "Anime rank"),
-                    Sypnosis = table.Column<string>(type: "nvarchar(3999)", maxLength: 3999, nullable: false, comment: "Short description"),
-                    Background = table.Column<string>(type: "nvarchar(3999)", maxLength: 3999, nullable: false, comment: "Short description"),
+                    Sypnosis = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Short description"),
+                    Background = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Short description"),
                     Season = table.Column<int>(type: "int", nullable: false, comment: "Yearly anime season that anime aired"),
                     TypeId = table.Column<int>(type: "int", nullable: false, comment: "Type of anime(tv series, movie, etc.)")
                 },
@@ -145,8 +143,8 @@ namespace AnimeDbWebApp.Data.Migrations
                     EndDate = table.Column<DateTime>(type: "DATETIME2", nullable: false, comment: "Date manga ended publishing"),
                     Score = table.Column<decimal>(type: "DECIMAL(4,2)", nullable: false, comment: "Manga score"),
                     Rank = table.Column<int>(type: "int", nullable: false, comment: "Manga rank"),
-                    Sypnosis = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Short description"),
-                    Background = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Short description"),
+                    Sypnosis = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Short description"),
+                    Background = table.Column<string>(type: "nvarchar(max)", nullable: false, comment: "Short description"),
                     TypeId = table.Column<int>(type: "int", nullable: false, comment: "Type of anime(tv series, movie, etc.)")
                 },
                 constraints: table =>
@@ -376,28 +374,6 @@ namespace AnimeDbWebApp.Data.Migrations
                         principalTable: "Mangas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.InsertData(
-                table: "Types",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "CM" },
-                    { 2, "Doujinshi" },
-                    { 3, "Light Novel" },
-                    { 4, "Manga" },
-                    { 5, "Manhwa" },
-                    { 6, "Movie" },
-                    { 7, "Music" },
-                    { 8, "Novel" },
-                    { 9, "ONA" },
-                    { 10, "One-shot" },
-                    { 11, "OVA" },
-                    { 12, "PV" },
-                    { 13, "Special" },
-                    { 14, "TV" },
-                    { 15, "TV Special" }
                 });
 
             migrationBuilder.CreateIndex(

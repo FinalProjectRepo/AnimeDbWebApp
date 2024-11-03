@@ -8,6 +8,7 @@ using AnimeDbWebApp.DTOs;
 using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Mapping;
 using static AnimeDbWebApp.Common.GeneralConstants;
+using System;
 
 namespace AnimeDbWebApp.Data.Extensions
 {
@@ -18,22 +19,26 @@ namespace AnimeDbWebApp.Data.Extensions
 
         public static void Seed(this ModelBuilder builder)
         {
-            SeedTypes(builder);
+            Seed<TypeImportModel, Models.Type>(builder, TypeDataSetFileName);
+            Seed<AuthorImportModel, Author>(builder, AuthorDataSetFileName);
+            Seed<ProducerImportModel, Producer>(builder, ProducerDataSetFileName);
         }
 
-        public static void SeedTypes(ModelBuilder builder) 
+        public static void Seed<T, TT>(ModelBuilder builder, string fileName) 
+            where T : class 
+            where TT : class
         {
-            string filePath = Path.Combine(PathDirectory, TypeDataSetFileName);
+            string filePath = Path.Combine(PathDirectory, fileName);
             string json = File.ReadAllText(filePath);
-            var inputs = JsonConvert.DeserializeObject<TypeImportModel[]>(json)!;
-            List<Type> types = [];
+            var inputs = JsonConvert.DeserializeObject<T[]>(json)!;
+            List<TT> types = [];
             foreach (var input in inputs)
             {
-                Type type = new();
+                TT type = Activator.CreateInstance<TT>();
                 _mapper.Map(input, type);
                 types.Add(type);
             }
-            builder.Entity<Type>().HasData(types);
+            builder.Entity<TT>().HasData(types);
         }
     }
 }

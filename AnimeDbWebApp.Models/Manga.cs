@@ -69,12 +69,10 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Short description")]
-        [MaxLength(MaxSypnosisLength)]
         public string Sypnosis { get; set; } = null!;
 
         [Required]
         [Comment("Short description")]
-        [MaxLength(MaxBackgroundLength)]
         public string Background { get; set; } = null!;
 
         [Required]

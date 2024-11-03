@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeDbWebApp.Data.Migrations
 {
     [DbContext(typeof(AnimeDbContext))]
-    [Migration("20241103111938_AddedEntitiesAndTypeData")]
-    partial class AddedEntitiesAndTypeData
+    [Migration("20241103165357_TypesSeed")]
+    partial class TypesSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,8 +36,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.Property<string>("Background")
                         .IsRequired()
-                        .HasMaxLength(3999)
-                        .HasColumnType("nvarchar(3999)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Short description");
 
                     b.Property<string>("Duration")
@@ -94,8 +93,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.Property<string>("Sypnosis")
                         .IsRequired()
-                        .HasMaxLength(3999)
-                        .HasColumnType("nvarchar(3999)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Short description");
 
                     b.Property<string>("Title")
@@ -317,11 +315,11 @@ namespace AnimeDbWebApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("About")
-                        .HasMaxLength(3999)
-                        .HasColumnType("nvarchar(3999)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Aditional information about person");
 
-                    b.Property<DateTime>("Birthdate")
+                    b.Property<DateTime?>("Birthdate")
+                        .IsRequired()
                         .HasColumnType("DATETIME2")
                         .HasComment("Date of birth");
 
@@ -427,8 +425,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.Property<string>("Background")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Short description");
 
                     b.Property<int?>("Chapters")
@@ -465,8 +462,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.Property<string>("Sypnosis")
                         .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Short description");
 
                     b.Property<string>("Title")
@@ -555,8 +551,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("About")
-                        .HasMaxLength(3999)
-                        .HasColumnType("nvarchar(3999)")
+                        .HasColumnType("nvarchar(max)")
                         .HasComment("Information about producer");
 
                     b.Property<DateTime>("Established")

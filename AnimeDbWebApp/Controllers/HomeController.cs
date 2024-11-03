@@ -9,8 +9,16 @@ namespace AnimeDbWebApp.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AnimeDbContext _dbContext;
+
+        public HomeController(AnimeDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         public IActionResult Index()
         {
+            var authors = _dbContext.Authors.ToList();
             return View();
         }
 

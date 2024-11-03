@@ -40,13 +40,11 @@ namespace AnimeDbWebApp.Models
         [MaxLength(MaxFamilyNameLength)]
         public string? FamilyName { get; set; } = null!;
 
-        [Required]
         [Comment("Date of birth")]
         [Column(TypeName = "DATETIME2")]
-        public DateTime Birthdate { get; set; }
+        public DateTime? Birthdate { get; set; }
 
         [Comment("Aditional information about person")]
-        [MaxLength(MaxAboutLength)]
         public string? About { get; set; }
 
         public ICollection<AuthorManga> AuthorsMangas { get; set; } = [];

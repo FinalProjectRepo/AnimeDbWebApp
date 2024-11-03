@@ -19,10 +19,6 @@
             public const int MaxRatingLength = 255;
             public const double MinScore = 0.00;
             public const double MaxScore = 10.00;
-            public const int MinSypnosisLength = 5;
-            public const int MaxSypnosisLength = 3999;
-            public const int MinBackgroundLength = 5;
-            public const int MaxBackgroundLength = 3999;
         }
 
         public static class TypeValidation 
@@ -36,10 +32,8 @@
             public const int MaxUrlLength = 500;
             public const int MaxImgUrlLength = 500;
             public const int MinNameLength = 2;
-            public const int MaxNameLength = 30;
-            public const int MinJpNameLength = 2;
-            public const int MaxJpNameLength = 30;
-            public const int MaxAboutLength = 3999;
+            public const int MaxNameLength = 50;
+            public const int MaxJpNameLength = 50;
         }
 
         public static class GenreValidations
@@ -56,10 +50,6 @@
             public const int MaxJapTitleLength = 255;
             public const double MinScore = 0.00;
             public const double MaxScore = 10.00;
-            public const int MinSypnosisLength = 5;
-            public const int MaxSypnosisLength = 255;
-            public const int MinBackgroundLength = 5;
-            public const int MaxBackgroundLength = 255;
         }
 
         public static class AuthorValidations
@@ -71,7 +61,6 @@
             public const int MaxNameLength = 255;
             public const int MaxGivenNameLength = 255;
             public const int MaxFamilyNameLength = 255;
-            public const int MaxAboutLength = 3999;
         }
 
         public static class Relations
