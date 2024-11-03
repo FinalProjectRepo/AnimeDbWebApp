@@ -14,11 +14,6 @@ namespace AnimeDbWebApp.Data.Configurations
                 .WithMany(ar => ar.AnimesRelations)
                 .HasForeignKey(al => al.AnimeId)
                 .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasOne(al => al.Relation)
-                .WithMany(p => p.AnimesRelations)
-                .HasForeignKey(al => al.RelationId)
-                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

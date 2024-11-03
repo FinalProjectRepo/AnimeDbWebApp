@@ -14,15 +14,15 @@
             public const int MinSourceLength = 2;
             public const int MaxSourceLength = 30;
             public const int MinEpisodes = 1;
-            public const int MaxEpisodes = 5000;
+            public const int MaxEpisodes = 3999;
             public const int MaxDurationLength = 255;
             public const int MaxRatingLength = 255;
             public const double MinScore = 0.00;
             public const double MaxScore = 10.00;
             public const int MinSypnosisLength = 5;
-            public const int MaxSypnosisLength = 5000;
+            public const int MaxSypnosisLength = 3999;
             public const int MinBackgroundLength = 5;
-            public const int MaxBackgroundLength = 5000;
+            public const int MaxBackgroundLength = 3999;
         }
 
         public static class TypeValidation 
@@ -39,7 +39,7 @@
             public const int MaxNameLength = 30;
             public const int MinJpNameLength = 2;
             public const int MaxJpNameLength = 30;
-            public const int MaxAboutLength = 5000;
+            public const int MaxAboutLength = 3999;
         }
 
         public static class GenreValidations
@@ -71,7 +71,13 @@
             public const int MaxNameLength = 255;
             public const int MaxGivenNameLength = 255;
             public const int MaxFamilyNameLength = 255;
-            public const int MaxAboutLength = 5000;
+            public const int MaxAboutLength = 3999;
+        }
+
+        public static class Relations
+        {
+            public const int MinRelationTypeLength = 2;
+            public const int MaxRelationTypeLength = 30;
         }
     }
 }

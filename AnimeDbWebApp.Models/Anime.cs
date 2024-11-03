@@ -107,7 +107,7 @@ namespace AnimeDbWebApp.Models
         public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];
         public ICollection<AnimeLicensor> AnimesLicensors { get; set; } = [];
         public ICollection<AnimeStudio> AnimesStudios { get; set; } = [];
-        public ICollection<GenreForAnime> Genres { get; set; } = [];
+        public ICollection<AnimeGenre> Genres { get; set; } = [];
         public ICollection<AnimeRelation> AnimesRelations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
     }

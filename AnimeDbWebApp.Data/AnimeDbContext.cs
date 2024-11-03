@@ -27,6 +27,8 @@ namespace AnimeDbWebApp.Data
 		public DbSet<MangaRelation> MangasRelations { get; set; } = null!;
 		public DbSet<Producer> Producers { get; set; } = null!;
 		public DbSet<Models.Type> Types { get; set; } = null!;
+		public DbSet<AnimeGenre> AnimesGenres { get; set; } = null!;
+		public DbSet<MangaGenre> MangasGenres { get; set; } = null!;
 
 		public AnimeDbContext(DbContextOptions<AnimeDbContext> options)
             : base(options) { }

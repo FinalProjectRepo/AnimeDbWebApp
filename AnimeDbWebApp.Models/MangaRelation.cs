@@ -2,6 +2,8 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
+using static AnimeDbWebApp.Common.ValidationConstants.Relations;
+
 namespace AnimeDbWebApp.Models
 {
     public class MangaRelation
@@ -20,6 +22,7 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Type of relation that mangas have")]
+        [MaxLength(MaxRelationTypeLength)]
         public string RelationType { get; set; } = null!;
     }
 }

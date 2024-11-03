@@ -85,7 +85,7 @@ namespace AnimeDbWebApp.Models
         public Type Type { get; set; } = null!;
 
         public ICollection<AuthorManga> AuthorsMangas { get; set; } = [];
-        public ICollection<GenreForManga> Genres { get; set; } = [];
+        public ICollection<MangaGenre> Genres { get; set; } = [];
         public ICollection<MangaRelation> MangaRalations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
     }

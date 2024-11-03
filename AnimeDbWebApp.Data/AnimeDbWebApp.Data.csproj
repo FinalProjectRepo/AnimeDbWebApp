@@ -23,6 +23,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnimeDbWebApp.DTOs\AnimeDbWebApp.DTOs.csproj" />
+    <ProjectReference Include="..\AnimeDbWebApp.Mapping\AnimeDbWebApp.Mapping.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj" />
   </ItemGroup>
 

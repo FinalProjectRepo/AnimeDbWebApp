@@ -1,0 +1,1196 @@
+[
+  {
+    "mal_id": 1,
+    "name": "Big Comic Original",
+    "url": "https://myanimelist.net/manga/magazine/1/Big_Comic_Original",
+    "count": 93
+  },
+  {
+    "mal_id": 2,
+    "name": "Young Animal",
+    "url": "https://myanimelist.net/manga/magazine/2/Young_Animal",
+    "count": 161
+  },
+  {
+    "mal_id": 3,
+    "name": "Big Comic Spirits",
+    "url": "https://myanimelist.net/manga/magazine/3/Big_Comic_Spirits",
+    "count": 287
+  },
+  {
+    "mal_id": 4,
+    "name": "Afternoon",
+    "url": "https://myanimelist.net/manga/magazine/4/Afternoon",
+    "count": 290
+  },
+  {
+    "mal_id": 5,
+    "name": "Web Comic Gum",
+    "url": "https://myanimelist.net/manga/magazine/5/Web_Comic_Gum",
+    "count": 6
+  },
+  {
+    "mal_id": 6,
+    "name": "Young Magazine (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/6/Young_Magazine_Monthly",
+    "count": 84
+  },
+  {
+    "mal_id": 8,
+    "name": "Shounen Magazine (Weekly)",
+    "url": "https://myanimelist.net/manga/magazine/8/Shounen_Magazine_Weekly",
+    "count": 397
+  },
+  {
+    "mal_id": 9,
+    "name": "Ribon Magazine",
+    "url": "https://myanimelist.net/manga/magazine/9/Ribon_Magazine",
+    "count": 358
+  },
+  {
+    "mal_id": 10,
+    "name": "Young Magazine (Weekly)",
+    "url": "https://myanimelist.net/manga/magazine/10/Young_Magazine_Weekly",
+    "count": 266
+  },
+  {
+    "mal_id": 11,
+    "name": "LaLa",
+    "url": "https://myanimelist.net/manga/magazine/11/LaLa",
+    "count": 254
+  },
+  {
+    "mal_id": 13,
+    "name": "Shounen Gangan",
+    "url": "https://myanimelist.net/manga/magazine/13/Shounen_Gangan",
+    "count": 188
+  },
+  {
+    "mal_id": 14,
+    "name": "Asuka",
+    "url": "https://myanimelist.net/manga/magazine/14/Asuka",
+    "count": 239
+  },
+  {
+    "mal_id": 15,
+    "name": "Cookie",
+    "url": "https://myanimelist.net/manga/magazine/15/Cookie",
+    "count": 78
+  },
+  {
+    "mal_id": 16,
+    "name": "Zipper",
+    "url": "https://myanimelist.net/manga/magazine/16/Zipper",
+    "count": 3
+  },
+  {
+    "mal_id": 17,
+    "name": "Margaret",
+    "url": "https://myanimelist.net/manga/magazine/17/Margaret",
+    "count": 373
+  },
+  {
+    "mal_id": 18,
+    "name": "Dengeki Comic Gao!",
+    "url": "https://myanimelist.net/manga/magazine/18/Dengeki_Comic_Gao",
+    "count": 60
+  },
+  {
+    "mal_id": 19,
+    "name": "From Gamers",
+    "url": "https://myanimelist.net/manga/magazine/19/From_Gamers",
+    "count": 1
+  },
+  {
+    "mal_id": 20,
+    "name": "Nakayoshi",
+    "url": "https://myanimelist.net/manga/magazine/20/Nakayoshi",
+    "count": 301
+  },
+  {
+    "mal_id": 21,
+    "name": "Hana to Yume",
+    "url": "https://myanimelist.net/manga/magazine/21/Hana_to_Yume",
+    "count": 377
+  },
+  {
+    "mal_id": 22,
+    "name": "Sho-Comi",
+    "url": "https://myanimelist.net/manga/magazine/22/Sho-Comi",
+    "count": 524
+  },
+  {
+    "mal_id": 23,
+    "name": "Dengeki Daioh",
+    "url": "https://myanimelist.net/manga/magazine/23/Dengeki_Daioh",
+    "count": 313
+  },
+  {
+    "mal_id": 24,
+    "name": "Young Gangan",
+    "url": "https://myanimelist.net/manga/magazine/24/Young_Gangan",
+    "count": 193
+  },
+  {
+    "mal_id": 25,
+    "name": "Ultra Jump",
+    "url": "https://myanimelist.net/manga/magazine/25/Ultra_Jump",
+    "count": 173
+  },
+  {
+    "mal_id": 26,
+    "name": "Eyes",
+    "url": "https://myanimelist.net/manga/magazine/26/Eyes",
+    "count": 7
+  },
+  {
+    "mal_id": 27,
+    "name": "Shounen Ace",
+    "url": "https://myanimelist.net/manga/magazine/27/Shounen_Ace",
+    "count": 279
+  },
+  {
+    "mal_id": 83,
+    "name": "Shounen Jump (Weekly)",
+    "url": "https://myanimelist.net/manga/magazine/83/Shounen_Jump_Weekly",
+    "count": 173
+  },
+  {
+    "mal_id": 229,
+    "name": "Shounen Sunday",
+    "url": "https://myanimelist.net/manga/magazine/229/Shounen_Sunday",
+    "count": 7
+  },
+  {
+    "mal_id": 1477,
+    "name": "Jump SQ.Rise",
+    "url": "https://myanimelist.net/manga/magazine/1477/Jump_SQRise",
+    "count": 279
+  },
+  {
+    "mal_id": 35,
+    "name": "GFantasy",
+    "url": "https://myanimelist.net/manga/magazine/35/GFantasy",
+    "count": 184
+  },
+  {
+    "mal_id": 40,
+    "name": "Sunday Gene-X",
+    "url": "https://myanimelist.net/manga/magazine/40/Sunday_Gene-X",
+    "count": 98
+  },
+  {
+    "mal_id": 45,
+    "name": "Wings",
+    "url": "https://myanimelist.net/manga/magazine/45/Wings",
+    "count": 151
+  },
+  {
+    "mal_id": 47,
+    "name": "Young Champion",
+    "url": "https://myanimelist.net/manga/magazine/47/Young_Champion",
+    "count": 88
+  },
+  {
+    "mal_id": 48,
+    "name": "Shounen Magazine (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/48/Shounen_Magazine_Monthly",
+    "count": 125
+  },
+  {
+    "mal_id": 53,
+    "name": "Bessatsu Margaret",
+    "url": "https://myanimelist.net/manga/magazine/53/Bessatsu_Margaret",
+    "count": 297
+  },
+  {
+    "mal_id": 55,
+    "name": "Big Comic",
+    "url": "https://myanimelist.net/manga/magazine/55/Big_Comic",
+    "count": 102
+  },
+  {
+    "mal_id": 57,
+    "name": "Business Jump",
+    "url": "https://myanimelist.net/manga/magazine/57/Business_Jump",
+    "count": 64
+  },
+  {
+    "mal_id": 58,
+    "name": "Chorus",
+    "url": "https://myanimelist.net/manga/magazine/58/Chorus",
+    "count": 41
+  },
+  {
+    "mal_id": 59,
+    "name": "Ciao",
+    "url": "https://myanimelist.net/manga/magazine/59/Ciao",
+    "count": 174
+  },
+  {
+    "mal_id": 68,
+    "name": "Gundam Ace",
+    "url": "https://myanimelist.net/manga/magazine/68/Gundam_Ace",
+    "count": 115
+  },
+  {
+    "mal_id": 70,
+    "name": "Magazine-Z",
+    "url": "https://myanimelist.net/manga/magazine/70/Magazine-Z",
+    "count": 76
+  },
+  {
+    "mal_id": 72,
+    "name": "Morning",
+    "url": "https://myanimelist.net/manga/magazine/72/Morning",
+    "count": 281
+  },
+  {
+    "mal_id": 85,
+    "name": "Super Jump",
+    "url": "https://myanimelist.net/manga/magazine/85/Super_Jump",
+    "count": 60
+  },
+  {
+    "mal_id": 87,
+    "name": "Young Jump",
+    "url": "https://myanimelist.net/manga/magazine/87/Young_Jump",
+    "count": 350
+  },
+  {
+    "mal_id": 88,
+    "name": "Young King OURs",
+    "url": "https://myanimelist.net/manga/magazine/88/Young_King_OURs",
+    "count": 142
+  },
+  {
+    "mal_id": 90,
+    "name": "Young You",
+    "url": "https://myanimelist.net/manga/magazine/90/Young_You",
+    "count": 31
+  },
+  {
+    "mal_id": 91,
+    "name": "Comic Birz",
+    "url": "https://myanimelist.net/manga/magazine/91/Comic_Birz",
+    "count": 104
+  },
+  {
+    "mal_id": 92,
+    "name": "Comic Bunch",
+    "url": "https://myanimelist.net/manga/magazine/92/Comic_Bunch",
+    "count": 81
+  },
+  {
+    "mal_id": 95,
+    "name": "Dessert",
+    "url": "https://myanimelist.net/manga/magazine/95/Dessert",
+    "count": 210
+  },
+  {
+    "mal_id": 97,
+    "name": "Asuka Fantasy DX",
+    "url": "https://myanimelist.net/manga/magazine/97/Asuka_Fantasy_DX",
+    "count": 10
+  },
+  {
+    "mal_id": 98,
+    "name": "Dragon Age",
+    "url": "https://myanimelist.net/manga/magazine/98/Dragon_Age",
+    "count": 253
+  },
+  {
+    "mal_id": 103,
+    "name": "Feel Young",
+    "url": "https://myanimelist.net/manga/magazine/103/Feel_Young",
+    "count": 163
+  },
+  {
+    "mal_id": 107,
+    "name": "Genzo",
+    "url": "https://myanimelist.net/manga/magazine/107/Genzo",
+    "count": 13
+  },
+  {
+    "mal_id": 109,
+    "name": "Comic Bonbon",
+    "url": "https://myanimelist.net/manga/magazine/109/Comic_Bonbon",
+    "count": 67
+  },
+  {
+    "mal_id": 112,
+    "name": "Comp Ace",
+    "url": "https://myanimelist.net/manga/magazine/112/Comp_Ace",
+    "count": 191
+  },
+  {
+    "mal_id": 113,
+    "name": "Kiss",
+    "url": "https://myanimelist.net/manga/magazine/113/Kiss",
+    "count": 112
+  },
+  {
+    "mal_id": 114,
+    "name": "Comic Beam",
+    "url": "https://myanimelist.net/manga/magazine/114/Comic_Beam",
+    "count": 139
+  },
+  {
+    "mal_id": 118,
+    "name": "Young Animal Arashi",
+    "url": "https://myanimelist.net/manga/magazine/118/Young_Animal_Arashi",
+    "count": 59
+  },
+  {
+    "mal_id": 128,
+    "name": "Magazine Special",
+    "url": "https://myanimelist.net/manga/magazine/128/Magazine_Special",
+    "count": 87
+  },
+  {
+    "mal_id": 129,
+    "name": "Shounen Jump (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/129/Shounen_Jump_Monthly",
+    "count": 65
+  },
+  {
+    "mal_id": 137,
+    "name": "Comic Alive",
+    "url": "https://myanimelist.net/manga/magazine/137/Comic_Alive",
+    "count": 277
+  },
+  {
+    "mal_id": 140,
+    "name": "Dengeki Bunko Magazine",
+    "url": "https://myanimelist.net/manga/magazine/140/Dengeki_Bunko_Magazine",
+    "count": 49
+  },
+  {
+    "mal_id": 150,
+    "name": "AlphaPolis",
+    "url": "https://myanimelist.net/manga/magazine/150/AlphaPolis",
+    "count": 119
+  },
+  {
+    "mal_id": 151,
+    "name": "Asuka Mystery DX",
+    "url": "https://myanimelist.net/manga/magazine/151/Asuka_Mystery_DX",
+    "count": 13
+  },
+  {
+    "mal_id": 158,
+    "name": "Shounen Captain",
+    "url": "https://myanimelist.net/manga/magazine/158/Shounen_Captain",
+    "count": 32
+  },
+  {
+    "mal_id": 161,
+    "name": "Jump SQ.",
+    "url": "https://myanimelist.net/manga/magazine/161/Jump_SQ",
+    "count": 175
+  },
+  {
+    "mal_id": 163,
+    "name": "Dengeki Maoh",
+    "url": "https://myanimelist.net/manga/magazine/163/Dengeki_Maoh",
+    "count": 172
+  },
+  {
+    "mal_id": 168,
+    "name": "V-Jump",
+    "url": "https://myanimelist.net/manga/magazine/168/V-Jump",
+    "count": 42
+  },
+  {
+    "mal_id": 171,
+    "name": "Evening",
+    "url": "https://myanimelist.net/manga/magazine/171/Evening",
+    "count": 113
+  },
+  {
+    "mal_id": 173,
+    "name": "Weekly Playboy",
+    "url": "https://myanimelist.net/manga/magazine/173/Weekly_Playboy",
+    "count": 15
+  },
+  {
+    "mal_id": 174,
+    "name": "Comic Flapper",
+    "url": "https://myanimelist.net/manga/magazine/174/Comic_Flapper",
+    "count": 159
+  },
+  {
+    "mal_id": 186,
+    "name": "Champion RED",
+    "url": "https://myanimelist.net/manga/magazine/186/Champion_RED",
+    "count": 145
+  },
+  {
+    "mal_id": 193,
+    "name": "Comic Cue",
+    "url": "https://myanimelist.net/manga/magazine/193/Comic_Cue",
+    "count": 21
+  },
+  {
+    "mal_id": 198,
+    "name": "Dengeki G&#039;s magazine",
+    "url": "https://myanimelist.net/manga/magazine/198/Dengeki_Gs_magazine",
+    "count": 53
+  },
+  {
+    "mal_id": 201,
+    "name": "Kero-kero Ace",
+    "url": "https://myanimelist.net/manga/magazine/201/Kero-kero_Ace",
+    "count": 15
+  },
+  {
+    "mal_id": 206,
+    "name": "Shounen Champion (Weekly)",
+    "url": "https://myanimelist.net/manga/magazine/206/Shounen_Champion_Weekly",
+    "count": 296
+  },
+  {
+    "mal_id": 213,
+    "name": "CoroCoro Comic",
+    "url": "https://myanimelist.net/manga/magazine/213/CoroCoro_Comic",
+    "count": 137
+  },
+  {
+    "mal_id": 249,
+    "name": "Akamaru Jump",
+    "url": "https://myanimelist.net/manga/magazine/249/Akamaru_Jump",
+    "count": 24
+  },
+  {
+    "mal_id": 264,
+    "name": "Big Comic Superior",
+    "url": "https://myanimelist.net/manga/magazine/264/Big_Comic_Superior",
+    "count": 106
+  },
+  {
+    "mal_id": 269,
+    "name": "Comic Avarus",
+    "url": "https://myanimelist.net/manga/magazine/269/Comic_Avarus",
+    "count": 87
+  },
+  {
+    "mal_id": 282,
+    "name": "Shounen Champion (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/282/Shounen_Champion_Monthly",
+    "count": 65
+  },
+  {
+    "mal_id": 284,
+    "name": "Shougaku Sannensei ",
+    "url": "https://myanimelist.net/manga/magazine/284/Shougaku_Sannensei_",
+    "count": 12
+  },
+  {
+    "mal_id": 290,
+    "name": "Tonari no Young Jump",
+    "url": "https://myanimelist.net/manga/magazine/290/Tonari_no_Young_Jump",
+    "count": 151
+  },
+  {
+    "mal_id": 307,
+    "name": "YOU",
+    "url": "https://myanimelist.net/manga/magazine/307/YOU",
+    "count": 50
+  },
+  {
+    "mal_id": 312,
+    "name": "Dragon Magazine",
+    "url": "https://myanimelist.net/manga/magazine/312/Dragon_Magazine",
+    "count": 44
+  },
+  {
+    "mal_id": 316,
+    "name": "good! Afternoon",
+    "url": "https://myanimelist.net/manga/magazine/316/good_Afternoon",
+    "count": 114
+  },
+  {
+    "mal_id": 329,
+    "name": "The Sneaker",
+    "url": "https://myanimelist.net/manga/magazine/329/The_Sneaker",
+    "count": 12
+  },
+  {
+    "mal_id": 340,
+    "name": "Comic Gardo",
+    "url": "https://myanimelist.net/manga/magazine/340/Comic_Gardo",
+    "count": 93
+  },
+  {
+    "mal_id": 343,
+    "name": "Televi Magazine",
+    "url": "https://myanimelist.net/manga/magazine/343/Televi_Magazine",
+    "count": 8
+  },
+  {
+    "mal_id": 365,
+    "name": "Manga Time Kirara Forward",
+    "url": "https://myanimelist.net/manga/magazine/365/Manga_Time_Kirara_Forward",
+    "count": 118
+  },
+  {
+    "mal_id": 367,
+    "name": "Kindai Mahjong",
+    "url": "https://myanimelist.net/manga/magazine/367/Kindai_Mahjong",
+    "count": 26
+  },
+  {
+    "mal_id": 371,
+    "name": "Manga Allman",
+    "url": "https://myanimelist.net/manga/magazine/371/Manga_Allman",
+    "count": 10
+  },
+  {
+    "mal_id": 403,
+    "name": "Young Ace",
+    "url": "https://myanimelist.net/manga/magazine/403/Young_Ace",
+    "count": 170
+  },
+  {
+    "mal_id": 411,
+    "name": "Shounen Sunday Super",
+    "url": "https://myanimelist.net/manga/magazine/411/Shounen_Sunday_Super",
+    "count": 267
+  },
+  {
+    "mal_id": 412,
+    "name": "Gangan Joker",
+    "url": "https://myanimelist.net/manga/magazine/412/Gangan_Joker",
+    "count": 137
+  },
+  {
+    "mal_id": 419,
+    "name": "Gangan Online",
+    "url": "https://myanimelist.net/manga/magazine/419/Gangan_Online",
+    "count": 347
+  },
+  {
+    "mal_id": 421,
+    "name": "Sylph",
+    "url": "https://myanimelist.net/manga/magazine/421/Sylph",
+    "count": 85
+  },
+  {
+    "mal_id": 434,
+    "name": "Champion RED Ichigo",
+    "url": "https://myanimelist.net/manga/magazine/434/Champion_RED_Ichigo",
+    "count": 47
+  },
+  {
+    "mal_id": 450,
+    "name": "Bessatsu Shounen Magazine",
+    "url": "https://myanimelist.net/manga/magazine/450/Bessatsu_Shounen_Magazine",
+    "count": 176
+  },
+  {
+    "mal_id": 468,
+    "name": "Bokura",
+    "url": "https://myanimelist.net/manga/magazine/468/Bokura",
+    "count": 8
+  },
+  {
+    "mal_id": 483,
+    "name": "Shounen King",
+    "url": "https://myanimelist.net/manga/magazine/483/Shounen_King",
+    "count": 21
+  },
+  {
+    "mal_id": 485,
+    "name": "Oh Super Jump",
+    "url": "https://myanimelist.net/manga/magazine/485/Oh_Super_Jump",
+    "count": 14
+  },
+  {
+    "mal_id": 492,
+    "name": "Comic Gaia",
+    "url": "https://myanimelist.net/manga/magazine/492/Comic_Gaia",
+    "count": 5
+  },
+  {
+    "mal_id": 498,
+    "name": "Mephisto",
+    "url": "https://myanimelist.net/manga/magazine/498/Mephisto",
+    "count": 7
+  },
+  {
+    "mal_id": 499,
+    "name": "ARIA",
+    "url": "https://myanimelist.net/manga/magazine/499/ARIA",
+    "count": 105
+  },
+  {
+    "mal_id": 506,
+    "name": "Ultra Jump Egg",
+    "url": "https://myanimelist.net/manga/magazine/506/Ultra_Jump_Egg",
+    "count": 8
+  },
+  {
+    "mal_id": 512,
+    "name": "super Robot Magazine",
+    "url": "https://myanimelist.net/manga/magazine/512/super_Robot_Magazine",
+    "count": 4
+  },
+  {
+    "mal_id": 522,
+    "name": "Dengeki Hobby Magazine",
+    "url": "https://myanimelist.net/manga/magazine/522/Dengeki_Hobby_Magazine",
+    "count": 12
+  },
+  {
+    "mal_id": 532,
+    "name": "Famitsu Comic Clear",
+    "url": "https://myanimelist.net/manga/magazine/532/Famitsu_Comic_Clear",
+    "count": 78
+  },
+  {
+    "mal_id": 548,
+    "name": "Shounen Jump NEXT!",
+    "url": "https://myanimelist.net/manga/magazine/548/Shounen_Jump_NEXT",
+    "count": 33
+  },
+  {
+    "mal_id": 573,
+    "name": "Comic Gene",
+    "url": "https://myanimelist.net/manga/magazine/573/Comic_Gene",
+    "count": 120
+  },
+  {
+    "mal_id": 591,
+    "name": "Gessan",
+    "url": "https://myanimelist.net/manga/magazine/591/Gessan",
+    "count": 116
+  },
+  {
+    "mal_id": 593,
+    "name": "Club Sunday",
+    "url": "https://myanimelist.net/manga/magazine/593/Club_Sunday",
+    "count": 25
+  },
+  {
+    "mal_id": 653,
+    "name": "Newtype Ace",
+    "url": "https://myanimelist.net/manga/magazine/653/Newtype_Ace",
+    "count": 17
+  },
+  {
+    "mal_id": 673,
+    "name": "Naver Webtoon",
+    "url": "https://myanimelist.net/manga/magazine/673/Naver_Webtoon",
+    "count": 1195
+  },
+  {
+    "mal_id": 691,
+    "name": "Miracle Jump",
+    "url": "https://myanimelist.net/manga/magazine/691/Miracle_Jump",
+    "count": 42
+  },
+  {
+    "mal_id": 697,
+    "name": "Saikyou Jump",
+    "url": "https://myanimelist.net/manga/magazine/697/Saikyou_Jump",
+    "count": 60
+  },
+  {
+    "mal_id": 705,
+    "name": "Big Gangan",
+    "url": "https://myanimelist.net/manga/magazine/705/Big_Gangan",
+    "count": 136
+  },
+  {
+    "mal_id": 707,
+    "name": "Comic Earth☆Star",
+    "url": "https://myanimelist.net/manga/magazine/707/Comic_Earth%E2%98%86Star",
+    "count": 92
+  },
+  {
+    "mal_id": 719,
+    "name": "Comic Zenon",
+    "url": "https://myanimelist.net/manga/magazine/719/Comic_Zenon",
+    "count": 113
+  },
+  {
+    "mal_id": 739,
+    "name": "Age Premium",
+    "url": "https://myanimelist.net/manga/magazine/739/Age_Premium",
+    "count": 23
+  },
+  {
+    "mal_id": 803,
+    "name": "Niconico Seiga",
+    "url": "https://myanimelist.net/manga/magazine/803/Niconico_Seiga",
+    "count": 18
+  },
+  {
+    "mal_id": 813,
+    "name": "Bessatsu Shounen Champion",
+    "url": "https://myanimelist.net/manga/magazine/813/Bessatsu_Shounen_Champion",
+    "count": 52
+  },
+  {
+    "mal_id": 823,
+    "name": "Manga Life Win",
+    "url": "https://myanimelist.net/manga/magazine/823/Manga_Life_Win",
+    "count": 26
+  },
+  {
+    "mal_id": 831,
+    "name": "Bessatsu CoroCoro Comic",
+    "url": "https://myanimelist.net/manga/magazine/831/Bessatsu_CoroCoro_Comic",
+    "count": 29
+  },
+  {
+    "mal_id": 847,
+    "name": "Manga Action",
+    "url": "https://myanimelist.net/manga/magazine/847/Manga_Action",
+    "count": 165
+  },
+  {
+    "mal_id": 881,
+    "name": "Monthly Hero&#039;s",
+    "url": "https://myanimelist.net/manga/magazine/881/Monthly_Heros",
+    "count": 44
+  },
+  {
+    "mal_id": 916,
+    "name": "Blade Online",
+    "url": "https://myanimelist.net/manga/magazine/916/Blade_Online",
+    "count": 17
+  },
+  {
+    "mal_id": 918,
+    "name": "Shougaku Ninensei",
+    "url": "https://myanimelist.net/manga/magazine/918/Shougaku_Ninensei",
+    "count": 6
+  },
+  {
+    "mal_id": 937,
+    "name": "Shounen",
+    "url": "https://myanimelist.net/manga/magazine/937/Shounen",
+    "count": 6
+  },
+  {
+    "mal_id": 947,
+    "name": "Grand Jump",
+    "url": "https://myanimelist.net/manga/magazine/947/Grand_Jump",
+    "count": 98
+  },
+  {
+    "mal_id": 953,
+    "name": "Harta",
+    "url": "https://myanimelist.net/manga/magazine/953/Harta",
+    "count": 134
+  },
+  {
+    "mal_id": 1013,
+    "name": "Jump LIVE",
+    "url": "https://myanimelist.net/manga/magazine/1013/Jump_LIVE",
+    "count": 6
+  },
+  {
+    "mal_id": 1061,
+    "name": "Manga Box",
+    "url": "https://myanimelist.net/manga/magazine/1061/Manga_Box",
+    "count": 145
+  },
+  {
+    "mal_id": 1065,
+    "name": "BOX-AiR",
+    "url": "https://myanimelist.net/manga/magazine/1065/BOX-AiR",
+    "count": 5
+  },
+  {
+    "mal_id": 1089,
+    "name": "Manga Time Kirara☆Magica",
+    "url": "https://myanimelist.net/manga/magazine/1089/Manga_Time_Kirara%E2%98%86Magica",
+    "count": 16
+  },
+  {
+    "mal_id": 1097,
+    "name": "Yawaraka Spirits",
+    "url": "https://myanimelist.net/manga/magazine/1097/Yawaraka_Spirits",
+    "count": 50
+  },
+  {
+    "mal_id": 1129,
+    "name": "Fresh Jump",
+    "url": "https://myanimelist.net/manga/magazine/1129/Fresh_Jump",
+    "count": 4
+  },
+  {
+    "mal_id": 1135,
+    "name": "Suiyoubi no Sirius",
+    "url": "https://myanimelist.net/manga/magazine/1135/Suiyoubi_no_Sirius",
+    "count": 65
+  },
+  {
+    "mal_id": 1157,
+    "name": "Dengeki G&#039;s Comic",
+    "url": "https://myanimelist.net/manga/magazine/1157/Dengeki_Gs_Comic",
+    "count": 62
+  },
+  {
+    "mal_id": 1159,
+    "name": "ComicWalker",
+    "url": "https://myanimelist.net/manga/magazine/1159/ComicWalker",
+    "count": 193
+  },
+  {
+    "mal_id": 1163,
+    "name": "Asahi Shinbun",
+    "url": "https://myanimelist.net/manga/magazine/1163/Asahi_Shinbun",
+    "count": 5
+  },
+  {
+    "mal_id": 1165,
+    "name": "Tokusatsu Ace",
+    "url": "https://myanimelist.net/manga/magazine/1165/Tokusatsu_Ace",
+    "count": 4
+  },
+  {
+    "mal_id": 1205,
+    "name": "Animage",
+    "url": "https://myanimelist.net/manga/magazine/1205/Animage",
+    "count": 6
+  },
+  {
+    "mal_id": 1209,
+    "name": "Shounen Jump+",
+    "url": "https://myanimelist.net/manga/magazine/1209/Shounen_Jump_",
+    "count": 707
+  },
+  {
+    "mal_id": 1213,
+    "name": "Comic Dengeki Daioh &quot;g&quot;",
+    "url": "https://myanimelist.net/manga/magazine/1213/Comic_Dengeki_Daioh_g",
+    "count": 93
+  },
+  {
+    "mal_id": 1217,
+    "name": "Comic Garden",
+    "url": "https://myanimelist.net/manga/magazine/1217/Comic_Garden",
+    "count": 47
+  },
+  {
+    "mal_id": 1235,
+    "name": "Manga Life STORIA",
+    "url": "https://myanimelist.net/manga/magazine/1235/Manga_Life_STORIA",
+    "count": 15
+  },
+  {
+    "mal_id": 1257,
+    "name": "Cyber Comics",
+    "url": "https://myanimelist.net/manga/magazine/1257/Cyber_Comics",
+    "count": 5
+  },
+  {
+    "mal_id": 1280,
+    "name": "Comicomi",
+    "url": "https://myanimelist.net/manga/magazine/1280/Comicomi",
+    "count": 4
+  },
+  {
+    "mal_id": 1287,
+    "name": "SPA!",
+    "url": "https://myanimelist.net/manga/magazine/1287/SPA",
+    "count": 9
+  },
+  {
+    "mal_id": 1312,
+    "name": "Shounen Magazine Edge",
+    "url": "https://myanimelist.net/manga/magazine/1312/Shounen_Magazine_Edge",
+    "count": 89
+  },
+  {
+    "mal_id": 1316,
+    "name": "Jump SQ.Crown",
+    "url": "https://myanimelist.net/manga/magazine/1316/Jump_SQCrown",
+    "count": 23
+  },
+  {
+    "mal_id": 1335,
+    "name": "Magazine pocket",
+    "url": "https://myanimelist.net/manga/magazine/1335/Magazine_pocket",
+    "count": 252
+  },
+  {
+    "mal_id": 1340,
+    "name": "Young Ace UP",
+    "url": "https://myanimelist.net/manga/magazine/1340/Young_Ace_UP",
+    "count": 111
+  },
+  {
+    "mal_id": 1346,
+    "name": "The Sneaker Web",
+    "url": "https://myanimelist.net/manga/magazine/1346/The_Sneaker_Web",
+    "count": 2
+  },
+  {
+    "mal_id": 1361,
+    "name": "MangaONE",
+    "url": "https://myanimelist.net/manga/magazine/1361/MangaONE",
+    "count": 183
+  },
+  {
+    "mal_id": 1362,
+    "name": "eBigComic4",
+    "url": "https://myanimelist.net/manga/magazine/1362/eBigComic4",
+    "count": 2
+  },
+  {
+    "mal_id": 1366,
+    "name": "Jump GIGA",
+    "url": "https://myanimelist.net/manga/magazine/1366/Jump_GIGA",
+    "count": 89
+  },
+  {
+    "mal_id": 1372,
+    "name": "CoroCoro Aniki",
+    "url": "https://myanimelist.net/manga/magazine/1372/CoroCoro_Aniki",
+    "count": 12
+  },
+  {
+    "mal_id": 1373,
+    "name": "Comic Ride",
+    "url": "https://myanimelist.net/manga/magazine/1373/Comic_Ride",
+    "count": 34
+  },
+  {
+    "mal_id": 1378,
+    "name": "Comic Fire",
+    "url": "https://myanimelist.net/manga/magazine/1378/Comic_Fire",
+    "count": 46
+  },
+  {
+    "mal_id": 1390,
+    "name": "Dra-Dra-Dragon Age",
+    "url": "https://myanimelist.net/manga/magazine/1390/Dra-Dra-Dragon_Age",
+    "count": 8
+  },
+  {
+    "mal_id": 1396,
+    "name": "ShuuPlay News",
+    "url": "https://myanimelist.net/manga/magazine/1396/ShuuPlay_News",
+    "count": 3
+  },
+  {
+    "mal_id": 1399,
+    "name": "Manga UP!",
+    "url": "https://myanimelist.net/manga/magazine/1399/Manga_UP",
+    "count": 192
+  },
+  {
+    "mal_id": 1405,
+    "name": "Boukenou",
+    "url": "https://myanimelist.net/manga/magazine/1405/Boukenou",
+    "count": 16
+  },
+  {
+    "mal_id": 1410,
+    "name": "Sunday Webry",
+    "url": "https://myanimelist.net/manga/magazine/1410/Sunday_Webry",
+    "count": 115
+  },
+  {
+    "mal_id": 1424,
+    "name": "Monster Comics",
+    "url": "https://myanimelist.net/manga/magazine/1424/Monster_Comics",
+    "count": 18
+  },
+  {
+    "mal_id": 1439,
+    "name": "KakaoPage",
+    "url": "https://myanimelist.net/manga/magazine/1439/KakaoPage",
+    "count": 1377
+  },
+  {
+    "mal_id": 1456,
+    "name": "Manga Cross",
+    "url": "https://myanimelist.net/manga/magazine/1456/Manga_Cross",
+    "count": 50
+  },
+  {
+    "mal_id": 1459,
+    "name": "Comic Days",
+    "url": "https://myanimelist.net/manga/magazine/1459/Comic_Days",
+    "count": 167
+  },
+  {
+    "mal_id": 1460,
+    "name": "Comic Boost",
+    "url": "https://myanimelist.net/manga/magazine/1460/Comic_Boost",
+    "count": 41
+  },
+  {
+    "mal_id": 1467,
+    "name": "Comic Corona",
+    "url": "https://myanimelist.net/manga/magazine/1467/Comic_Corona",
+    "count": 32
+  },
+  {
+    "mal_id": 1473,
+    "name": "B&#039;s-LOG Comic",
+    "url": "https://myanimelist.net/manga/magazine/1473/Bs-LOG_Comic",
+    "count": 81
+  },
+  {
+    "mal_id": 1488,
+    "name": "Comic Tatan",
+    "url": "https://myanimelist.net/manga/magazine/1488/Comic_Tatan",
+    "count": 12
+  },
+  {
+    "mal_id": 1490,
+    "name": "Lupin Sansei Official Magazine",
+    "url": "https://myanimelist.net/manga/magazine/1490/Lupin_Sansei_Official_Magazine",
+    "count": 3
+  },
+  {
+    "mal_id": 1495,
+    "name": "MAGKAN",
+    "url": "https://myanimelist.net/manga/magazine/1495/MAGKAN",
+    "count": 11
+  },
+  {
+    "mal_id": 1514,
+    "name": "Sword Art Online Magazine",
+    "url": "https://myanimelist.net/manga/magazine/1514/Sword_Art_Online_Magazine",
+    "count": 3
+  },
+  {
+    "mal_id": 1527,
+    "name": "Web DenPlay Comic",
+    "url": "https://myanimelist.net/manga/magazine/1527/Web_DenPlay_Comic",
+    "count": 18
+  },
+  {
+    "mal_id": 1537,
+    "name": "Shounen Ace Plus",
+    "url": "https://myanimelist.net/manga/magazine/1537/Shounen_Ace_Plus",
+    "count": 45
+  },
+  {
+    "mal_id": 1540,
+    "name": "LINE Manga",
+    "url": "https://myanimelist.net/manga/magazine/1540/LINE_Manga",
+    "count": 68
+  },
+  {
+    "mal_id": 1563,
+    "name": "Comic Fuz",
+    "url": "https://myanimelist.net/manga/magazine/1563/Comic_Fuz",
+    "count": 35
+  },
+  {
+    "mal_id": 1564,
+    "name": "One Piece Magazine",
+    "url": "https://myanimelist.net/manga/magazine/1564/One_Piece_Magazine",
+    "count": 7
+  },
+  {
+    "mal_id": 1575,
+    "name": "Young Dragon Age",
+    "url": "https://myanimelist.net/manga/magazine/1575/Young_Dragon_Age",
+    "count": 29
+  },
+  {
+    "mal_id": 1590,
+    "name": "Hero&#039;s",
+    "url": "https://myanimelist.net/manga/magazine/1590/Heros",
+    "count": 18
+  },
+  {
+    "mal_id": 1617,
+    "name": "Grand Jump Mucha",
+    "url": "https://myanimelist.net/manga/magazine/1617/Grand_Jump_Mucha",
+    "count": 7
+  },
+  {
+    "mal_id": 1626,
+    "name": "Shounen Action (Weekly)",
+    "url": "https://myanimelist.net/manga/magazine/1626/Shounen_Action_Weekly",
+    "count": 3
+  },
+  {
+    "mal_id": 1636,
+    "name": "Dengeki Comic Regulus",
+    "url": "https://myanimelist.net/manga/magazine/1636/Dengeki_Comic_Regulus",
+    "count": 40
+  },
+  {
+    "mal_id": 1657,
+    "name": "Super Action (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/1657/Super_Action_Monthly",
+    "count": 2
+  },
+  {
+    "mal_id": 1662,
+    "name": "Young Jump Heroine",
+    "url": "https://myanimelist.net/manga/magazine/1662/Young_Jump_Heroine",
+    "count": 8
+  },
+  {
+    "mal_id": 1671,
+    "name": "Young Magazine Kaizokuban",
+    "url": "https://myanimelist.net/manga/magazine/1671/Young_Magazine_Kaizokuban",
+    "count": 3
+  },
+  {
+    "mal_id": 1689,
+    "name": "Alive+",
+    "url": "https://myanimelist.net/manga/magazine/1689/Alive_",
+    "count": 22
+  },
+  {
+    "mal_id": 1699,
+    "name": "Shounen Book",
+    "url": "https://myanimelist.net/manga/magazine/1699/Shounen_Book",
+    "count": 5
+  },
+  {
+    "mal_id": 1710,
+    "name": "Comic Bonbon Zoukan",
+    "url": "https://myanimelist.net/manga/magazine/1710/Comic_Bonbon_Zoukan",
+    "count": 2
+  },
+  {
+    "mal_id": 1786,
+    "name": "e-manga",
+    "url": "https://myanimelist.net/manga/magazine/1786/e-manga",
+    "count": 3
+  },
+  {
+    "mal_id": 1813,
+    "name": "JoJo Magazine",
+    "url": "https://myanimelist.net/manga/magazine/1813/JoJo_Magazine",
+    "count": 2
+  },
+  {
+    "mal_id": 1815,
+    "name": "Fairy Tail Magazine (Monthly)",
+    "url": "https://myanimelist.net/manga/magazine/1815/Fairy_Tail_Magazine_Monthly",
+    "count": 3
+  },
+  {
+    "mal_id": 1852,
+    "name": "Comp Ace Comic Connect",
+    "url": "https://myanimelist.net/manga/magazine/1852/Comp_Ace_Comic_Connect",
+    "count": 4
+  },
+  {
+    "mal_id": 1866,
+    "name": "Shounen Jump Season Special",
+    "url": "https://myanimelist.net/manga/magazine/1866/Shounen_Jump_Season_Special",
+    "count": 2
+  },
+  {
+    "mal_id": 1888,
+    "name": "Papillon",
+    "url": "https://myanimelist.net/manga/magazine/1888/Papillon",
+    "count": 1
+  }
+]

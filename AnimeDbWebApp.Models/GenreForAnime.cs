@@ -14,9 +14,9 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Genre name")]
-        [MaxLength(MinNameLength)]
+        [MaxLength(MaxNameLength)]
         public string Name { get; set; } = null!;
 
-        public ICollection<Anime> Animes { get; set; } = [];
+        public ICollection<AnimeGenre> Animes { get; set; } = [];
     }
 }

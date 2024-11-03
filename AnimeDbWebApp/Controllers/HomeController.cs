@@ -2,6 +2,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 using AnimeDbWebApp.ViewModels;
+using AnimeDbWebApp.Data;
+using System.Linq;
 
 namespace AnimeDbWebApp.Controllers
 {
