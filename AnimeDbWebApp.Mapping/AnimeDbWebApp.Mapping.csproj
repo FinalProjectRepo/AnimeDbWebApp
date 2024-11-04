@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj" />
+  </ItemGroup>
+
 </Project>

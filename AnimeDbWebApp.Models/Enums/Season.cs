@@ -2,6 +2,6 @@
 {
     public enum Season
     {
-        fall=1, spring, summer, winter
+        spring=1, summer, fall, winter
     }
 }

@@ -8,7 +8,7 @@ using System.Linq;
 using System.Reflection;
 
 using AnimeDbWebApp.Common;
-using AnimeDbWebApp.DTOs.Primals;
+using AnimeDbWebApp.DTOs.Generals;
 using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models;
 using static AnimeDbWebApp.Common.GeneralConstants;
@@ -22,15 +22,16 @@ namespace AnimeDbWebApp.Data.Extensions
 
         public static void Seed(this ModelBuilder builder)
         {
-            SeedPrimals(builder, MultipleTypesSeparator);
+            Seed(builder, PrimalImportsNamespace, MultipleTypesSeparator, ImportModelLength);
+            Seed(builder, GeneralImportsNamespace, MultipleTypesSeparator, ImportModelLength);
         }
 
-        private static void SeedPrimals(ModelBuilder builder, string multipleTypeSeparator)
+        private static void Seed(ModelBuilder builder,string namespaceToSeed, string multipleTypeSeparator, int extraCharsImportModel)
         {
-            var importTypes = Assembly.GetAssembly(typeof(AuthorImportModel))!
+            var importTypes = Assembly.GetAssembly(typeof(AnimeImportModel))!
                             .GetTypes()
-                            .Where(t => t.Namespace!.EndsWith(PrimalImportsNamespace));
-            var entityTypes = Assembly.GetAssembly(typeof(Author))!.GetTypes();
+                            .Where(t => t.Namespace!.EndsWith(namespaceToSeed));
+            var entityTypes = Assembly.GetAssembly(typeof(Anime))!.GetTypes();
 
             var seedMethod = typeof(SeedModelBuilderExtension)
                 .GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
@@ -38,7 +39,7 @@ namespace AnimeDbWebApp.Data.Extensions
 
             foreach (var type in importTypes)
             {
-                string entityName = type.Name[..^11];
+                string entityName = type.Name[..^extraCharsImportModel];
                 var entityType = entityTypes.FirstOrDefault(t => t.Name == entityName);
 
                 if (entityType != null) InvokeMethod(builder, type, entityType, seedMethod);
@@ -51,7 +52,6 @@ namespace AnimeDbWebApp.Data.Extensions
                 }
             }
         }
-
         private static void Seed<T, TT>(ModelBuilder builder, string fileName) 
             where T : class 
             where TT : class
@@ -63,12 +63,11 @@ namespace AnimeDbWebApp.Data.Extensions
             foreach (var input in inputs)
             {
                 TT type = Activator.CreateInstance<TT>();
-                _mapper.Map(input, type);
+                _mapper.Map(input, type, null);
                 types.Add(type);
             }
             builder.Entity<TT>().HasData(types);
         }
-
         private static void InvokeMethod(ModelBuilder builder,Type type, Type entityType, MethodInfo seedMethod)
         {
             var fileNameProperty = typeof(GeneralConstants)

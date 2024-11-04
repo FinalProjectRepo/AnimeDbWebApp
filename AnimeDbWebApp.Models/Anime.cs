@@ -41,10 +41,9 @@ namespace AnimeDbWebApp.Models
         [MaxLength(MaxJapTitleLength)]
         public string? TitleJapanese { get; set; } = null!;
 
-        [Required]
         [Comment("Number of episodes")]
         [Range(MinEpisodes, MaxEpisodes)]
-        public int Episodes { get; set; }
+        public int? Episodes { get; set; }
 
         [Required]
         [Comment("Airing status")]
@@ -58,52 +57,43 @@ namespace AnimeDbWebApp.Models
         [Column(TypeName = "DATETIME2")]
         public DateTime? EndDate { get; set; }
 
-        [Required]
         [Comment("Duration of episode")]
         [MaxLength(MaxDurationLength)]
         public string? Duration { get; set; }
 
-        [Required]
         [Comment("Age restriction for anime")]
         [MaxLength(MaxRatingLength)]
         public string? Rating { get; set; }
 
-        [Required]
         [Comment("Populairty/liked score of anime")]
         [Range(MinScore, MaxScore)]
         [Column(TypeName = "DECIMAL(4,2)")]
         public double? Score { get; set; }
 
-        [Required]
         [Comment("Anime rank")]
         public int? Rank { get; set; }
 
-        [Required]
         [Comment("Short description")]
-        public string Sypnosis { get; set; } = null!;
+        public string? Synopsis { get; set; } = null!;
 
-        [Required]
         [Comment("Short description")]
-        public string Background { get; set; } = null!;
+        public string? Background { get; set; } = null!;
 
-        [Required]
         [Comment("Yearly anime season that anime aired")]
-        public Season Season { get; set; }
+        public Season? Season { get; set; }
 
         [Required]
         [Comment("Source for creating the anime")]
-        [MaxLength(MaxSourceLength)]
         public int SourceId { get; set; }
 
         [ForeignKey(nameof(SourceId))]
         public Source Source { get; set; } = null!;
 
-        [Required]
         [Comment("Type of anime(tv series, movie, etc.)")]
-        public int TypeId { get; set; }
+        public int? TypeId { get; set; }
 
         [ForeignKey(nameof(TypeId))]
-        public TypeForAnime Type { get; set; } = null!;
+        public TypeForAnime? Type { get; set; }
 
         public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];
         public ICollection<AnimeLicensor> AnimesLicensors { get; set; } = [];

@@ -2,9 +2,11 @@
 {
     public static class GeneralConstants
     {
-        public const string MultipleTypesSeparator = "For";
         public const string PrimalImportsNamespace = "Primals";
+        public const string GeneralImportsNamespace = "Generals";
         public const string MappingImportsNamespace = "Mappings";
+        public const string MultipleTypesSeparator = "For";
+        public const int ImportModelLength = 11;
         public const string DataFolderName = "AnimeDbWebApp.Data";
         public const string DatasetFolderName = "Datasets";
         public const string TypeForAnimeDataSetFileName = "animeTypes.json";
