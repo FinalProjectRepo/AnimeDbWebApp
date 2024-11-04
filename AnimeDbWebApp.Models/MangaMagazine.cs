@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AnimeDbWebApp.Models
 {
-    public class MangaGenre
+    public class MangaMagazine
     {
         [Required]
         [Comment("Unique identifier of manga")]
@@ -13,9 +13,9 @@ namespace AnimeDbWebApp.Models
         public Manga Manga { get; set; } = null!;
 
         [Required]
-        [Comment("Unique identifier of genre")]
-        public int GenreId { get; set; }
-        [ForeignKey(nameof(GenreId))]
-        public GenreForManga Genre { get; set; } = null!;
+        [Comment("Unique identifier of magazine")]
+        public int MagazineId { get; set; }
+        [ForeignKey(nameof(MagazineId))]
+        public Magazine Magazine { get; set; } = null!;
     }
 }

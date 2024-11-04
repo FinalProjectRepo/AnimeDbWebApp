@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-using static AnimeDbWebApp.Common.ValidationConstants.Relations;
+using static AnimeDbWebApp.Common.ValidationConstants.RelationValidations;
 
 namespace AnimeDbWebApp.Models
 {

@@ -8,21 +8,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AnimeDbWebApp.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class SeedAuthors : Migration
+    public partial class AuthorsSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthdate",
-                table: "Authors",
-                type: "DATETIME2",
-                nullable: true,
-                comment: "Date of birth",
-                oldClrType: typeof(DateTime),
-                oldType: "DATETIME2",
-                oldComment: "Date of birth");
-
             migrationBuilder.InsertData(
                 table: "Authors",
                 columns: new[] { "Id", "About", "Birthdate", "FamilyName", "GivenName", "Name", "PosterUrl", "Url", "Website" },
@@ -6831,18 +6821,6 @@ namespace AnimeDbWebApp.Data.Migrations
                 table: "Authors",
                 keyColumn: "Id",
                 keyValue: 77660);
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Birthdate",
-                table: "Authors",
-                type: "DATETIME2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                comment: "Date of birth",
-                oldClrType: typeof(DateTime),
-                oldType: "DATETIME2",
-                oldNullable: true,
-                oldComment: "Date of birth");
         }
     }
 }

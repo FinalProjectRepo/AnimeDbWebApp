@@ -13,40 +13,6 @@ namespace AnimeDbWebApp.Data.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Producers",
-                type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: false,
-                comment: "English name of the studio",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(30)",
-                oldMaxLength: 30,
-                oldComment: "English name of the studio");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "JpName",
-                table: "Producers",
-                type: "nvarchar(50)",
-                maxLength: 50,
-                nullable: true,
-                comment: "Japanese name of the studio",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(30)",
-                oldMaxLength: 30,
-                oldComment: "Japanese name of the studio");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Established",
-                table: "Producers",
-                type: "DATETIME2",
-                nullable: true,
-                comment: "Date the studio is established",
-                oldClrType: typeof(DateTime),
-                oldType: "DATETIME2",
-                oldComment: "Date the studio is established");
-
             migrationBuilder.InsertData(
                 table: "Producers",
                 columns: new[] { "Id", "About", "Established", "ImgUrl", "JpName", "Name", "Url" },
@@ -3999,44 +3965,6 @@ namespace AnimeDbWebApp.Data.Migrations
                 table: "Producers",
                 keyColumn: "Id",
                 keyValue: 3031);
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Name",
-                table: "Producers",
-                type: "nvarchar(30)",
-                maxLength: 30,
-                nullable: false,
-                comment: "English name of the studio",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(50)",
-                oldMaxLength: 50,
-                oldComment: "English name of the studio");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "JpName",
-                table: "Producers",
-                type: "nvarchar(30)",
-                maxLength: 30,
-                nullable: false,
-                defaultValue: "",
-                comment: "Japanese name of the studio",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(50)",
-                oldMaxLength: 50,
-                oldNullable: true,
-                oldComment: "Japanese name of the studio");
-
-            migrationBuilder.AlterColumn<DateTime>(
-                name: "Established",
-                table: "Producers",
-                type: "DATETIME2",
-                nullable: false,
-                defaultValue: new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                comment: "Date the studio is established",
-                oldClrType: typeof(DateTime),
-                oldType: "DATETIME2",
-                oldNullable: true,
-                oldComment: "Date the studio is established");
         }
     }
 }

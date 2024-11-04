@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using static AnimeDbWebApp.Common.ValidationConstants.ProducerValidations;
 
-namespace AnimeDbWebApp.DTOs
+namespace AnimeDbWebApp.DTOs.Primals
 {
     public class ProducerImportModel
     {

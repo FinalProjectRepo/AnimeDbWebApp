@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeDbWebApp.Data.Migrations
 {
     [DbContext(typeof(AnimeDbContext))]
-    [Migration("20241103165357_TypesSeed")]
+    [Migration("20241104120247_TypesSeed")]
     partial class TypesSeed
     {
         /// <inheritdoc />
@@ -77,10 +77,9 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasColumnType("int")
                         .HasComment("Yearly anime season that anime aired");
 
-                    b.Property<string>("Source")
-                        .IsRequired()
+                    b.Property<int>("SourceId")
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasColumnType("int")
                         .HasComment("Source for creating the anime");
 
                     b.Property<DateTime?>("StartDate")
@@ -127,6 +126,8 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasComment("Url link to mal site");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SourceId");
 
                     b.HasIndex("TypeId");
 
@@ -319,7 +320,6 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasComment("Aditional information about person");
 
                     b.Property<DateTime?>("Birthdate")
-                        .IsRequired()
                         .HasColumnType("DATETIME2")
                         .HasComment("Date of birth");
 
@@ -412,6 +412,31 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GenresForMangas");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.Magazine", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier that equals mal_id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasComment("Anime title");
+
+                    b.Property<string>("Url")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasComment("Url link to mal site");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Magazines");
                 });
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
@@ -518,6 +543,23 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.ToTable("MangasGenres");
                 });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.MangaMagazine", b =>
+                {
+                    b.Property<int>("MangaId")
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier of manga");
+
+                    b.Property<int>("MagazineId")
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier of magazine");
+
+                    b.HasKey("MangaId", "MagazineId");
+
+                    b.HasIndex("MagazineId");
+
+                    b.ToTable("MangasMagazines");
+                });
+
             modelBuilder.Entity("AnimeDbWebApp.Models.MangaRelation", b =>
                 {
                     b.Property<int>("MangaId")
@@ -554,7 +596,7 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Information about producer");
 
-                    b.Property<DateTime>("Established")
+                    b.Property<DateTime?>("Established")
                         .HasColumnType("DATETIME2")
                         .HasComment("Date the studio is established");
 
@@ -564,15 +606,14 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasComment("Anime poster url");
 
                     b.Property<string>("JpName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasComment("Japanese name of the studio");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasComment("English name of the studio");
 
                     b.Property<string>("Url")
@@ -585,7 +626,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("AnimeDbWebApp.Models.Type", b =>
+            modelBuilder.Entity("AnimeDbWebApp.Models.Source", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -602,38 +643,58 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Sources");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForAnime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique Identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Type name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AnimeTypes");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Name = "CM"
+                            Name = "TV"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Doujinshi"
+                            Name = "Movie"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Light Novel"
+                            Name = "OVA"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Manga"
+                            Name = "Special"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Manhwa"
+                            Name = "TV Special"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Movie"
+                            Name = "ONA"
                         },
                         new
                         {
@@ -643,42 +704,64 @@ namespace AnimeDbWebApp.Data.Migrations
                         new
                         {
                             Id = 8,
-                            Name = "Novel"
+                            Name = "CM"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "ONA"
+                            Name = "PV"
+                        });
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForManga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique Identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Type name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MangaTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Manga"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 2,
+                            Name = "Light Novel"
+                        },
+                        new
+                        {
+                            Id = 3,
                             Name = "One-shot"
                         },
                         new
                         {
-                            Id = 11,
-                            Name = "OVA"
+                            Id = 4,
+                            Name = "Manhwa"
                         },
                         new
                         {
-                            Id = 12,
-                            Name = "PV"
+                            Id = 5,
+                            Name = "Novel"
                         },
                         new
                         {
-                            Id = 13,
-                            Name = "Special"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "TV"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "TV Special"
+                            Id = 6,
+                            Name = "Doujinshi"
                         });
                 });
 
@@ -815,11 +898,19 @@ namespace AnimeDbWebApp.Data.Migrations
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Anime", b =>
                 {
-                    b.HasOne("AnimeDbWebApp.Models.Type", "Type")
+                    b.HasOne("AnimeDbWebApp.Models.Source", "Source")
+                        .WithMany("Animes")
+                        .HasForeignKey("SourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AnimeDbWebApp.Models.TypeForAnime", "Type")
                         .WithMany("Animes")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Source");
 
                     b.Navigation("Type");
                 });
@@ -959,7 +1050,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
                 {
-                    b.HasOne("AnimeDbWebApp.Models.Type", "Type")
+                    b.HasOne("AnimeDbWebApp.Models.TypeForManga", "Type")
                         .WithMany("Mangas")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -983,6 +1074,25 @@ namespace AnimeDbWebApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Genre");
+
+                    b.Navigation("Manga");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.MangaMagazine", b =>
+                {
+                    b.HasOne("AnimeDbWebApp.Models.Magazine", "Magazine")
+                        .WithMany("MangasMagazines")
+                        .HasForeignKey("MagazineId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AnimeDbWebApp.Models.Manga", "Manga")
+                        .WithMany("MangasMagazines")
+                        .HasForeignKey("MangaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Magazine");
 
                     b.Navigation("Manga");
                 });
@@ -1087,6 +1197,11 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("Mangas");
                 });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.Magazine", b =>
+                {
+                    b.Navigation("MangasMagazines");
+                });
+
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
                 {
                     b.Navigation("Adaptations");
@@ -1096,6 +1211,8 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("Genres");
 
                     b.Navigation("MangaRalations");
+
+                    b.Navigation("MangasMagazines");
                 });
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Producer", b =>
@@ -1107,10 +1224,18 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("AnimesStudios");
                 });
 
-            modelBuilder.Entity("AnimeDbWebApp.Models.Type", b =>
+            modelBuilder.Entity("AnimeDbWebApp.Models.Source", b =>
                 {
                     b.Navigation("Animes");
+                });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForAnime", b =>
+                {
+                    b.Navigation("Animes");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForManga", b =>
+                {
                     b.Navigation("Mangas");
                 });
 #pragma warning restore 612, 618

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Manga"
+  },
+  {
+    "id": 2,
+    "name": "Light Novel"
+  },
+  {
+    "id": 3,
+    "name": "One-shot"
+  },
+  {
+    "id": 4,
+    "name": "Manhwa"
+  },
+  {
+    "id": 5,
+    "name": "Novel"
+  },
+  {
+    "id": 6,
+    "name": "Doujinshi"
+  }
+]

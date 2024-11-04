@@ -2,6 +2,6 @@
 {
     public enum Status
     {
-        Finished = 1, CurrentlyAiring, NotYetAiring
+        FinishedAiring = 1, CurrentlyAiring, NotYetAired
     }
 }

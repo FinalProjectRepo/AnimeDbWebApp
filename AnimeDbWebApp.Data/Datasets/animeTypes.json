@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "name": "TV"
+  },
+  {
+    "id": 2,
+    "name": "Movie"
+  },
+  {
+    "id": 3,
+    "name": "OVA"
+  },
+  {
+    "id": 4,
+    "name": "Special"
+  },
+  {
+    "id": 5,
+    "name": "TV Special"
+  },
+  {
+    "id": 6,
+    "name": "ONA"
+  },
+  {
+    "id": 7,
+    "name": "Music"
+  },
+  {
+    "id": 8,
+    "name": "CM"
+  },
+  {
+    "id": 9,
+    "name": "PV"
+  }
+]

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Original"
+  },
+  {
+    "id": 2,
+    "name": "Manga"
+  },
+  {
+    "id": 3,
+    "name": "Light novel"
+  },
+  {
+    "id": 4,
+    "name": "Game"
+  },
+  {
+    "id": 5,
+    "name": "Web manga"
+  },
+  {
+    "id": 6,
+    "name": "Other"
+  },
+  {
+    "id": 7,
+    "name": "Novel"
+  },
+  {
+    "id": 8,
+    "name": "Unknown"
+  },
+  {
+    "id": 9,
+    "name": "Book"
+  },
+  {
+    "id": 10,
+    "name": "4-koma manga"
+  },
+  {
+    "id": 11,
+    "name": "Mixed media"
+  },
+  {
+    "id": 12,
+    "name": "Music"
+  },
+  {
+    "id": 13,
+    "name": "Visual novel"
+  },
+  {
+    "id": 14,
+    "name": "Card game"
+  },
+  {
+    "id": 15,
+    "name": "Radio"
+  }
+]

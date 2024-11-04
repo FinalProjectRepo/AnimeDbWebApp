@@ -13,25 +13,32 @@ namespace AnimeDbWebApp.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.InsertData(
-                table: "Types",
+                table: "AnimeTypes",
                 columns: new[] { "Id", "Name" },
                 values: new object[,]
                 {
-                    { 1, "CM" },
-                    { 2, "Doujinshi" },
-                    { 3, "Light Novel" },
-                    { 4, "Manga" },
-                    { 5, "Manhwa" },
-                    { 6, "Movie" },
+                    { 1, "TV" },
+                    { 2, "Movie" },
+                    { 3, "OVA" },
+                    { 4, "Special" },
+                    { 5, "TV Special" },
+                    { 6, "ONA" },
                     { 7, "Music" },
-                    { 8, "Novel" },
-                    { 9, "ONA" },
-                    { 10, "One-shot" },
-                    { 11, "OVA" },
-                    { 12, "PV" },
-                    { 13, "Special" },
-                    { 14, "TV" },
-                    { 15, "TV Special" }
+                    { 8, "CM" },
+                    { 9, "PV" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "MangaTypes",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Manga" },
+                    { 2, "Light Novel" },
+                    { 3, "One-shot" },
+                    { 4, "Manhwa" },
+                    { 5, "Novel" },
+                    { 6, "Doujinshi" }
                 });
         }
 
@@ -39,79 +46,79 @@ namespace AnimeDbWebApp.Data.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 4);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 5);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 6);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 7);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 8);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "AnimeTypes",
                 keyColumn: "Id",
                 keyValue: 9);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 10);
+                keyValue: 1);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 11);
+                keyValue: 2);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 12);
+                keyValue: 3);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 13);
+                keyValue: 4);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 14);
+                keyValue: 5);
 
             migrationBuilder.DeleteData(
-                table: "Types",
+                table: "MangaTypes",
                 keyColumn: "Id",
-                keyValue: 15);
+                keyValue: 6);
         }
     }
 }

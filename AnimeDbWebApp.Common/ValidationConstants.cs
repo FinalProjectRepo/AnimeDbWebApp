@@ -63,10 +63,23 @@
             public const int MaxFamilyNameLength = 255;
         }
 
-        public static class Relations
+        public static class RelationValidations
         {
             public const int MinRelationTypeLength = 2;
             public const int MaxRelationTypeLength = 30;
+        }
+
+        public static class MagazineValidations
+        {
+            public const int MinNameLength = 5;
+            public const int MaxNameLength = 255;
+            public const int MaxUrlLength = 500;
+        }
+
+        public static class SourceValidation
+        {
+            public const int MinNameLength = 2;
+            public const int MaxNameLength = 30;
         }
     }
 }

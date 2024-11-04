@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnimeDbWebApp.Data.Migrations
 {
     [DbContext(typeof(AnimeDbContext))]
-    [Migration("20241103175558_SeedAuthors")]
-    partial class SeedAuthors
+    [Migration("20241104121110_MagazinesSeed")]
+    partial class MagazinesSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -77,10 +77,9 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasColumnType("int")
                         .HasComment("Yearly anime season that anime aired");
 
-                    b.Property<string>("Source")
-                        .IsRequired()
+                    b.Property<int>("SourceId")
                         .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasColumnType("int")
                         .HasComment("Source for creating the anime");
 
                     b.Property<DateTime?>("StartDate")
@@ -127,6 +126,8 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasComment("Url link to mal site");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("SourceId");
 
                     b.HasIndex("TypeId");
 
@@ -11924,6 +11925,398 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GenresForAnimes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Action"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Avant Garde"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Name = "Award Winning"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Boys Love"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Comedy"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Drama"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Girls Love"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Name = "Gourmet"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Mystery"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Romance"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Sci-Fi"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Name = "Slice of Life"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Name = "Sports"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Name = "Supernatural"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Name = "Suspense"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Ecchi"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Name = "Erotica"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Hentai"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Name = "Adult Cast"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Name = "Anthropomorphic"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Name = "CGDCT"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Name = "Childcare"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Name = "Combat Sports"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Name = "Crossdressing"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Name = "Delinquents"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Name = "Detective"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Name = "Educational"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Name = "Gag Humor"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Name = "Gore"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Name = "Harem"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Name = "High Stakes Game"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Historical"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Name = "Idols (Female)"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Name = "Idols (Male)"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Name = "Isekai"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Name = "Iyashikei"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Name = "Love Polygon"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Name = "Magical Sex Shift"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Name = "Mahou Shoujo"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Martial Arts"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Mecha"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Name = "Medical"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Name = "Military"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Music"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Mythology"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Name = "Organized Crime"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            Name = "Otaku Culture"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Parody"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Name = "Performing Arts"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            Name = "Pets"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Name = "Psychological"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Racing"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Name = "Reincarnation"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            Name = "Reverse Harem"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Name = "Love Status Quo"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Samurai"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "School"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Name = "Showbiz"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Name = "Space"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Strategy Game"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Name = "Super Power"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            Name = "Survival"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            Name = "Team Sports"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            Name = "Time Travel"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Name = "Vampire"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            Name = "Video Game"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            Name = "Visual Arts"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Name = "Workplace"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Name = "Urban Fantasy"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            Name = "Villainess"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            Name = "Josei"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Kids"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Name = "Seinen"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Shoujo"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Shounen"
+                        });
                 });
 
             modelBuilder.Entity("AnimeDbWebApp.Models.GenreForManga", b =>
@@ -11943,6 +12336,1624 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("GenresForMangas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Action"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Adventure"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Avant Garde"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            Name = "Award Winning"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            Name = "Boys Love"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Comedy"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Drama"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Fantasy"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Girls Love"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Name = "Gourmet"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Horror"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "Mystery"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Romance"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Sci-Fi"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            Name = "Slice of Life"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            Name = "Sports"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            Name = "Supernatural"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Name = "Suspense"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Ecchi"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            Name = "Erotica"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            Name = "Hentai"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            Name = "Adult Cast"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            Name = "Anthropomorphic"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            Name = "CGDCT"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Name = "Childcare"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            Name = "Combat Sports"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            Name = "Crossdressing"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Name = "Delinquents"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            Name = "Detective"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            Name = "Educational"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Name = "Gag Humor"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Name = "Gore"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Name = "Harem"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Name = "High Stakes Game"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Historical"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            Name = "Idols (Female)"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            Name = "Idols (Male)"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            Name = "Isekai"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            Name = "Iyashikei"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            Name = "Love Polygon"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            Name = "Magical Sex Shift"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            Name = "Mahou Shoujo"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Martial Arts"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Mecha"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            Name = "Medical"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Name = "Memoir"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            Name = "Military"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "Music"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Mythology"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            Name = "Organized Crime"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Name = "Otaku Culture"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Parody"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            Name = "Performing Arts"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Name = "Pets"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Name = "Psychological"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Racing"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            Name = "Reincarnation"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            Name = "Reverse Harem"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            Name = "Love Status Quo"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Samurai"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "School"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            Name = "Showbiz"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            Name = "Space"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "Strategy Game"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            Name = "Super Power"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            Name = "Survival"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            Name = "Team Sports"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            Name = "Time Travel"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            Name = "Vampire"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            Name = "Video Game"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            Name = "Villainess"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            Name = "Visual Arts"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Name = "Workplace"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            Name = "Urban Fantasy"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            Name = "Josei"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Kids"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            Name = "Seinen"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Shoujo"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Shounen"
+                        });
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.Magazine", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier that equals mal_id");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)")
+                        .HasComment("Anime title");
+
+                    b.Property<string>("Url")
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)")
+                        .HasComment("Url link to mal site");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Magazines");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Big Comic Original",
+                            Url = "https://myanimelist.net/manga/magazine/1/Big_Comic_Original"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Young Animal",
+                            Url = "https://myanimelist.net/manga/magazine/2/Young_Animal"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Big Comic Spirits",
+                            Url = "https://myanimelist.net/manga/magazine/3/Big_Comic_Spirits"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Afternoon",
+                            Url = "https://myanimelist.net/manga/magazine/4/Afternoon"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Web Comic Gum",
+                            Url = "https://myanimelist.net/manga/magazine/5/Web_Comic_Gum"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "Young Magazine (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/6/Young_Magazine_Monthly"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Name = "Shounen Magazine (Weekly)",
+                            Url = "https://myanimelist.net/manga/magazine/8/Shounen_Magazine_Weekly"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Name = "Ribon Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/9/Ribon_Magazine"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Name = "Young Magazine (Weekly)",
+                            Url = "https://myanimelist.net/manga/magazine/10/Young_Magazine_Weekly"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Name = "LaLa",
+                            Url = "https://myanimelist.net/manga/magazine/11/LaLa"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            Name = "Shounen Gangan",
+                            Url = "https://myanimelist.net/manga/magazine/13/Shounen_Gangan"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            Name = "Asuka",
+                            Url = "https://myanimelist.net/manga/magazine/14/Asuka"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            Name = "Cookie",
+                            Url = "https://myanimelist.net/manga/magazine/15/Cookie"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            Name = "Zipper",
+                            Url = "https://myanimelist.net/manga/magazine/16/Zipper"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            Name = "Margaret",
+                            Url = "https://myanimelist.net/manga/magazine/17/Margaret"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            Name = "Dengeki Comic Gao!",
+                            Url = "https://myanimelist.net/manga/magazine/18/Dengeki_Comic_Gao"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            Name = "From Gamers",
+                            Url = "https://myanimelist.net/manga/magazine/19/From_Gamers"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            Name = "Nakayoshi",
+                            Url = "https://myanimelist.net/manga/magazine/20/Nakayoshi"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            Name = "Hana to Yume",
+                            Url = "https://myanimelist.net/manga/magazine/21/Hana_to_Yume"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            Name = "Sho-Comi",
+                            Url = "https://myanimelist.net/manga/magazine/22/Sho-Comi"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            Name = "Dengeki Daioh",
+                            Url = "https://myanimelist.net/manga/magazine/23/Dengeki_Daioh"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            Name = "Young Gangan",
+                            Url = "https://myanimelist.net/manga/magazine/24/Young_Gangan"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            Name = "Ultra Jump",
+                            Url = "https://myanimelist.net/manga/magazine/25/Ultra_Jump"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            Name = "Eyes",
+                            Url = "https://myanimelist.net/manga/magazine/26/Eyes"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            Name = "Shounen Ace",
+                            Url = "https://myanimelist.net/manga/magazine/27/Shounen_Ace"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            Name = "Shounen Jump (Weekly)",
+                            Url = "https://myanimelist.net/manga/magazine/83/Shounen_Jump_Weekly"
+                        },
+                        new
+                        {
+                            Id = 229,
+                            Name = "Shounen Sunday",
+                            Url = "https://myanimelist.net/manga/magazine/229/Shounen_Sunday"
+                        },
+                        new
+                        {
+                            Id = 1477,
+                            Name = "Jump SQ.Rise",
+                            Url = "https://myanimelist.net/manga/magazine/1477/Jump_SQRise"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            Name = "GFantasy",
+                            Url = "https://myanimelist.net/manga/magazine/35/GFantasy"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            Name = "Sunday Gene-X",
+                            Url = "https://myanimelist.net/manga/magazine/40/Sunday_Gene-X"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            Name = "Wings",
+                            Url = "https://myanimelist.net/manga/magazine/45/Wings"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            Name = "Young Champion",
+                            Url = "https://myanimelist.net/manga/magazine/47/Young_Champion"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            Name = "Shounen Magazine (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/48/Shounen_Magazine_Monthly"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            Name = "Bessatsu Margaret",
+                            Url = "https://myanimelist.net/manga/magazine/53/Bessatsu_Margaret"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            Name = "Big Comic",
+                            Url = "https://myanimelist.net/manga/magazine/55/Big_Comic"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            Name = "Business Jump",
+                            Url = "https://myanimelist.net/manga/magazine/57/Business_Jump"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            Name = "Chorus",
+                            Url = "https://myanimelist.net/manga/magazine/58/Chorus"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            Name = "Ciao",
+                            Url = "https://myanimelist.net/manga/magazine/59/Ciao"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            Name = "Gundam Ace",
+                            Url = "https://myanimelist.net/manga/magazine/68/Gundam_Ace"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            Name = "Magazine-Z",
+                            Url = "https://myanimelist.net/manga/magazine/70/Magazine-Z"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            Name = "Morning",
+                            Url = "https://myanimelist.net/manga/magazine/72/Morning"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            Name = "Super Jump",
+                            Url = "https://myanimelist.net/manga/magazine/85/Super_Jump"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            Name = "Young Jump",
+                            Url = "https://myanimelist.net/manga/magazine/87/Young_Jump"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            Name = "Young King OURs",
+                            Url = "https://myanimelist.net/manga/magazine/88/Young_King_OURs"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            Name = "Young You",
+                            Url = "https://myanimelist.net/manga/magazine/90/Young_You"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            Name = "Comic Birz",
+                            Url = "https://myanimelist.net/manga/magazine/91/Comic_Birz"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            Name = "Comic Bunch",
+                            Url = "https://myanimelist.net/manga/magazine/92/Comic_Bunch"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            Name = "Dessert",
+                            Url = "https://myanimelist.net/manga/magazine/95/Dessert"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            Name = "Asuka Fantasy DX",
+                            Url = "https://myanimelist.net/manga/magazine/97/Asuka_Fantasy_DX"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            Name = "Dragon Age",
+                            Url = "https://myanimelist.net/manga/magazine/98/Dragon_Age"
+                        },
+                        new
+                        {
+                            Id = 103,
+                            Name = "Feel Young",
+                            Url = "https://myanimelist.net/manga/magazine/103/Feel_Young"
+                        },
+                        new
+                        {
+                            Id = 107,
+                            Name = "Genzo",
+                            Url = "https://myanimelist.net/manga/magazine/107/Genzo"
+                        },
+                        new
+                        {
+                            Id = 109,
+                            Name = "Comic Bonbon",
+                            Url = "https://myanimelist.net/manga/magazine/109/Comic_Bonbon"
+                        },
+                        new
+                        {
+                            Id = 112,
+                            Name = "Comp Ace",
+                            Url = "https://myanimelist.net/manga/magazine/112/Comp_Ace"
+                        },
+                        new
+                        {
+                            Id = 113,
+                            Name = "Kiss",
+                            Url = "https://myanimelist.net/manga/magazine/113/Kiss"
+                        },
+                        new
+                        {
+                            Id = 114,
+                            Name = "Comic Beam",
+                            Url = "https://myanimelist.net/manga/magazine/114/Comic_Beam"
+                        },
+                        new
+                        {
+                            Id = 118,
+                            Name = "Young Animal Arashi",
+                            Url = "https://myanimelist.net/manga/magazine/118/Young_Animal_Arashi"
+                        },
+                        new
+                        {
+                            Id = 128,
+                            Name = "Magazine Special",
+                            Url = "https://myanimelist.net/manga/magazine/128/Magazine_Special"
+                        },
+                        new
+                        {
+                            Id = 129,
+                            Name = "Shounen Jump (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/129/Shounen_Jump_Monthly"
+                        },
+                        new
+                        {
+                            Id = 137,
+                            Name = "Comic Alive",
+                            Url = "https://myanimelist.net/manga/magazine/137/Comic_Alive"
+                        },
+                        new
+                        {
+                            Id = 140,
+                            Name = "Dengeki Bunko Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/140/Dengeki_Bunko_Magazine"
+                        },
+                        new
+                        {
+                            Id = 150,
+                            Name = "AlphaPolis",
+                            Url = "https://myanimelist.net/manga/magazine/150/AlphaPolis"
+                        },
+                        new
+                        {
+                            Id = 151,
+                            Name = "Asuka Mystery DX",
+                            Url = "https://myanimelist.net/manga/magazine/151/Asuka_Mystery_DX"
+                        },
+                        new
+                        {
+                            Id = 158,
+                            Name = "Shounen Captain",
+                            Url = "https://myanimelist.net/manga/magazine/158/Shounen_Captain"
+                        },
+                        new
+                        {
+                            Id = 161,
+                            Name = "Jump SQ.",
+                            Url = "https://myanimelist.net/manga/magazine/161/Jump_SQ"
+                        },
+                        new
+                        {
+                            Id = 163,
+                            Name = "Dengeki Maoh",
+                            Url = "https://myanimelist.net/manga/magazine/163/Dengeki_Maoh"
+                        },
+                        new
+                        {
+                            Id = 168,
+                            Name = "V-Jump",
+                            Url = "https://myanimelist.net/manga/magazine/168/V-Jump"
+                        },
+                        new
+                        {
+                            Id = 171,
+                            Name = "Evening",
+                            Url = "https://myanimelist.net/manga/magazine/171/Evening"
+                        },
+                        new
+                        {
+                            Id = 173,
+                            Name = "Weekly Playboy",
+                            Url = "https://myanimelist.net/manga/magazine/173/Weekly_Playboy"
+                        },
+                        new
+                        {
+                            Id = 174,
+                            Name = "Comic Flapper",
+                            Url = "https://myanimelist.net/manga/magazine/174/Comic_Flapper"
+                        },
+                        new
+                        {
+                            Id = 186,
+                            Name = "Champion RED",
+                            Url = "https://myanimelist.net/manga/magazine/186/Champion_RED"
+                        },
+                        new
+                        {
+                            Id = 193,
+                            Name = "Comic Cue",
+                            Url = "https://myanimelist.net/manga/magazine/193/Comic_Cue"
+                        },
+                        new
+                        {
+                            Id = 198,
+                            Name = "Dengeki G&#039;s magazine",
+                            Url = "https://myanimelist.net/manga/magazine/198/Dengeki_Gs_magazine"
+                        },
+                        new
+                        {
+                            Id = 201,
+                            Name = "Kero-kero Ace",
+                            Url = "https://myanimelist.net/manga/magazine/201/Kero-kero_Ace"
+                        },
+                        new
+                        {
+                            Id = 206,
+                            Name = "Shounen Champion (Weekly)",
+                            Url = "https://myanimelist.net/manga/magazine/206/Shounen_Champion_Weekly"
+                        },
+                        new
+                        {
+                            Id = 213,
+                            Name = "CoroCoro Comic",
+                            Url = "https://myanimelist.net/manga/magazine/213/CoroCoro_Comic"
+                        },
+                        new
+                        {
+                            Id = 249,
+                            Name = "Akamaru Jump",
+                            Url = "https://myanimelist.net/manga/magazine/249/Akamaru_Jump"
+                        },
+                        new
+                        {
+                            Id = 264,
+                            Name = "Big Comic Superior",
+                            Url = "https://myanimelist.net/manga/magazine/264/Big_Comic_Superior"
+                        },
+                        new
+                        {
+                            Id = 269,
+                            Name = "Comic Avarus",
+                            Url = "https://myanimelist.net/manga/magazine/269/Comic_Avarus"
+                        },
+                        new
+                        {
+                            Id = 282,
+                            Name = "Shounen Champion (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/282/Shounen_Champion_Monthly"
+                        },
+                        new
+                        {
+                            Id = 284,
+                            Name = "Shougaku Sannensei ",
+                            Url = "https://myanimelist.net/manga/magazine/284/Shougaku_Sannensei_"
+                        },
+                        new
+                        {
+                            Id = 290,
+                            Name = "Tonari no Young Jump",
+                            Url = "https://myanimelist.net/manga/magazine/290/Tonari_no_Young_Jump"
+                        },
+                        new
+                        {
+                            Id = 307,
+                            Name = "YOU",
+                            Url = "https://myanimelist.net/manga/magazine/307/YOU"
+                        },
+                        new
+                        {
+                            Id = 312,
+                            Name = "Dragon Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/312/Dragon_Magazine"
+                        },
+                        new
+                        {
+                            Id = 316,
+                            Name = "good! Afternoon",
+                            Url = "https://myanimelist.net/manga/magazine/316/good_Afternoon"
+                        },
+                        new
+                        {
+                            Id = 329,
+                            Name = "The Sneaker",
+                            Url = "https://myanimelist.net/manga/magazine/329/The_Sneaker"
+                        },
+                        new
+                        {
+                            Id = 340,
+                            Name = "Comic Gardo",
+                            Url = "https://myanimelist.net/manga/magazine/340/Comic_Gardo"
+                        },
+                        new
+                        {
+                            Id = 343,
+                            Name = "Televi Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/343/Televi_Magazine"
+                        },
+                        new
+                        {
+                            Id = 365,
+                            Name = "Manga Time Kirara Forward",
+                            Url = "https://myanimelist.net/manga/magazine/365/Manga_Time_Kirara_Forward"
+                        },
+                        new
+                        {
+                            Id = 367,
+                            Name = "Kindai Mahjong",
+                            Url = "https://myanimelist.net/manga/magazine/367/Kindai_Mahjong"
+                        },
+                        new
+                        {
+                            Id = 371,
+                            Name = "Manga Allman",
+                            Url = "https://myanimelist.net/manga/magazine/371/Manga_Allman"
+                        },
+                        new
+                        {
+                            Id = 403,
+                            Name = "Young Ace",
+                            Url = "https://myanimelist.net/manga/magazine/403/Young_Ace"
+                        },
+                        new
+                        {
+                            Id = 411,
+                            Name = "Shounen Sunday Super",
+                            Url = "https://myanimelist.net/manga/magazine/411/Shounen_Sunday_Super"
+                        },
+                        new
+                        {
+                            Id = 412,
+                            Name = "Gangan Joker",
+                            Url = "https://myanimelist.net/manga/magazine/412/Gangan_Joker"
+                        },
+                        new
+                        {
+                            Id = 419,
+                            Name = "Gangan Online",
+                            Url = "https://myanimelist.net/manga/magazine/419/Gangan_Online"
+                        },
+                        new
+                        {
+                            Id = 421,
+                            Name = "Sylph",
+                            Url = "https://myanimelist.net/manga/magazine/421/Sylph"
+                        },
+                        new
+                        {
+                            Id = 434,
+                            Name = "Champion RED Ichigo",
+                            Url = "https://myanimelist.net/manga/magazine/434/Champion_RED_Ichigo"
+                        },
+                        new
+                        {
+                            Id = 450,
+                            Name = "Bessatsu Shounen Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/450/Bessatsu_Shounen_Magazine"
+                        },
+                        new
+                        {
+                            Id = 468,
+                            Name = "Bokura",
+                            Url = "https://myanimelist.net/manga/magazine/468/Bokura"
+                        },
+                        new
+                        {
+                            Id = 483,
+                            Name = "Shounen King",
+                            Url = "https://myanimelist.net/manga/magazine/483/Shounen_King"
+                        },
+                        new
+                        {
+                            Id = 485,
+                            Name = "Oh Super Jump",
+                            Url = "https://myanimelist.net/manga/magazine/485/Oh_Super_Jump"
+                        },
+                        new
+                        {
+                            Id = 492,
+                            Name = "Comic Gaia",
+                            Url = "https://myanimelist.net/manga/magazine/492/Comic_Gaia"
+                        },
+                        new
+                        {
+                            Id = 498,
+                            Name = "Mephisto",
+                            Url = "https://myanimelist.net/manga/magazine/498/Mephisto"
+                        },
+                        new
+                        {
+                            Id = 499,
+                            Name = "ARIA",
+                            Url = "https://myanimelist.net/manga/magazine/499/ARIA"
+                        },
+                        new
+                        {
+                            Id = 506,
+                            Name = "Ultra Jump Egg",
+                            Url = "https://myanimelist.net/manga/magazine/506/Ultra_Jump_Egg"
+                        },
+                        new
+                        {
+                            Id = 512,
+                            Name = "super Robot Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/512/super_Robot_Magazine"
+                        },
+                        new
+                        {
+                            Id = 522,
+                            Name = "Dengeki Hobby Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/522/Dengeki_Hobby_Magazine"
+                        },
+                        new
+                        {
+                            Id = 532,
+                            Name = "Famitsu Comic Clear",
+                            Url = "https://myanimelist.net/manga/magazine/532/Famitsu_Comic_Clear"
+                        },
+                        new
+                        {
+                            Id = 548,
+                            Name = "Shounen Jump NEXT!",
+                            Url = "https://myanimelist.net/manga/magazine/548/Shounen_Jump_NEXT"
+                        },
+                        new
+                        {
+                            Id = 573,
+                            Name = "Comic Gene",
+                            Url = "https://myanimelist.net/manga/magazine/573/Comic_Gene"
+                        },
+                        new
+                        {
+                            Id = 591,
+                            Name = "Gessan",
+                            Url = "https://myanimelist.net/manga/magazine/591/Gessan"
+                        },
+                        new
+                        {
+                            Id = 593,
+                            Name = "Club Sunday",
+                            Url = "https://myanimelist.net/manga/magazine/593/Club_Sunday"
+                        },
+                        new
+                        {
+                            Id = 653,
+                            Name = "Newtype Ace",
+                            Url = "https://myanimelist.net/manga/magazine/653/Newtype_Ace"
+                        },
+                        new
+                        {
+                            Id = 673,
+                            Name = "Naver Webtoon",
+                            Url = "https://myanimelist.net/manga/magazine/673/Naver_Webtoon"
+                        },
+                        new
+                        {
+                            Id = 691,
+                            Name = "Miracle Jump",
+                            Url = "https://myanimelist.net/manga/magazine/691/Miracle_Jump"
+                        },
+                        new
+                        {
+                            Id = 697,
+                            Name = "Saikyou Jump",
+                            Url = "https://myanimelist.net/manga/magazine/697/Saikyou_Jump"
+                        },
+                        new
+                        {
+                            Id = 705,
+                            Name = "Big Gangan",
+                            Url = "https://myanimelist.net/manga/magazine/705/Big_Gangan"
+                        },
+                        new
+                        {
+                            Id = 707,
+                            Name = "Comic Earth☆Star",
+                            Url = "https://myanimelist.net/manga/magazine/707/Comic_Earth%E2%98%86Star"
+                        },
+                        new
+                        {
+                            Id = 719,
+                            Name = "Comic Zenon",
+                            Url = "https://myanimelist.net/manga/magazine/719/Comic_Zenon"
+                        },
+                        new
+                        {
+                            Id = 739,
+                            Name = "Age Premium",
+                            Url = "https://myanimelist.net/manga/magazine/739/Age_Premium"
+                        },
+                        new
+                        {
+                            Id = 803,
+                            Name = "Niconico Seiga",
+                            Url = "https://myanimelist.net/manga/magazine/803/Niconico_Seiga"
+                        },
+                        new
+                        {
+                            Id = 813,
+                            Name = "Bessatsu Shounen Champion",
+                            Url = "https://myanimelist.net/manga/magazine/813/Bessatsu_Shounen_Champion"
+                        },
+                        new
+                        {
+                            Id = 823,
+                            Name = "Manga Life Win",
+                            Url = "https://myanimelist.net/manga/magazine/823/Manga_Life_Win"
+                        },
+                        new
+                        {
+                            Id = 831,
+                            Name = "Bessatsu CoroCoro Comic",
+                            Url = "https://myanimelist.net/manga/magazine/831/Bessatsu_CoroCoro_Comic"
+                        },
+                        new
+                        {
+                            Id = 847,
+                            Name = "Manga Action",
+                            Url = "https://myanimelist.net/manga/magazine/847/Manga_Action"
+                        },
+                        new
+                        {
+                            Id = 881,
+                            Name = "Monthly Hero&#039;s",
+                            Url = "https://myanimelist.net/manga/magazine/881/Monthly_Heros"
+                        },
+                        new
+                        {
+                            Id = 916,
+                            Name = "Blade Online",
+                            Url = "https://myanimelist.net/manga/magazine/916/Blade_Online"
+                        },
+                        new
+                        {
+                            Id = 918,
+                            Name = "Shougaku Ninensei",
+                            Url = "https://myanimelist.net/manga/magazine/918/Shougaku_Ninensei"
+                        },
+                        new
+                        {
+                            Id = 937,
+                            Name = "Shounen",
+                            Url = "https://myanimelist.net/manga/magazine/937/Shounen"
+                        },
+                        new
+                        {
+                            Id = 947,
+                            Name = "Grand Jump",
+                            Url = "https://myanimelist.net/manga/magazine/947/Grand_Jump"
+                        },
+                        new
+                        {
+                            Id = 953,
+                            Name = "Harta",
+                            Url = "https://myanimelist.net/manga/magazine/953/Harta"
+                        },
+                        new
+                        {
+                            Id = 1013,
+                            Name = "Jump LIVE",
+                            Url = "https://myanimelist.net/manga/magazine/1013/Jump_LIVE"
+                        },
+                        new
+                        {
+                            Id = 1061,
+                            Name = "Manga Box",
+                            Url = "https://myanimelist.net/manga/magazine/1061/Manga_Box"
+                        },
+                        new
+                        {
+                            Id = 1065,
+                            Name = "BOX-AiR",
+                            Url = "https://myanimelist.net/manga/magazine/1065/BOX-AiR"
+                        },
+                        new
+                        {
+                            Id = 1089,
+                            Name = "Manga Time Kirara☆Magica",
+                            Url = "https://myanimelist.net/manga/magazine/1089/Manga_Time_Kirara%E2%98%86Magica"
+                        },
+                        new
+                        {
+                            Id = 1097,
+                            Name = "Yawaraka Spirits",
+                            Url = "https://myanimelist.net/manga/magazine/1097/Yawaraka_Spirits"
+                        },
+                        new
+                        {
+                            Id = 1129,
+                            Name = "Fresh Jump",
+                            Url = "https://myanimelist.net/manga/magazine/1129/Fresh_Jump"
+                        },
+                        new
+                        {
+                            Id = 1135,
+                            Name = "Suiyoubi no Sirius",
+                            Url = "https://myanimelist.net/manga/magazine/1135/Suiyoubi_no_Sirius"
+                        },
+                        new
+                        {
+                            Id = 1157,
+                            Name = "Dengeki G&#039;s Comic",
+                            Url = "https://myanimelist.net/manga/magazine/1157/Dengeki_Gs_Comic"
+                        },
+                        new
+                        {
+                            Id = 1159,
+                            Name = "ComicWalker",
+                            Url = "https://myanimelist.net/manga/magazine/1159/ComicWalker"
+                        },
+                        new
+                        {
+                            Id = 1163,
+                            Name = "Asahi Shinbun",
+                            Url = "https://myanimelist.net/manga/magazine/1163/Asahi_Shinbun"
+                        },
+                        new
+                        {
+                            Id = 1165,
+                            Name = "Tokusatsu Ace",
+                            Url = "https://myanimelist.net/manga/magazine/1165/Tokusatsu_Ace"
+                        },
+                        new
+                        {
+                            Id = 1205,
+                            Name = "Animage",
+                            Url = "https://myanimelist.net/manga/magazine/1205/Animage"
+                        },
+                        new
+                        {
+                            Id = 1209,
+                            Name = "Shounen Jump+",
+                            Url = "https://myanimelist.net/manga/magazine/1209/Shounen_Jump_"
+                        },
+                        new
+                        {
+                            Id = 1213,
+                            Name = "Comic Dengeki Daioh &quot;g&quot;",
+                            Url = "https://myanimelist.net/manga/magazine/1213/Comic_Dengeki_Daioh_g"
+                        },
+                        new
+                        {
+                            Id = 1217,
+                            Name = "Comic Garden",
+                            Url = "https://myanimelist.net/manga/magazine/1217/Comic_Garden"
+                        },
+                        new
+                        {
+                            Id = 1235,
+                            Name = "Manga Life STORIA",
+                            Url = "https://myanimelist.net/manga/magazine/1235/Manga_Life_STORIA"
+                        },
+                        new
+                        {
+                            Id = 1257,
+                            Name = "Cyber Comics",
+                            Url = "https://myanimelist.net/manga/magazine/1257/Cyber_Comics"
+                        },
+                        new
+                        {
+                            Id = 1280,
+                            Name = "Comicomi",
+                            Url = "https://myanimelist.net/manga/magazine/1280/Comicomi"
+                        },
+                        new
+                        {
+                            Id = 1287,
+                            Name = "SPA!",
+                            Url = "https://myanimelist.net/manga/magazine/1287/SPA"
+                        },
+                        new
+                        {
+                            Id = 1312,
+                            Name = "Shounen Magazine Edge",
+                            Url = "https://myanimelist.net/manga/magazine/1312/Shounen_Magazine_Edge"
+                        },
+                        new
+                        {
+                            Id = 1316,
+                            Name = "Jump SQ.Crown",
+                            Url = "https://myanimelist.net/manga/magazine/1316/Jump_SQCrown"
+                        },
+                        new
+                        {
+                            Id = 1335,
+                            Name = "Magazine pocket",
+                            Url = "https://myanimelist.net/manga/magazine/1335/Magazine_pocket"
+                        },
+                        new
+                        {
+                            Id = 1340,
+                            Name = "Young Ace UP",
+                            Url = "https://myanimelist.net/manga/magazine/1340/Young_Ace_UP"
+                        },
+                        new
+                        {
+                            Id = 1346,
+                            Name = "The Sneaker Web",
+                            Url = "https://myanimelist.net/manga/magazine/1346/The_Sneaker_Web"
+                        },
+                        new
+                        {
+                            Id = 1361,
+                            Name = "MangaONE",
+                            Url = "https://myanimelist.net/manga/magazine/1361/MangaONE"
+                        },
+                        new
+                        {
+                            Id = 1362,
+                            Name = "eBigComic4",
+                            Url = "https://myanimelist.net/manga/magazine/1362/eBigComic4"
+                        },
+                        new
+                        {
+                            Id = 1366,
+                            Name = "Jump GIGA",
+                            Url = "https://myanimelist.net/manga/magazine/1366/Jump_GIGA"
+                        },
+                        new
+                        {
+                            Id = 1372,
+                            Name = "CoroCoro Aniki",
+                            Url = "https://myanimelist.net/manga/magazine/1372/CoroCoro_Aniki"
+                        },
+                        new
+                        {
+                            Id = 1373,
+                            Name = "Comic Ride",
+                            Url = "https://myanimelist.net/manga/magazine/1373/Comic_Ride"
+                        },
+                        new
+                        {
+                            Id = 1378,
+                            Name = "Comic Fire",
+                            Url = "https://myanimelist.net/manga/magazine/1378/Comic_Fire"
+                        },
+                        new
+                        {
+                            Id = 1390,
+                            Name = "Dra-Dra-Dragon Age",
+                            Url = "https://myanimelist.net/manga/magazine/1390/Dra-Dra-Dragon_Age"
+                        },
+                        new
+                        {
+                            Id = 1396,
+                            Name = "ShuuPlay News",
+                            Url = "https://myanimelist.net/manga/magazine/1396/ShuuPlay_News"
+                        },
+                        new
+                        {
+                            Id = 1399,
+                            Name = "Manga UP!",
+                            Url = "https://myanimelist.net/manga/magazine/1399/Manga_UP"
+                        },
+                        new
+                        {
+                            Id = 1405,
+                            Name = "Boukenou",
+                            Url = "https://myanimelist.net/manga/magazine/1405/Boukenou"
+                        },
+                        new
+                        {
+                            Id = 1410,
+                            Name = "Sunday Webry",
+                            Url = "https://myanimelist.net/manga/magazine/1410/Sunday_Webry"
+                        },
+                        new
+                        {
+                            Id = 1424,
+                            Name = "Monster Comics",
+                            Url = "https://myanimelist.net/manga/magazine/1424/Monster_Comics"
+                        },
+                        new
+                        {
+                            Id = 1439,
+                            Name = "KakaoPage",
+                            Url = "https://myanimelist.net/manga/magazine/1439/KakaoPage"
+                        },
+                        new
+                        {
+                            Id = 1456,
+                            Name = "Manga Cross",
+                            Url = "https://myanimelist.net/manga/magazine/1456/Manga_Cross"
+                        },
+                        new
+                        {
+                            Id = 1459,
+                            Name = "Comic Days",
+                            Url = "https://myanimelist.net/manga/magazine/1459/Comic_Days"
+                        },
+                        new
+                        {
+                            Id = 1460,
+                            Name = "Comic Boost",
+                            Url = "https://myanimelist.net/manga/magazine/1460/Comic_Boost"
+                        },
+                        new
+                        {
+                            Id = 1467,
+                            Name = "Comic Corona",
+                            Url = "https://myanimelist.net/manga/magazine/1467/Comic_Corona"
+                        },
+                        new
+                        {
+                            Id = 1473,
+                            Name = "B&#039;s-LOG Comic",
+                            Url = "https://myanimelist.net/manga/magazine/1473/Bs-LOG_Comic"
+                        },
+                        new
+                        {
+                            Id = 1488,
+                            Name = "Comic Tatan",
+                            Url = "https://myanimelist.net/manga/magazine/1488/Comic_Tatan"
+                        },
+                        new
+                        {
+                            Id = 1490,
+                            Name = "Lupin Sansei Official Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/1490/Lupin_Sansei_Official_Magazine"
+                        },
+                        new
+                        {
+                            Id = 1495,
+                            Name = "MAGKAN",
+                            Url = "https://myanimelist.net/manga/magazine/1495/MAGKAN"
+                        },
+                        new
+                        {
+                            Id = 1514,
+                            Name = "Sword Art Online Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/1514/Sword_Art_Online_Magazine"
+                        },
+                        new
+                        {
+                            Id = 1527,
+                            Name = "Web DenPlay Comic",
+                            Url = "https://myanimelist.net/manga/magazine/1527/Web_DenPlay_Comic"
+                        },
+                        new
+                        {
+                            Id = 1537,
+                            Name = "Shounen Ace Plus",
+                            Url = "https://myanimelist.net/manga/magazine/1537/Shounen_Ace_Plus"
+                        },
+                        new
+                        {
+                            Id = 1540,
+                            Name = "LINE Manga",
+                            Url = "https://myanimelist.net/manga/magazine/1540/LINE_Manga"
+                        },
+                        new
+                        {
+                            Id = 1563,
+                            Name = "Comic Fuz",
+                            Url = "https://myanimelist.net/manga/magazine/1563/Comic_Fuz"
+                        },
+                        new
+                        {
+                            Id = 1564,
+                            Name = "One Piece Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/1564/One_Piece_Magazine"
+                        },
+                        new
+                        {
+                            Id = 1575,
+                            Name = "Young Dragon Age",
+                            Url = "https://myanimelist.net/manga/magazine/1575/Young_Dragon_Age"
+                        },
+                        new
+                        {
+                            Id = 1590,
+                            Name = "Hero&#039;s",
+                            Url = "https://myanimelist.net/manga/magazine/1590/Heros"
+                        },
+                        new
+                        {
+                            Id = 1617,
+                            Name = "Grand Jump Mucha",
+                            Url = "https://myanimelist.net/manga/magazine/1617/Grand_Jump_Mucha"
+                        },
+                        new
+                        {
+                            Id = 1626,
+                            Name = "Shounen Action (Weekly)",
+                            Url = "https://myanimelist.net/manga/magazine/1626/Shounen_Action_Weekly"
+                        },
+                        new
+                        {
+                            Id = 1636,
+                            Name = "Dengeki Comic Regulus",
+                            Url = "https://myanimelist.net/manga/magazine/1636/Dengeki_Comic_Regulus"
+                        },
+                        new
+                        {
+                            Id = 1657,
+                            Name = "Super Action (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/1657/Super_Action_Monthly"
+                        },
+                        new
+                        {
+                            Id = 1662,
+                            Name = "Young Jump Heroine",
+                            Url = "https://myanimelist.net/manga/magazine/1662/Young_Jump_Heroine"
+                        },
+                        new
+                        {
+                            Id = 1671,
+                            Name = "Young Magazine Kaizokuban",
+                            Url = "https://myanimelist.net/manga/magazine/1671/Young_Magazine_Kaizokuban"
+                        },
+                        new
+                        {
+                            Id = 1689,
+                            Name = "Alive+",
+                            Url = "https://myanimelist.net/manga/magazine/1689/Alive_"
+                        },
+                        new
+                        {
+                            Id = 1699,
+                            Name = "Shounen Book",
+                            Url = "https://myanimelist.net/manga/magazine/1699/Shounen_Book"
+                        },
+                        new
+                        {
+                            Id = 1710,
+                            Name = "Comic Bonbon Zoukan",
+                            Url = "https://myanimelist.net/manga/magazine/1710/Comic_Bonbon_Zoukan"
+                        },
+                        new
+                        {
+                            Id = 1786,
+                            Name = "e-manga",
+                            Url = "https://myanimelist.net/manga/magazine/1786/e-manga"
+                        },
+                        new
+                        {
+                            Id = 1813,
+                            Name = "JoJo Magazine",
+                            Url = "https://myanimelist.net/manga/magazine/1813/JoJo_Magazine"
+                        },
+                        new
+                        {
+                            Id = 1815,
+                            Name = "Fairy Tail Magazine (Monthly)",
+                            Url = "https://myanimelist.net/manga/magazine/1815/Fairy_Tail_Magazine_Monthly"
+                        },
+                        new
+                        {
+                            Id = 1852,
+                            Name = "Comp Ace Comic Connect",
+                            Url = "https://myanimelist.net/manga/magazine/1852/Comp_Ace_Comic_Connect"
+                        },
+                        new
+                        {
+                            Id = 1866,
+                            Name = "Shounen Jump Season Special",
+                            Url = "https://myanimelist.net/manga/magazine/1866/Shounen_Jump_Season_Special"
+                        },
+                        new
+                        {
+                            Id = 1888,
+                            Name = "Papillon",
+                            Url = "https://myanimelist.net/manga/magazine/1888/Papillon"
+                        });
                 });
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
@@ -12049,6 +14060,23 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.ToTable("MangasGenres");
                 });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.MangaMagazine", b =>
+                {
+                    b.Property<int>("MangaId")
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier of manga");
+
+                    b.Property<int>("MagazineId")
+                        .HasColumnType("int")
+                        .HasComment("Unique identifier of magazine");
+
+                    b.HasKey("MangaId", "MagazineId");
+
+                    b.HasIndex("MagazineId");
+
+                    b.ToTable("MangasMagazines");
+                });
+
             modelBuilder.Entity("AnimeDbWebApp.Models.MangaRelation", b =>
                 {
                     b.Property<int>("MangaId")
@@ -12085,7 +14113,7 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasComment("Information about producer");
 
-                    b.Property<DateTime>("Established")
+                    b.Property<DateTime?>("Established")
                         .HasColumnType("DATETIME2")
                         .HasComment("Date the studio is established");
 
@@ -12095,15 +14123,14 @@ namespace AnimeDbWebApp.Data.Migrations
                         .HasComment("Anime poster url");
 
                     b.Property<string>("JpName")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasComment("Japanese name of the studio");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)")
                         .HasComment("English name of the studio");
 
                     b.Property<string>("Url")
@@ -12116,7 +14143,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.ToTable("Producers");
                 });
 
-            modelBuilder.Entity("AnimeDbWebApp.Models.Type", b =>
+            modelBuilder.Entity("AnimeDbWebApp.Models.Source", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -12133,38 +14160,58 @@ namespace AnimeDbWebApp.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Types");
+                    b.ToTable("Sources");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForAnime", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique Identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Type name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AnimeTypes");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            Name = "CM"
+                            Name = "TV"
                         },
                         new
                         {
                             Id = 2,
-                            Name = "Doujinshi"
+                            Name = "Movie"
                         },
                         new
                         {
                             Id = 3,
-                            Name = "Light Novel"
+                            Name = "OVA"
                         },
                         new
                         {
                             Id = 4,
-                            Name = "Manga"
+                            Name = "Special"
                         },
                         new
                         {
                             Id = 5,
-                            Name = "Manhwa"
+                            Name = "TV Special"
                         },
                         new
                         {
                             Id = 6,
-                            Name = "Movie"
+                            Name = "ONA"
                         },
                         new
                         {
@@ -12174,42 +14221,64 @@ namespace AnimeDbWebApp.Data.Migrations
                         new
                         {
                             Id = 8,
-                            Name = "Novel"
+                            Name = "CM"
                         },
                         new
                         {
                             Id = 9,
-                            Name = "ONA"
+                            Name = "PV"
+                        });
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForManga", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasComment("Unique Identifier");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)")
+                        .HasComment("Type name");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MangaTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Manga"
                         },
                         new
                         {
-                            Id = 10,
+                            Id = 2,
+                            Name = "Light Novel"
+                        },
+                        new
+                        {
+                            Id = 3,
                             Name = "One-shot"
                         },
                         new
                         {
-                            Id = 11,
-                            Name = "OVA"
+                            Id = 4,
+                            Name = "Manhwa"
                         },
                         new
                         {
-                            Id = 12,
-                            Name = "PV"
+                            Id = 5,
+                            Name = "Novel"
                         },
                         new
                         {
-                            Id = 13,
-                            Name = "Special"
-                        },
-                        new
-                        {
-                            Id = 14,
-                            Name = "TV"
-                        },
-                        new
-                        {
-                            Id = 15,
-                            Name = "TV Special"
+                            Id = 6,
+                            Name = "Doujinshi"
                         });
                 });
 
@@ -12346,11 +14415,19 @@ namespace AnimeDbWebApp.Data.Migrations
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Anime", b =>
                 {
-                    b.HasOne("AnimeDbWebApp.Models.Type", "Type")
+                    b.HasOne("AnimeDbWebApp.Models.Source", "Source")
+                        .WithMany("Animes")
+                        .HasForeignKey("SourceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("AnimeDbWebApp.Models.TypeForAnime", "Type")
                         .WithMany("Animes")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Source");
 
                     b.Navigation("Type");
                 });
@@ -12490,7 +14567,7 @@ namespace AnimeDbWebApp.Data.Migrations
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
                 {
-                    b.HasOne("AnimeDbWebApp.Models.Type", "Type")
+                    b.HasOne("AnimeDbWebApp.Models.TypeForManga", "Type")
                         .WithMany("Mangas")
                         .HasForeignKey("TypeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -12514,6 +14591,25 @@ namespace AnimeDbWebApp.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Genre");
+
+                    b.Navigation("Manga");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.MangaMagazine", b =>
+                {
+                    b.HasOne("AnimeDbWebApp.Models.Magazine", "Magazine")
+                        .WithMany("MangasMagazines")
+                        .HasForeignKey("MagazineId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("AnimeDbWebApp.Models.Manga", "Manga")
+                        .WithMany("MangasMagazines")
+                        .HasForeignKey("MangaId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Magazine");
 
                     b.Navigation("Manga");
                 });
@@ -12618,6 +14714,11 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("Mangas");
                 });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.Magazine", b =>
+                {
+                    b.Navigation("MangasMagazines");
+                });
+
             modelBuilder.Entity("AnimeDbWebApp.Models.Manga", b =>
                 {
                     b.Navigation("Adaptations");
@@ -12627,6 +14728,8 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("Genres");
 
                     b.Navigation("MangaRalations");
+
+                    b.Navigation("MangasMagazines");
                 });
 
             modelBuilder.Entity("AnimeDbWebApp.Models.Producer", b =>
@@ -12638,10 +14741,18 @@ namespace AnimeDbWebApp.Data.Migrations
                     b.Navigation("AnimesStudios");
                 });
 
-            modelBuilder.Entity("AnimeDbWebApp.Models.Type", b =>
+            modelBuilder.Entity("AnimeDbWebApp.Models.Source", b =>
                 {
                     b.Navigation("Animes");
+                });
 
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForAnime", b =>
+                {
+                    b.Navigation("Animes");
+                });
+
+            modelBuilder.Entity("AnimeDbWebApp.Models.TypeForManga", b =>
+                {
                     b.Navigation("Mangas");
                 });
 #pragma warning restore 612, 618

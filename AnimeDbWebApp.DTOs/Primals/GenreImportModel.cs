@@ -1,15 +1,15 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 
-using static AnimeDbWebApp.Common.ValidationConstants.TypeValidation;
+using static AnimeDbWebApp.Common.ValidationConstants.GenreValidations;
 
-namespace AnimeDbWebApp.DTOs
+namespace AnimeDbWebApp.DTOs.Primals
 {
-    public class TypeImportModel
+    public class GenreImportModel
     {
-        [Required]
-        [JsonProperty("id")]
-        public int Id { get; set; } 
+        [Key]
+        [JsonProperty("mal_id")]
+        public int Id { get; set; }
 
         [Required]
         [MinLength(MinNameLength)]

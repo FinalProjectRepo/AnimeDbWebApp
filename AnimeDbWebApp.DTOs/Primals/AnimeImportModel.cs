@@ -1,48 +1,47 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Newtonsoft.Json;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
 
-namespace AnimeDbWebApp.Models
+namespace AnimeDbWebApp.DTOs.Primals
 {
-    public class Anime
+    public class AnimeImportModel
     {
         [Key]
-        [Comment("Unique identifier that equals mal_id")]
+        [JsonProperty("mal_id")]
         public int Id { get; set; }
 
-        [Comment("Url link to mal site")]
         [MaxLength(MaxUrlLength)]
+        [JsonProperty("url")]
         public string? Url { get; set; }
 
-        [Comment("Anime poster url")]
         [MaxLength(MaxPosterUrlLength)]
+        [JsonProperty("image")]
         public string? PosterUrl { get; set; }
 
-        [Comment("Anime trailer url")]
         [MaxLength(MaxTrailerUrlLength)]
+        [JsonProperty("trailer")]
         public string? TrailerUrl { get; set; }
 
         [Required]
-        [Comment("Anime title")]
+        [MinLength(MinTitleLength)]
         [MaxLength(MaxTitleLength)]
+        [JsonProperty("title")]
         public string Title { get; set; } = null!;
 
-        [Comment("Anime title in english translated")]
         [MaxLength(MaxEngTitleLength)]
+        [JsonProperty("engtitle")]
         public string? TitleEnglish { get; set; } = null!;
 
-        [Comment("Anime title in japanese characters")]
         [MaxLength(MaxJapTitleLength)]
+        [JsonProperty("jptitle")]
         public string? TitleJapanese { get; set; } = null!;
 
         [Required]
-        [Comment("Number of episodes")]
         [Range(MinEpisodes, MaxEpisodes)]
         public int Episodes { get; set; }
 
@@ -91,25 +90,14 @@ namespace AnimeDbWebApp.Models
         public Season Season { get; set; }
 
         [Required]
-        [Comment("Source for creating the anime")]
-        [MaxLength(MaxSourceLength)]
-        public int SourceId { get; set; }
-
-        [ForeignKey(nameof(SourceId))]
-        public Source Source { get; set; } = null!;
-
-        [Required]
         [Comment("Type of anime(tv series, movie, etc.)")]
         public int TypeId { get; set; }
 
         [ForeignKey(nameof(TypeId))]
-        public TypeForAnime Type { get; set; } = null!;
+        public Type Type { get; set; } = null!;
 
-        public ICollection<AnimeProducer> AnimesProducers { get; set; } = [];
-        public ICollection<AnimeLicensor> AnimesLicensors { get; set; } = [];
-        public ICollection<AnimeStudio> AnimesStudios { get; set; } = [];
-        public ICollection<AnimeGenre> Genres { get; set; } = [];
-        public ICollection<AnimeRelation> AnimesRelations { get; set; } = [];
-        public ICollection<AnimeManga> Adaptations { get; set; } = [];
+        [Required]
+        [MaxLength(MaxSourceLength)]
+        public string Source { get; set; } = null!;
     }
 }

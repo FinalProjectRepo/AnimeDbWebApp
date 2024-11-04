@@ -1,14 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-using System.IO;
-using System.Collections.Generic;
-
-using AnimeDbWebApp.DTOs;
-using AnimeDbWebApp.Models;
-using AnimeDbWebApp.Mapping;
-using static AnimeDbWebApp.Common.GeneralConstants;
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Reflection;
+
+using AnimeDbWebApp.Common;
+using AnimeDbWebApp.DTOs.Primals;
+using AnimeDbWebApp.Mapping;
+using AnimeDbWebApp.Models;
+using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Data.Extensions
 {
@@ -19,12 +22,37 @@ namespace AnimeDbWebApp.Data.Extensions
 
         public static void Seed(this ModelBuilder builder)
         {
-            Seed<TypeImportModel, Models.Type>(builder, TypeDataSetFileName);
-            Seed<AuthorImportModel, Author>(builder, AuthorDataSetFileName);
-            Seed<ProducerImportModel, Producer>(builder, ProducerDataSetFileName);
+            SeedPrimals(builder, MultipleTypesSeparator);
         }
 
-        public static void Seed<T, TT>(ModelBuilder builder, string fileName) 
+        private static void SeedPrimals(ModelBuilder builder, string multipleTypeSeparator)
+        {
+            var importTypes = Assembly.GetAssembly(typeof(AuthorImportModel))!
+                            .GetTypes()
+                            .Where(t => t.Namespace!.EndsWith(PrimalImportsNamespace));
+            var entityTypes = Assembly.GetAssembly(typeof(Author))!.GetTypes();
+
+            var seedMethod = typeof(SeedModelBuilderExtension)
+                .GetMethods(BindingFlags.NonPublic | BindingFlags.Static)
+                .FirstOrDefault(m => m.IsGenericMethod && m.Name == nameof(Seed))!;
+
+            foreach (var type in importTypes)
+            {
+                string entityName = type.Name[..^11];
+                var entityType = entityTypes.FirstOrDefault(t => t.Name == entityName);
+
+                if (entityType != null) InvokeMethod(builder, type, entityType, seedMethod);
+                else
+                {
+                    foreach (var entity in entityTypes.Where(t => t.Name.StartsWith($"{entityName}{multipleTypeSeparator}")))
+                    {
+                        InvokeMethod(builder, type, entity, seedMethod);
+                    }
+                }
+            }
+        }
+
+        private static void Seed<T, TT>(ModelBuilder builder, string fileName) 
             where T : class 
             where TT : class
         {
@@ -39,6 +67,17 @@ namespace AnimeDbWebApp.Data.Extensions
                 types.Add(type);
             }
             builder.Entity<TT>().HasData(types);
+        }
+
+        private static void InvokeMethod(ModelBuilder builder,Type type, Type entityType, MethodInfo seedMethod)
+        {
+            var fileNameProperty = typeof(GeneralConstants)
+            .GetFields(BindingFlags.Public | BindingFlags.Static)
+                        .FirstOrDefault(p => p.Name.StartsWith(entityType.Name));
+
+            var fileName = fileNameProperty!.GetValue(typeof(GeneralConstants));
+            var method = seedMethod!.MakeGenericMethod(type, entityType!);
+            method.Invoke(typeof(SeedModelBuilderExtension), [builder, fileName]);
         }
     }
 }

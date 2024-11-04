@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 
 using static AnimeDbWebApp.Common.ValidationConstants.AuthorValidations;
 
-namespace AnimeDbWebApp.DTOs
+namespace AnimeDbWebApp.DTOs.Primals
 {
     public class AuthorImportModel
     {
