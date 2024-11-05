@@ -2,7 +2,7 @@
 {
     public interface ICustomMappper
     {
-        public void Map<T, TT>(T input, TT output, Dictionary<string, Dictionary<string, int>>? connectedEntitiesDict)
+        public void Map<T, TT>(T input, TT output)
             where T : class
             where TT : class;
     }

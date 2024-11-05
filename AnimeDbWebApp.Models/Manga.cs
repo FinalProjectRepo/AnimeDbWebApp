@@ -16,9 +16,11 @@ namespace AnimeDbWebApp.Models
         [Comment("Unique identifier that equals mal_id")]
         public int Id { get; set; }
 
+        [MaxLength(MaxUrlLength)]
         [Comment("Url link to mal site")]
         public string? Url { get; set; }
 
+        [MaxLength(MaxPosterUrlLength)]
         [Comment("Manga poster url")]
         public string? PosterUrl { get; set; }
 
@@ -35,52 +37,43 @@ namespace AnimeDbWebApp.Models
         [MaxLength(MaxEngTitleLength)]
         public string? TitleJapanese { get; set; } = null!;
 
-        [Required]
         [Comment("Number of chapters")]
         public int? Chapters { get; set; }
 
-        [Required]
         [Comment("Number of volumes, chapters combined in")]
         public int? Volumes { get; set; }
 
         [Required]
         [Comment("Airing status")]
-        public Status Status { get; set; }
+        public MangaStatus Status { get; set; }
 
-        [Required]
         [Comment("Date manga started publishing")]
         [Column(TypeName = "DATETIME2")]
         public DateTime? StartDate { get; set; } = null!;
 
-        [Required]
         [Comment("Date manga ended publishing")]
         [Column(TypeName = "DATETIME2")]
         public DateTime? EndDate { get; set; } = null!;
 
-        [Required]
         [Comment("Manga score")]
         [Range(MinScore, MaxScore)]
         [Column(TypeName = "DECIMAL(4,2)")]
         public double? Score { get; set; }
 
-        [Required]
         [Comment("Manga rank")]
         public int? Rank { get; set; }
 
-        [Required]
         [Comment("Short description")]
-        public string Sypnosis { get; set; } = null!;
+        public string? Synopsis { get; set; }
 
-        [Required]
-        [Comment("Short description")]
-        public string Background { get; set; } = null!;
+        [Comment("Short pre-story")]
+        public string? Background { get; set; }
 
-        [Required]
-        [Comment("Type of anime(tv series, movie, etc.)")]
-        public int TypeId { get; set; }
+        [Comment("Type of manga(manga, light novel, etc.)")]
+        public int? TypeId { get; set; }
 
         [ForeignKey(nameof(TypeId))]
-        public TypeForManga Type { get; set; } = null!;
+        public TypeForManga? Type { get; set; }
 
         public ICollection<AuthorManga> AuthorsMangas { get; set; } = [];
         public ICollection<MangaGenre> Genres { get; set; } = [];

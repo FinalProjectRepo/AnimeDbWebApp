@@ -47,7 +47,7 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("Airing status")]
-        public Status Status { get; set; }
+        public AnimeStatus Status { get; set; }
 
         [Comment("Airing start date")]
         [Column(TypeName = "DATETIME2")]

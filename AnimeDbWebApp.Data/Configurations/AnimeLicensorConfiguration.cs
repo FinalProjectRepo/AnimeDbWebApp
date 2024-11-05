@@ -17,7 +17,7 @@ namespace AnimeDbWebApp.Data.Configurations
 
             builder.HasOne(al => al.Licensor)
                 .WithMany(p => p.AnimesLicensors)
-                .HasForeignKey(al => al.AnimeId)
+                .HasForeignKey(al => al.LicensorId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

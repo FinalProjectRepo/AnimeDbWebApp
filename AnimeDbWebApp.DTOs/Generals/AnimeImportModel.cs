@@ -45,7 +45,7 @@ namespace AnimeDbWebApp.DTOs.Generals
 
         [Required]
         [JsonProperty("status")]
-        public Status Status { get; set; }
+        public AnimeStatus Status { get; set; }
 
         [JsonProperty("from")]
         public DateTime? StartDate { get; set; }

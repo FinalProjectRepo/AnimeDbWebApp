@@ -44,6 +44,8 @@
 
         public static class MangaValidations
         {
+            public const int MaxUrlLength = 500;
+            public const int MaxPosterUrlLength = 500;
             public const int MinTitleLength = 5;
             public const int MaxTitleLength = 255;
             public const int MaxEngTitleLength = 255;

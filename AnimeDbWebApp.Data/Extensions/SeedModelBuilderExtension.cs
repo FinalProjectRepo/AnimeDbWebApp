@@ -24,6 +24,7 @@ namespace AnimeDbWebApp.Data.Extensions
         {
             Seed(builder, PrimalImportsNamespace, MultipleTypesSeparator, ImportModelLength);
             Seed(builder, GeneralImportsNamespace, MultipleTypesSeparator, ImportModelLength);
+            Seed(builder, MappingImportsNamespace, MultipleTypesSeparator, ImportModelLength);
         }
 
         private static void Seed(ModelBuilder builder,string namespaceToSeed, string multipleTypeSeparator, int extraCharsImportModel)
@@ -52,22 +53,6 @@ namespace AnimeDbWebApp.Data.Extensions
                 }
             }
         }
-        private static void Seed<T, TT>(ModelBuilder builder, string fileName) 
-            where T : class 
-            where TT : class
-        {
-            string filePath = Path.Combine(PathDirectory, fileName);
-            string json = File.ReadAllText(filePath);
-            var inputs = JsonConvert.DeserializeObject<T[]>(json)!;
-            List<TT> types = [];
-            foreach (var input in inputs)
-            {
-                TT type = Activator.CreateInstance<TT>();
-                _mapper.Map(input, type, null);
-                types.Add(type);
-            }
-            builder.Entity<TT>().HasData(types);
-        }
         private static void InvokeMethod(ModelBuilder builder,Type type, Type entityType, MethodInfo seedMethod)
         {
             var fileNameProperty = typeof(GeneralConstants)
@@ -77,6 +62,22 @@ namespace AnimeDbWebApp.Data.Extensions
             var fileName = fileNameProperty!.GetValue(typeof(GeneralConstants));
             var method = seedMethod!.MakeGenericMethod(type, entityType!);
             method.Invoke(typeof(SeedModelBuilderExtension), [builder, fileName]);
+        }
+        private static void Seed<T, TT>(ModelBuilder builder, string fileName)
+            where T : class
+            where TT : class
+        {
+            string filePath = Path.Combine(PathDirectory, fileName);
+            string json = File.ReadAllText(filePath);
+            var inputs = JsonConvert.DeserializeObject<T[]>(json)!;
+            List<TT> types = [];
+            foreach (var input in inputs)
+            {
+                TT type = Activator.CreateInstance<TT>();
+                _mapper.Map(input, type);
+                types.Add(type);
+            }
+            builder.Entity<TT>().HasData(types);
         }
     }
 }
