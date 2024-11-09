@@ -9,6 +9,12 @@ using System;
 
 using AnimeDbWebApp.Data;
 using AnimeDbWebApp.Models;
+using AnimeDbWebApp.Data.Repositories.Interfaces;
+using AnimeDbWebApp.Data.Repositories;
+using AnimeDbWebApp.Extensions;
+using AnimeDbWebApp.Services;
+using System.Reflection;
+using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp
 {
@@ -26,6 +32,7 @@ namespace AnimeDbWebApp
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
+
             builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(
                 options => options.SignIn.RequireConfirmedAccount = false
                 )
@@ -38,6 +45,9 @@ namespace AnimeDbWebApp
 			{
 				cfg.LoginPath = "/Identity/Account/Login";
 			});
+
+            builder.Services.AddScoped<IRepository, Repository>();
+            builder.Services.RegisterServices(Assembly.GetAssembly(typeof(AnimeService))!, BaseServiceName);
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();

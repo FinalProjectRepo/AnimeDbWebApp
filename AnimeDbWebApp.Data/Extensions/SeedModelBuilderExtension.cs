@@ -18,7 +18,6 @@ namespace AnimeDbWebApp.Data.Extensions
     public static class SeedModelBuilderExtension
     {
         private static readonly string PathDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, DataFolderName, DatasetFolderName);
-        private static readonly CustomMapper _mapper = new();
 
         public static void Seed(this ModelBuilder builder)
         {
@@ -74,7 +73,7 @@ namespace AnimeDbWebApp.Data.Extensions
             foreach (var input in inputs)
             {
                 TT type = Activator.CreateInstance<TT>();
-                _mapper.Map(input, type);
+                CustomMapper.Map(input, type);
                 types.Add(type);
             }
             builder.Entity<TT>().HasData(types);

@@ -1,10 +1,8 @@
-﻿using AnimeDbWebApp.Mapping.Interfaces;
-
-namespace AnimeDbWebApp.Mapping
+﻿namespace AnimeDbWebApp.Mapping
 {
-    public class CustomMapper : ICustomMappper
+    public static class CustomMapper
     {
-        public void Map<T, TT>(T input, TT output) where T : class where TT : class
+        public static void Map<T, TT>(T input, TT output) where T : class where TT : class
         {
             var inputProperties = typeof(T).GetProperties();
             var outputProperties = typeof(TT).GetProperties();

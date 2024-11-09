@@ -1,6 +1,6 @@
 # AnimeDbWebApp
 All project constants are in AnimeDbWebApp.Data.Common project library
-Database Information:
+Database Information(Seeding the database may take more then 15 min):
     Database is created and managed with EntityFramework in AnimeDbWebApp.Data and consists of 2 main tables -> anime and manga.
     Anime table has relations with following tables:
         -Producers - represents companies that make the anime happend. They have 3 roles: studios that produce the anime, licensors that work on legal actions around the anime and pruducers that takes care of anime production as whole(distribution, connecting production parts, etc.). Companies sometimes are responsable for more then one role, but can do each one of them. Thats why the database has 3 mapping tables, but one producer table.

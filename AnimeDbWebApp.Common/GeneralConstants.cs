@@ -2,6 +2,8 @@
 {
     public static class GeneralConstants
     {
+        public const string InterfacesPrefix = "I";
+        public const string BaseServiceName = "IBaseService";
         public const string PrimalImportsNamespace = "Primals";
         public const string GeneralImportsNamespace = "Generals";
         public const string MappingImportsNamespace = "Mappings";
