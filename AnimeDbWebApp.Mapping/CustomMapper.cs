@@ -35,7 +35,7 @@ namespace AnimeDbWebApp.Mapping
             foreach (var input in inputs)
             {
                 TT type = Activator.CreateInstance<TT>();
-                CustomMapper.Map(input, type);
+                Map(input, type);
                 outputs.Add(type);
             }
         }

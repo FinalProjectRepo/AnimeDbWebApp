@@ -5,21 +5,27 @@
     int i = 0;
 }
 
-<div id="carouselExampleControls" class="carousel slide mx-auto" data-ride="carousel">
-    <div class="carousel-inner">
+<a asp-controller="Anime" asp-action="Index" class="text-dark h1-custom card-link">Check all animes</a>
+
+<div id="carouselExampleControls" class="carousel slide mx-auto pt-3 pb-5 mb-5 border-bottom" data-ride="carousel">
+    <div class="carousel-inner" style="aspect-ratio:4.5/1">
         <div class="carousel-item active">
-            @while(i < 5)
+            @while (i < 5)
             {
-                <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
+                <a asp-controller="Anime" asp-action="Details" asp-for="@Model.Animes[i].Id" metod="post">
+                    <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
+                </a>
                 i++;
             }
         </div>
-        @while(i + 6 < Model.Animes.Count)
+        @while (i + 6 < Model.Animes.Count)
         {
             <div class="carousel-item">
                 @for (int j = 0; j < 5; j++, i++)
                 {
-                    <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
+                    <a asp-controller="Anime" asp-action="Details" asp-for="@Model.Animes[i].Id" metod="post">
+                        <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
+                    </a>
                 }
             </div>
         }
@@ -36,12 +42,16 @@
 
 @{i = 0;}
 
-<div id="carouselExampleControls" class="carousel slide mx-auto" data-ride="carousel">
-    <div class="carousel-inner">
+<a asp-controller="Manga" asp-action="Index" class="text-dark h1-custom card-link">Check all mangas</a>
+
+<div id="carouselExampleControls2" class="carousel slide mx-auto pt-3 pb-5 mb-5" data-ride="carousel">
+    <div class="carousel-inner" style="aspect-ratio:4.5/1">
         <div class="carousel-item active">
             @while (i < 5)
             {
-                <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
+                <a asp-controller="Manga" asp-action="Details" asp-for="@Model.Mangas[i].Id" metod="post">
+                    <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
+                </a>
                 i++;
             }
         </div>
@@ -50,16 +60,18 @@
             <div class="carousel-item">
                 @for (int j = 0; j < 5; j++, i++)
                 {
-                    <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
+                    <a asp-controller="Manga" asp-action="Details" asp-for="@Model.Mangas[i].Id" metod="post">
+                        <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
+                    </a>
                 }
             </div>
         }
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <a class="carousel-control-prev" href="#carouselExampleControls2" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>
     </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <a class="carousel-control-next" href="#carouselExampleControls2" role="button" data-slide="next">
         <span class="carousel-control-next-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
     </a>
