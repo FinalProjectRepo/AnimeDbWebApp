@@ -49,11 +49,11 @@ namespace AnimeDbWebApp.Models
 
         [Comment("Date manga started publishing")]
         [Column(TypeName = "DATETIME2")]
-        public DateTime? StartDate { get; set; } = null!;
+        public DateTime? StartDate { get; set; }
 
         [Comment("Date manga ended publishing")]
         [Column(TypeName = "DATETIME2")]
-        public DateTime? EndDate { get; set; } = null!;
+        public DateTime? EndDate { get; set; }
 
         [Comment("Manga score")]
         [Range(MinScore, MaxScore)]

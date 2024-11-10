@@ -1,4 +1,8 @@
-﻿namespace AnimeDbWebApp.Mapping
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+
+namespace AnimeDbWebApp.Mapping
 {
     public static class CustomMapper
     {
@@ -23,6 +27,16 @@
                     else outputProperty.SetValue(output, null);
                 }
                 else outputProperty.SetValue(output, inputProperty.GetValue(input));
+            }
+        }
+
+        public static void MapAll<T, TT>(IEnumerable<T> inputs, IList<TT> outputs) where T : class where TT : class
+        {
+            foreach (var input in inputs)
+            {
+                TT type = Activator.CreateInstance<TT>();
+                CustomMapper.Map(input, type);
+                outputs.Add(type);
             }
         }
     }

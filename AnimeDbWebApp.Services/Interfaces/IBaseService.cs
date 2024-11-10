@@ -1,6 +1,6 @@
 ﻿namespace AnimeDbWebApp.Services.Interfaces
 {
-    internal interface IBaseService
+    public interface IBaseService
     {
 
     }

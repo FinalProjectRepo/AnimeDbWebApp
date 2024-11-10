@@ -1,4 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+
+using System;
+using System.Linq;
 using System.Reflection;
 
 using static AnimeDbWebApp.Common.GeneralConstants;
@@ -9,7 +12,7 @@ namespace AnimeDbWebApp.Extensions
     {
         public static void RegisterServices(this IServiceCollection serviceProvider, Assembly assembly, string baseInterfaceName)
         {
-            var services = assembly.GetTypes().Where(t => !t.IsAbstract);
+            var services = assembly.GetTypes().Where(t => !t.IsAbstract && t.IsVisible);
             var interfaces = assembly.GetTypes().Where(t => t.IsAbstract);
 
             var baseInterface = interfaces.First(t => t.Name.Equals(baseInterfaceName));

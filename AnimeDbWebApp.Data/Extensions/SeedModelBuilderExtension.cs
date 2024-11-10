@@ -70,12 +70,7 @@ namespace AnimeDbWebApp.Data.Extensions
             string json = File.ReadAllText(filePath);
             var inputs = JsonConvert.DeserializeObject<T[]>(json)!;
             List<TT> types = [];
-            foreach (var input in inputs)
-            {
-                TT type = Activator.CreateInstance<TT>();
-                CustomMapper.Map(input, type);
-                types.Add(type);
-            }
+            CustomMapper.MapAll(inputs, types);
             builder.Entity<TT>().HasData(types);
         }
     }

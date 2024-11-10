@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
+using System;
 using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;

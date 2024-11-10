@@ -1,5 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+
+using System;
+using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;

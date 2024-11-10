@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using System;
+using System.Reflection;
 
 using AnimeDbWebApp.Data;
 using AnimeDbWebApp.Models;
@@ -13,7 +14,7 @@ using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Data.Repositories;
 using AnimeDbWebApp.Extensions;
 using AnimeDbWebApp.Services;
-using System.Reflection;
+using AnimeDbWebApp.Services.Interfaces;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp
@@ -47,7 +48,7 @@ namespace AnimeDbWebApp
 			});
 
             builder.Services.AddScoped<IRepository, Repository>();
-            builder.Services.RegisterServices(Assembly.GetAssembly(typeof(AnimeService))!, BaseServiceName);
+            builder.Services.AddScoped<IHomeService, HomeService>();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();

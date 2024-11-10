@@ -1,30 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 
+using System.Diagnostics;
+using System.Threading.Tasks;
+
+using AnimeDbWebApp.Services;
 using AnimeDbWebApp.ViewModels;
-using AnimeDbWebApp.Data;
-using System.Linq;
+using AnimeDbWebApp.Services.Interfaces;
 
 namespace AnimeDbWebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly AnimeDbContext _dbContext;
+        private readonly IHomeService _service;
 
-        public HomeController(AnimeDbContext dbContext)
+        public HomeController(IHomeService service)
         {
-            _dbContext = dbContext;
+            _service = service;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var authors = _dbContext.Authors.ToList();
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
+            var model = await _service.GetModel();
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace AnimeDbWebApp.Data.Repositories
 {
     public class Repository : IRepository
     {
-        protected DbContext _dbContext;
+        protected AnimeDbContext _dbContext;
 
         public Repository(AnimeDbContext dbContext)
         {
@@ -33,33 +34,33 @@ namespace AnimeDbWebApp.Data.Repositories
             await DbSet<T>().AddAsync(entity);
         }
 
-        public T? Find<T>(object id) where T : class
+        public T? Find<T, TT>(TT id) where T : class
         {
             return DbSet<T>().Find(id);
         }
 
-        public async Task<T?> FindAsync<T>(object id) where T : class
+        public async Task<T?> FindAsync<T, TT>(TT id) where T : class
         {
             return await DbSet<T>().FindAsync(id);
         }
-        public T? FirstOrDefault<T>(Func<bool> predicate) where T : class
+        public T? FirstOrDefault<T>(Func<T, bool> predicate) where T : class
         {
-            return DbSet<T>().FirstOrDefault(x => predicate());
+            return DbSet<T>().FirstOrDefault(predicate);
         }
 
-        public async Task<T?> FirstOrDefaultAsync<T>(Func<bool> predicate) where T : class
+        public async Task<T?> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            return await DbSet<T>().FirstOrDefaultAsync(x => predicate());
+            return await DbSet<T>().FirstOrDefaultAsync(predicate);
         }
 
-        public IEnumerable<T> Where<T>(Func<bool> predicate) where T : class
+        public IEnumerable<T> Where<T>(Func<T, bool> predicate) where T : class
         {
-            return [.. DbSet<T>().Where(x => predicate())];
+            return [.. DbSet<T>().Where(x => predicate(x))];
         }
 
-        public async Task<IEnumerable<T>> WhereAsync<T>(Func<bool> predicate) where T : class
+        public async Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class
         {
-            return await DbSet<T>().Where(x => predicate()).ToArrayAsync();
+            return await DbSet<T>().Where(predicate).ToArrayAsync();
         }
 
         public IEnumerable<T> All<T>() where T : class
@@ -85,6 +86,11 @@ namespace AnimeDbWebApp.Data.Repositories
         public Task<int> SaveChangesAsync<T>() where T : class
         {
             return _dbContext.SaveChangesAsync();
+        }
+
+        public void Dispose()
+        {
+            _dbContext.Dispose();
         }
     }
 }
