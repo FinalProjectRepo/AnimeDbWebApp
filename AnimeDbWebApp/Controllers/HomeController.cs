@@ -3,22 +3,17 @@ using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-using AnimeDbWebApp.Services;
 using AnimeDbWebApp.ViewModels;
 using AnimeDbWebApp.Services.Interfaces;
 
 namespace AnimeDbWebApp.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController(IHomeService service) : Controller
     {
-        private readonly IHomeService _service;
+        private readonly IHomeService _service = service;
 
-        public HomeController(IHomeService service)
-        {
-            _service = service;
-        }
-
-        public async Task<IActionResult> Index()
+		[HttpGet]
+		public async Task<IActionResult> Index()
         {
             var model = await _service.GetModel();
             return View(model);

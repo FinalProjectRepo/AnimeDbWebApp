@@ -23,9 +23,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Mapping", "AnimeDbWebApp.Mapping\AnimeDbWebApp.Mapping.csproj", "{83DCBD91-5635-4D80-8DF3-63DCC805AA4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Extensions", "AnimeDbWebApp.Extensions\AnimeDbWebApp.Extensions.csproj", "{1D338962-F104-482A-84C0-6A77B49A2A84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Extensions", "AnimeDbWebApp.Extensions\AnimeDbWebApp.Extensions.csproj", "{1D338962-F104-482A-84C0-6A77B49A2A84}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.Services", "AnimeDbWebApp.Services\AnimeDbWebApp.Services.csproj", "{52BD0536-5D0A-492F-8729-29B4898B4AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Services", "AnimeDbWebApp.Services\AnimeDbWebApp.Services.csproj", "{52BD0536-5D0A-492F-8729-29B4898B4AD8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

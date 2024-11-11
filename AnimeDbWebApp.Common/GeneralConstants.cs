@@ -32,5 +32,6 @@
         public const string MangaGenreDatasetFileName = "mangaGenreMapping.json";
         public const string MangaMagazineDatasetFileName = "mangaMagazineMapping.json";
         public const string MangaRelationDatasetFileName = "mangaRelationMapping.json";
+        public const string GeneralDateTimeFormat = "yyyy-MM-dd";
     }
 }

@@ -49,6 +49,7 @@ namespace AnimeDbWebApp
 
             builder.Services.AddScoped<IRepository, Repository>();
             builder.Services.AddScoped<IHomeService, HomeService>();
+            builder.Services.AddScoped<IAnimeService, AnimeService>();
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();

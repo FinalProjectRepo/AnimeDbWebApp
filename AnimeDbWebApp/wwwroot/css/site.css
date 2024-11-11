@@ -42,3 +42,8 @@ body {
         font-size: 2em;
     }
 }
+
+.custom-scale:hover {
+    transition: .2s;
+    transform: scale(4);
+}

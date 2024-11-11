@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
@@ -12,14 +10,9 @@ using AnimeDbWebApp.ViewModels.Home;
 
 namespace AnimeDbWebApp.Services
 {
-    public class HomeService : IHomeService
+    public class HomeService(IRepository repository) : IHomeService
     {
-        private readonly IRepository _repo;
-
-        public HomeService(IRepository repository)
-        {
-            _repo = repository;
-        }
+        private readonly IRepository _repo = repository;
 
         public async Task<HomeViewModel> GetModel()
         {
@@ -28,8 +21,8 @@ namespace AnimeDbWebApp.Services
             var animes = await _repo.WhereAsync<Anime>(a => a.Status == AnimeStatus.NotYetAired);
             var mangas = await _repo.WhereAsync<Manga>(a => a.StartDate > DateTime.Parse("2023/1/1"));
 
-            CustomMapper.MapAll(animes, viewModel.Animes);
-            CustomMapper.MapAll(mangas, viewModel.Mangas);
+            CustomMapper.MapAll(animes, viewModel.Animes, true);
+            CustomMapper.MapAll(mangas, viewModel.Mangas, true);
             return viewModel;
         }
     }
