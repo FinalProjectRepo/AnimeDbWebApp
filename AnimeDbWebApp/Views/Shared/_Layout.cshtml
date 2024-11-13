@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using static AnimeDbWebApp.Common.GeneralConstants;
+
+@{
+    int currentYear = DateTime.UtcNow.Year;
+    string footerNote = YearAppBuild != currentYear ? $"{YearAppBuild} - {currentYear}" : $"{currentYear}";
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -44,7 +51,7 @@
 
     <footer class="border-top footer text-muted mt-5">
         <div class="container">
-            &copy; 2024 - AnimeDbWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; @footerNote AnimeDbWebApp
         </div>
     </footer>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

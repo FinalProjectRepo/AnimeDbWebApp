@@ -2,6 +2,7 @@
 {
     public static class GeneralConstants
     {
+        public const int YearAppBuild = 2024;
         public const string InterfacesPrefix = "I";
         public const string BaseServiceName = "IBaseService";
         public const string PrimalImportsNamespace = "Primals";

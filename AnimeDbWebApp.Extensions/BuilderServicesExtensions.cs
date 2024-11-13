@@ -10,12 +10,10 @@ namespace AnimeDbWebApp.Extensions
 {
     public static class BuilderServicesExtensions
     {
-        public static void RegisterServices(this IServiceCollection serviceProvider, Assembly assembly, string baseInterfaceName)
+        public static void RegisterServices(this IServiceCollection serviceProvider, Assembly assembly)
         {
             var services = assembly.GetTypes().Where(t => !t.IsAbstract && t.IsVisible);
             var interfaces = assembly.GetTypes().Where(t => t.IsAbstract);
-
-            var baseInterface = interfaces.First(t => t.Name.Equals(baseInterfaceName));
 
             foreach (var service in services)
             {
@@ -24,7 +22,6 @@ namespace AnimeDbWebApp.Extensions
                         StringComparison.InvariantCultureIgnoreCase));
                 
                 if (currInterface != null) serviceProvider.AddScoped(currInterface, service);
-                else serviceProvider.AddScoped(baseInterface, service);
             }
         }
     }
