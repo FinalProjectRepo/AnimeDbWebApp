@@ -9,5 +9,6 @@ namespace AnimeDbWebApp.ViewModels.Anime
         public int ItemsPerPage { get; set; }
         public string? Search { get; set; }
         public IList<AnimeViewModel> Animes { get; set; } = [];
+        public Dictionary<int, int> AddedAnimes { get; set; } = new Dictionary<int, int>();
     }
 }

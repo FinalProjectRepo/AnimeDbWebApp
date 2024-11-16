@@ -30,7 +30,6 @@
 
   <ItemGroup>
     <Folder Include="Datasets\" />
-    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>

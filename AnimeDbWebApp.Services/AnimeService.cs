@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
@@ -9,7 +8,6 @@ using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.ViewModels.Anime;
-using Azure;
 
 namespace AnimeDbWebApp.Services
 {
@@ -17,7 +15,7 @@ namespace AnimeDbWebApp.Services
     {
         private readonly IRepository _repo = repository;
 
-        public async Task<AnimeWithCountViewModel> GetAll(int page, int itemsPerPage, string search)
+        public async Task<AnimeWithCountViewModel> GetAll(string? userId, int page, int itemsPerPage, string search)
         {
             if (page <= 0) page = 1;
             if (itemsPerPage is not 10 or 20 or 50) itemsPerPage = 50;
@@ -29,16 +27,52 @@ namespace AnimeDbWebApp.Services
             int totalPages = 0;
 			(totalPages, animes) = await _repo.TakePageAsync<Anime>(itemsPerPage, page, whereFunc, include);
 
+            var dict = new Dictionary<int, int>();
+            bool userParse = Guid.TryParse(userId, out Guid userGuid);
+            if (userParse)
+            {
+                var userAnimes = await _repo.WhereAsync<AppUserAnime>(ua => ua.UserId == userGuid);
+                foreach(var entity in userAnimes)
+                {
+                    dict[entity.AnimeId] = (int)entity.Status;
+                }
+            }
+
             var viewModel = new AnimeWithCountViewModel()
             {
-				TotalPages = totalPages,
+                TotalPages = totalPages,
                 Page = page > totalPages ? totalPages : page,
                 ItemsPerPage = itemsPerPage,
-                Search = search
+                Search = search,
+                AddedAnimes = dict
             };
 
             CustomMapper.MapAll(animes, viewModel.Animes, true);
             return viewModel;
+        }
+
+        public async Task<AnimeDetailsViewModel> GetAnime(int animeId)
+		{
+            Expression<Func<Anime, object>>[] includes =
+            {
+                a => a.Type,
+                a => a.Source,
+                a => a.Genres,
+                a => a.AnimesProducers,
+                a => a.AnimesLicensors,
+                a => a.AnimesStudios,
+                a => a.AnimesLicensors,
+                a => a.AnimesRelations,
+                a => a.Adaptations,
+            };
+			
+			Expression<Func<Anime, bool>> firstFunc = a => a.Id == animeId;
+			var anime = await _repo.FirstWithIncludeAsync<Anime>(firstFunc, includes);
+            var model = new AnimeDetailsViewModel();
+            if (anime == null) return model;
+
+            CustomMapper.MapViews(anime, model);
+            return model;
         }
     }
 }

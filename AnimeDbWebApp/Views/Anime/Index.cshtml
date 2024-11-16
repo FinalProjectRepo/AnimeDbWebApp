@@ -42,6 +42,7 @@
 				<th>Duration</th>
 				<th>Air Date</th>
 				<th>Finished Airing</th>
+				<th>User Progress</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -50,7 +51,7 @@
 				<tr>
 					<td>
 						<div class="container" style="aspect-ratio: 4/1">
-							<a asp-controller="Anime" asp-action="Details" asp-for="@anime.Id" metod="post">
+							<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@anime.Id">
 								<img class="custom-scale h-100" src="@anime.PosterUrl" alt="Anime img">
 							</a>
 						</div>
@@ -62,6 +63,23 @@
 					<td>@anime.Duration</td>
 					<td>@anime.StartDate</td>
 					<td>@anime.EndDate</td>
+					@if(User?.Identity?.IsAuthenticated ?? false)
+					{
+						int option = 1;
+						if (Model.AddedAnimes.ContainsKey(anime.Id)) option = Model.AddedAnimes[anime.Id];
+						<td>
+							<form asp-controller="AnimeList" asp-action="Add" metod="get">
+								<input name="animeId" type="hidden" value="@anime.Id">
+								<select name="status" class="form-control" aria-required="true" value="@option">
+									<option value="1">Plan To Watch</option>
+									<option value="2">Watching</option>
+									<option value="3">Finished</option>
+									<option value="4">Abandon</option>
+								</select>
+								<button type="submit" class="btn btn-primary mt-2">Add</button>
+							</form>
+						</td>
+					}
 				</tr>
 			}
 		</tbody>

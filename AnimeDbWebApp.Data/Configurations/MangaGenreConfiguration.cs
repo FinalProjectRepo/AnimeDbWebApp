@@ -8,16 +8,18 @@ namespace AnimeDbWebApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<MangaGenre> builder)
         {
-            builder.HasKey(al => new { al.MangaId, al.GenreId });
+            builder.Navigation(a => a.Genre).AutoInclude();
 
-            builder.HasOne(al => al.Manga)
-                .WithMany(ar => ar.Genres)
-                .HasForeignKey(al => al.MangaId)
+            builder.HasKey(mg => new { mg.MangaId, mg.GenreId });
+
+            builder.HasOne(mg => mg.Manga)
+                .WithMany(m => m.Genres)
+                .HasForeignKey(mg => mg.MangaId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(al => al.Genre)
-                .WithMany(p => p.Mangas)
-                .HasForeignKey(al => al.GenreId)
+            builder.HasOne(mg => mg.Genre)
+                .WithMany(g => g.Mangas)
+                .HasForeignKey(mg => mg.GenreId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
+using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
@@ -52,8 +54,9 @@ namespace AnimeDbWebApp.Mapping
 		{
 			var inputProperties = typeof(T).GetProperties();
 			var outputProperties = typeof(TT).GetProperties();
-			var allEntityTypes = Assembly.GetAssembly(typeof(AnimeStatus))!.GetTypes();
-			foreach (var outputProperty in outputProperties)
+			var allEntityTypes = Assembly.GetAssembly(typeof(Anime))!.GetTypes();
+            var method = typeof(CustomMapper).GetMethod(nameof(MapCollections));
+            foreach (var outputProperty in outputProperties)
 			{
 				var inputProperty = inputProperties.FirstOrDefault(t => t.Name == outputProperty.Name);
 				if (inputProperty == null || inputProperty.GetValue(input) == null) continue;
@@ -66,7 +69,7 @@ namespace AnimeDbWebApp.Mapping
 						bool success = DateTime.TryParse(inputAsString, out DateTime date);
 						if(success) outputProperty.SetValue(output, date.ToString(dateTimeFormat));
 					}
-                    else if (inputProperty.PropertyType.BaseType == typeof(Enum))
+                    else if (inputProperty.PropertyType.IsEnum || inputProperty.PropertyType.BaseType == typeof(AnimeStatus?).BaseType)
                     {
 						Regex regex = new("[A-Z][a-z]+");
 						var parts = regex.Matches(inputAsString);
@@ -82,10 +85,50 @@ namespace AnimeDbWebApp.Mapping
 						var value = innerProperty.GetValue(innerValue);
 						outputProperty.SetValue(output, value);
 					}
+					else if (inputProperty.PropertyType.IsGenericType)
+					{
+						var methodTType = inputProperty.PropertyType.GetGenericArguments()[0]; 
+						var methodTTType = outputProperty.PropertyType.GetGenericArguments()[0]; 
+						var map = method!.MakeGenericMethod(methodTType, methodTTType);
+						var value = outputProperty.GetValue(output);
+
+                        map.Invoke(typeof(CustomMapper), [inputProperty.GetValue(input), value]);
+                        outputProperty.SetValue(output, value);
+                    }
 					else outputProperty.SetValue(output, null);
 				}
 				else outputProperty.SetValue(output, inputProperty.GetValue(input));
 			}
 		}
+
+		public static void MapCollections<T, TT>(ICollection<T> inputCollection, ICollection<TT> outputCollection)
+			where T : class where TT : class
+		{
+			string mappingProp = typeof(T).Name.Substring(5);
+            var inputProps = typeof(T).GetProperties();
+            var innerProp = typeof(T).GetProperties().FirstOrDefault(p => p.Name == mappingProp);
+			if (innerProp == null) return;
+            var outputProps = typeof(TT).GetProperties();
+            foreach (var input in inputCollection)
+			{
+				var output = Activator.CreateInstance(typeof(TT)) as TT;
+				foreach(var prop in outputProps)
+                {
+					var valueProp = inputProps.FirstOrDefault(p => p.Name == prop.Name);
+
+					if (valueProp == null)
+					{
+                        var innerValue = innerProp.GetValue(input);
+						if (innerValue == null) continue;
+                        var inputProp = innerValue.GetType().GetProperties().FirstOrDefault(p => p.Name == prop.Name);
+						if (inputProp == null) continue;
+                        var value = inputProp.GetValue(innerValue);
+                        prop.SetValue(output, value);
+                    }
+					else prop.SetValue(output, valueProp.GetValue(input));
+				}
+                outputCollection.Add(output!);
+            }
+        }
     }
 }

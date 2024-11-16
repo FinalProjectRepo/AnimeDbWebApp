@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.DTOs.Generals
 {
@@ -46,6 +47,7 @@ namespace AnimeDbWebApp.DTOs.Generals
         public int? Episodes { get; set; }
 
         [Required]
+        [Range(MinRangeAnimeStatus, MaxRangeAnimeStatus)]
         [JsonProperty("status")]
         public AnimeStatus Status { get; set; }
 
@@ -78,6 +80,7 @@ namespace AnimeDbWebApp.DTOs.Generals
 
         [Required]
         [JsonProperty("season")]
+        [Range(MinRangeSeason, MaxRangeSeason)]
         public Season? Season { get; set; }
 
         [JsonProperty("source")]

@@ -7,6 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.Models
 {
@@ -44,6 +45,7 @@ namespace AnimeDbWebApp.Models
         public int? Volumes { get; set; }
 
         [Required]
+        [Range(MinRangeMangaStatus, MaxRangeMangaStatus)]
         [Comment("Airing status")]
         public MangaStatus Status { get; set; }
 
@@ -75,10 +77,11 @@ namespace AnimeDbWebApp.Models
         [ForeignKey(nameof(TypeId))]
         public TypeForManga? Type { get; set; }
 
-        public ICollection<AuthorManga> AuthorsMangas { get; set; } = [];
+        public ICollection<MangaAuthor> MangasAuthors { get; set; } = [];
         public ICollection<MangaGenre> Genres { get; set; } = [];
         public ICollection<MangaRelation> MangaRalations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
         public ICollection<MangaMagazine> MangasMagazines { get; set; } = [];
+        public ICollection<AppUserManga> AppUsers { get; set; } = [];
     }
 }

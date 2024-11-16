@@ -7,6 +7,7 @@ using System.Collections.Generic;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.Models
 {
@@ -46,6 +47,7 @@ namespace AnimeDbWebApp.Models
         public int? Episodes { get; set; }
 
         [Required]
+        [Range(MinRangeAnimeStatus, MaxRangeAnimeStatus)]
         [Comment("Airing status")]
         public AnimeStatus Status { get; set; }
 
@@ -80,6 +82,7 @@ namespace AnimeDbWebApp.Models
         public string? Background { get; set; } = null!;
 
         [Comment("Yearly anime season that anime aired")]
+        [Range(MinRangeSeason, MaxRangeMangaStatus)]
         public Season? Season { get; set; }
 
         [Required]
@@ -101,5 +104,6 @@ namespace AnimeDbWebApp.Models
         public ICollection<AnimeGenre> Genres { get; set; } = [];
         public ICollection<AnimeRelation> AnimesRelations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
+        public ICollection<AppUserAnime> AppUsers { get; set; } = [];
     }
 }

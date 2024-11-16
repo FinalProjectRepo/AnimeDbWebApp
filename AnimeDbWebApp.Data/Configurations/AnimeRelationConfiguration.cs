@@ -8,11 +8,11 @@ namespace AnimeDbWebApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AnimeRelation> builder)
         {
-            builder.HasKey(al => new { al.AnimeId, al.RelationId });
+            builder.HasKey(ar => new { ar.AnimeId, ar.RelationId });
 
-            builder.HasOne(al => al.Anime)
-                .WithMany(ar => ar.AnimesRelations)
-                .HasForeignKey(al => al.AnimeId)
+            builder.HasOne(ar => ar.Anime)
+                .WithMany(a => a.AnimesRelations)
+                .HasForeignKey(ar => ar.AnimeId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
     }

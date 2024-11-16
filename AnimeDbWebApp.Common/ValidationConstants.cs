@@ -83,5 +83,17 @@
             public const int MinNameLength = 2;
             public const int MaxNameLength = 30;
         }
+
+        public static class EnumsRangeConstants
+        {
+            public const int MinRangeAnimeStatus = 1;
+            public const int MaxRangeAnimeStatus = 3;
+            public const int MinRangeMangaStatus= 1;
+            public const int MaxRangeMangaStatus= 4;
+            public const int MinRangeSeason = 1;
+            public const int MaxRangeSeason = 4;
+            public const int MinRangeWatchingStatus = 1;
+            public const int MaxRangeWatchingStatus = 4;
+        }
     }
 }

@@ -8,14 +8,16 @@ namespace AnimeDbWebApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AnimeProducer> builder)
         {
-            builder.HasKey(al => new { al.AnimeId, al.ProducerId });
+            builder.Navigation(a => a.Producer).AutoInclude();
 
-            builder.HasOne(al => al.Anime)
-                .WithMany(ar => ar.AnimesProducers)
-                .HasForeignKey(al => al.AnimeId)
+            builder.HasKey(ap => new { ap.AnimeId, ap.ProducerId });
+
+            builder.HasOne(ap => ap.Anime)
+                .WithMany(a => a.AnimesProducers)
+                .HasForeignKey(ap => ap.AnimeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(al => al.Producer)
+            builder.HasOne(ap => ap.Producer)
                 .WithMany(p => p.AnimesProducers)
                 .HasForeignKey(al => al.ProducerId)
                 .OnDelete(DeleteBehavior.Restrict);

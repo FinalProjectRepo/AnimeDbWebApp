@@ -6,6 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.DTOs.Generals
 {
@@ -44,6 +45,7 @@ namespace AnimeDbWebApp.DTOs.Generals
         public int? Volumes { get; set; }
 
         [Required]
+        [Range(MinRangeMangaStatus, MaxRangeMangaStatus)]
         [JsonProperty("status")]
         public MangaStatus Status { get; set; }
 

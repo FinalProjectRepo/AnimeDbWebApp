@@ -47,6 +47,6 @@ namespace AnimeDbWebApp.Models
         [Comment("Aditional information about person")]
         public string? About { get; set; }
 
-        public ICollection<AuthorManga> AuthorsMangas { get; set; } = [];
+        public ICollection<MangaAuthor> MangasAuthors { get; set; } = [];
     }
 }

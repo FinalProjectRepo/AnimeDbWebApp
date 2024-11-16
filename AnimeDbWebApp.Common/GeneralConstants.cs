@@ -29,7 +29,7 @@
         public const string AnimeProducerDatasetFileName = "animeProducerMapping.json";
         public const string AnimeRelationDatasetFileName = "animeRelationMapping.json";
         public const string AnimeStudioDatasetFileName = "animeStudioMapping.json";
-        public const string AuthorMangaDatasetFileName = "authorMangaMapping.json";
+        public const string MangaAuthorDatasetFileName = "authorMangaMapping.json";
         public const string MangaGenreDatasetFileName = "mangaGenreMapping.json";
         public const string MangaMagazineDatasetFileName = "mangaMagazineMapping.json";
         public const string MangaRelationDatasetFileName = "mangaRelationMapping.json";

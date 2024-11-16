@@ -12,7 +12,7 @@
         <div class="carousel-item active">
             @while (i < 5)
             {
-                <a asp-controller="Anime" asp-action="Details" asp-for="@Model.Animes[i].Id" metod="post">
+                <a asp-controller="Anime" asp-action="Details" asp-route-animeId="@Model.Animes[i].Id">
                     <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
                 </a>
                 i++;
@@ -23,7 +23,7 @@
             <div class="carousel-item">
                 @for (int j = 0; j < 5; j++, i++)
                 {
-                    <a asp-controller="Anime" asp-action="Details" asp-for="@Model.Animes[i].Id" metod="post">
+                    <a asp-controller="Anime" asp-action="Details" asp-route-animeId="@Model.Animes[i].Id">
                         <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
                     </a>
                 }
@@ -49,7 +49,7 @@
         <div class="carousel-item active">
             @while (i < 5)
             {
-                <a asp-controller="Manga" asp-action="Details" asp-for="@Model.Mangas[i].Id" metod="post">
+                <a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@Model.Mangas[i].Id">
                     <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
                 </a>
                 i++;
@@ -60,7 +60,7 @@
             <div class="carousel-item">
                 @for (int j = 0; j < 5; j++, i++)
                 {
-                    <a asp-controller="Manga" asp-action="Details" asp-for="@Model.Mangas[i].Id" metod="post">
+                    <a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@Model.Mangas[i].Id">
                         <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
                     </a>
                 }
