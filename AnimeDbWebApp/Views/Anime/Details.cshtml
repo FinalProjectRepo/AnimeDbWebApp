@@ -53,7 +53,7 @@
 			<p class="mb-sm-2"><b>Adaptations:</b></p>
 			@foreach (var adaptation in Model.Adaptations)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@adaptation.Id" class="row">
+				<a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@adaptation.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @adaptation.Title</p>
 				</a>
 			}
@@ -65,7 +65,7 @@
 			<p class="mb-sm-2"><b>Producers:</b></p>
 			@foreach (var producer in Model.AnimesProducers)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@producer.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@producer.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @producer.Name</p>
 				</a>
 			}
@@ -77,7 +77,7 @@
 			<p class="mb-sm-2"><b>Studios:</b></p>
 			@foreach (var studio in Model.AnimesStudios)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@studio.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@studio.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @studio.Name</p>
 				</a>
 			}
@@ -89,7 +89,7 @@
 			<p class="mb-sm-2"><b>Licensors:</b></p>
 			@foreach (var licensor in Model.AnimesLicensors)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@licensor.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@licensor.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @licensor.Name</p>
 				</a>
 			}

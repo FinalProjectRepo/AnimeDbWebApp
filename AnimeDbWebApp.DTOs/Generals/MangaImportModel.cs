@@ -66,7 +66,7 @@ namespace AnimeDbWebApp.DTOs.Generals
         [JsonProperty("background")]
         public string? Background { get; set; }
 
-        [JsonProperty("type")]
+		[JsonProperty("type")]
         public int? TypeId { get; set; }
     }
 }

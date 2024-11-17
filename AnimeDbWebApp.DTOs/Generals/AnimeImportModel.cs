@@ -83,10 +83,11 @@ namespace AnimeDbWebApp.DTOs.Generals
         [Range(MinRangeSeason, MaxRangeSeason)]
         public Season? Season { get; set; }
 
-        [JsonProperty("source")]
+		[Required]
+		[JsonProperty("source")]
         public int SourceId { get; set; }
 
-        [JsonProperty("type")]
+		[JsonProperty("type")]
         public int? TypeId { get; set; }
     }
 }

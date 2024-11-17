@@ -92,7 +92,7 @@ namespace AnimeDbWebApp.Models
         [ForeignKey(nameof(SourceId))]
         public Source Source { get; set; } = null!;
 
-        [Comment("Type of anime(tv series, movie, etc.)")]
+		[Comment("Type of anime(tv series, movie, etc.)")]
         public int? TypeId { get; set; }
 
         [ForeignKey(nameof(TypeId))]

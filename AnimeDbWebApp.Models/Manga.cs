@@ -71,7 +71,7 @@ namespace AnimeDbWebApp.Models
         [Comment("Short pre-story")]
         public string? Background { get; set; }
 
-        [Comment("Type of manga(manga, light novel, etc.)")]
+		[Comment("Type of manga(manga, light novel, etc.)")]
         public int? TypeId { get; set; }
 
         [ForeignKey(nameof(TypeId))]
@@ -79,7 +79,7 @@ namespace AnimeDbWebApp.Models
 
         public ICollection<MangaAuthor> MangasAuthors { get; set; } = [];
         public ICollection<MangaGenre> Genres { get; set; } = [];
-        public ICollection<MangaRelation> MangaRalations { get; set; } = [];
+        public ICollection<MangaRelation> MangaRelations { get; set; } = [];
         public ICollection<AnimeManga> Adaptations { get; set; } = [];
         public ICollection<MangaMagazine> MangasMagazines { get; set; } = [];
         public ICollection<AppUserManga> AppUsers { get; set; } = [];

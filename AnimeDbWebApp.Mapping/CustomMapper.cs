@@ -104,7 +104,8 @@ namespace AnimeDbWebApp.Mapping
 			where T : class where TT : class
 		{
 			string mappingProp = typeof(T).Name.Substring(5);
-            var inputProps = typeof(T).GetProperties();
+			if (typeof(T).Name == "AnimeManga" && typeof(TT).Name.Contains("Manga")) mappingProp = "Anime";
+			var inputProps = typeof(T).GetProperties();
             var innerProp = typeof(T).GetProperties().FirstOrDefault(p => p.Name == mappingProp);
 			if (innerProp == null) return;
 			if (typeof(TT) == typeof(string))

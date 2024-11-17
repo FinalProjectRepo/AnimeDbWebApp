@@ -46,7 +46,7 @@ namespace AnimeDbWebApp.Data.Repositories
 				query = query.Include(include);
             }
 
-            return await query!.FirstAsync(predicate);
+            return await query!.FirstOrDefaultAsync(predicate);
         }
 		public IEnumerable<T> Where<T>(Func<T, bool> predicate) where T : class => [.. DbSet<T>().Where(x => predicate(x))];
         public async Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class

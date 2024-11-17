@@ -1,0 +1,82 @@
+﻿@model MangaDetailsViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+<style>
+	p { margin-bottom: 0.2em !important; }
+	a { margin: 0 !important; }
+</style>
+<div class="container text-left p-sm-0">
+	<div class="row mb-4">
+		<div class="col-lg-3">
+			<img src="@Model.PosterUrl" alt="Manga Poster" />
+		</div>
+		<div class="col-sm-8">
+			<p><b>Title:</b> @Model.Title</p>
+			<p><b>English Title:</b> @Model.Title</p>
+			<p><b>Japanesse Title:</b> @Model.Title</p>
+			<p><b>Type:</b> @Model.Type</p>
+			<p><b>Status:</b> @Model.Status</p>
+			<p><b>Started Airing:</b> @Model.StartDate</p>
+			<p><b>Finished Airing:</b> @Model.EndDate</p>
+			<p><b>Chapters:</b> @Model.Chapters</p>
+			<p><b>Volumes:</b> @Model.Volumes</p>
+			<p><b>Score:</b> @Model.Score</p>
+			<p><b>Rank:</b> @Model.Rank</p>
+			<p><b>Genres:</b> @string.Join(", ", Model.Genres)</p>
+		</div>
+	</div>
+	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Synopsis:</b> @Model.Synopsis</p>
+	<p class="mb-sm-4"><b>Background:</b> @Model.Background</p>
+	<div class="mb-4">
+		@if (Model.MangaRelations.Any())
+		{
+			<p class="mb-sm-2"><b>Manga relations:</b></p>
+			@foreach (var relation in Model.MangaRelations)
+			{
+				<a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@relation.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @relation.Title</p>
+					<p class="pl-sm-3 text-dark"><b>Relation Type:</b> @relation.RelationType</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.Adaptations.Any())
+		{
+			<p class="mb-sm-2"><b>Adaptations:</b></p>
+			@foreach (var adaptation in Model.Adaptations)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@adaptation.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @adaptation.Title</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.MangasAuthors.Any())
+		{
+			<p class="mb-sm-2"><b>Authors:</b></p>
+			@foreach (var author in Model.MangasAuthors)
+			{
+				<a asp-controller="Author" asp-action="Details" asp-route-authorId="@author.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @author.Name</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.MangasMagazines.Any())
+		{
+			<p class="mb-sm-2"><b>Magazines:</b></p>
+			@foreach (var magazine in Model.MangasMagazines)
+			{
+				<a asp-controller="Magazine" asp-action="Details" asp-route-magazineId="@magazine.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @magazine.Name</p>
+				</a>
+			}
+		}
+	</div>
+</div>
