@@ -8,8 +8,6 @@ namespace AnimeDbWebApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<AnimeProducer> builder)
         {
-            builder.Navigation(a => a.Producer).AutoInclude();
-
             builder.HasKey(ap => new { ap.AnimeId, ap.ProducerId });
 
             builder.HasOne(ap => ap.Anime)

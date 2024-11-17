@@ -42,7 +42,10 @@
 				<th>Duration</th>
 				<th>Air Date</th>
 				<th>Finished Airing</th>
-				<th>User Progress</th>
+				@if(User?.Identity?.IsAuthenticated ?? false)
+				{
+					<th>User List</th>
+				}
 			</tr>
 		</thead>
 		<tbody>

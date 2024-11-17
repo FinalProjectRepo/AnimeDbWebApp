@@ -8,8 +8,6 @@ namespace AnimeDbWebApp.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<MangaMagazine> builder)
         {
-            builder.Navigation(a => a.Magazine).AutoInclude();
-
             builder.HasKey(mm => new { mm.MangaId, mm.MagazineId });
 
             builder.HasOne(mm => mm.Manga)

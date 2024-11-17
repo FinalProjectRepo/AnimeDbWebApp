@@ -1,0 +1,98 @@
+﻿@model AnimeDetailsViewModel
+
+@{
+	ViewData["Title"] = Model.Title;
+}
+<style>
+	p { margin-bottom: 0.2em !important; }
+	a { margin: 0 !important; }
+</style>
+<div class="container text-left p-sm-0">
+	<div class="row mb-4">
+		<div class="col-lg-3">
+			<img src="@Model.PosterUrl" alt="Anime Poster" />
+		</div>
+		<div class ="col-sm-8">
+			<p><b>Title:</b> @Model.Title</p>
+			<p><b>English Title:</b> @Model.Title</p>
+			<p><b>Japanesse Title:</b> @Model.Title</p>
+			<p><b>Type:</b> @Model.Type</p>
+			<p><b>Source:</b> @Model.Source</p>
+			<p><b>Status:</b> @Model.Status</p>
+			<p><b>Season:</b> @Model.Season</p>
+			<p><b>Started Airing:</b> @Model.StartDate</p>
+			<p><b>Finished Airing:</b> @Model.EndDate</p>
+			<p><b>Episodes:</b> @Model.Episodes</p>
+			<p><b>Duration:</b> @Model.Duration</p>
+			<p><b>Rating:</b> @Model.Rating</p>
+			<p><b>Score:</b> @Model.Score</p>
+			<p><b>Rank:</b> @Model.Rank</p>
+			<p><b>Genres:</b> @string.Join(", ", Model.Genres)</p>
+		</div>
+	</div>
+	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Trailer:</b> @Model.TrailerUrl</p>
+	<p class="mb-sm-2"><b>Synopsis:</b> @Model.Synopsis</p>
+	<p class="mb-sm-4"><b>Background:</b> @Model.Background</p>
+	<div class="mb-4">
+		@if(Model.AnimesRelations.Any())
+		{
+			<p class="mb-sm-2"><b>Anime relations:</b></p>
+			@foreach (var relation in Model.AnimesRelations)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@relation.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @relation.Title</p>
+					<p class="pl-sm-3 text-dark"><b>Relation Type:</b> @relation.RelationType</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.Adaptations.Any())
+		{
+			<p class="mb-sm-2"><b>Adaptations:</b></p>
+			@foreach (var adaptation in Model.Adaptations)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@adaptation.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @adaptation.Title</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.AnimesProducers.Any())
+		{
+			<p class="mb-sm-2"><b>Producers:</b></p>
+			@foreach (var producer in Model.AnimesProducers)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@producer.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @producer.Name</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.AnimesStudios.Any())
+		{
+			<p class="mb-sm-2"><b>Studios:</b></p>
+			@foreach (var studio in Model.AnimesStudios)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@studio.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @studio.Name</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.AnimesLicensors.Any())
+		{
+			<p class="mb-sm-2"><b>Licensors:</b></p>
+			@foreach (var licensor in Model.AnimesLicensors)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@licensor.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @licensor.Name</p>
+				</a>
+			}
+		}
+	</div>
+</div>

@@ -7,8 +7,6 @@ using System.Linq;
 using System.Linq.Expressions;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
-using Microsoft.EntityFrameworkCore.Query;
-using Azure;
 
 namespace AnimeDbWebApp.Data.Repositories
 {
@@ -26,32 +24,29 @@ namespace AnimeDbWebApp.Data.Repositories
 		public T? FirstOrDefault<T>(Func<T, bool> predicate) where T : class => DbSet<T>().FirstOrDefault(predicate);
         public async Task<T?> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : class
             => await DbSet<T>().FirstOrDefaultAsync(predicate);
-		public T? FirstWithInclude<T>(Func<T, bool> predicate, Expression<Func<T, object>>[] includes)
+		public T? FirstWithInclude<T>(Func<T, bool> predicate, string[] includes)
 			where T : class
 		{
 			if (includes.Length == 0) return FirstOrDefault<T>(predicate);
-			DbSet<T> dbSet = DbSet<T>();
-			IIncludableQueryable<T, object>? dbSetWithIncludes = null;
-			for (var i = 0; i < includes.Length; i++)
+			IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
 			{
-				Expression<Func<T, object>> include = includes[i];
-				dbSetWithIncludes = dbSet.Include(include);
+				query = query.Include(include);
 			}
 
-			return dbSetWithIncludes!.FirstOrDefault(predicate);
+			return query!.FirstOrDefault(predicate);
 		}
 		public async Task<T?> FirstWithIncludeAsync<T>(Expression<Func<T, bool>> predicate, 
-			Expression<Func<T, object>>[] includes) where T : class
+			string[] includes) where T : class
 		{
 			if (includes.Length == 0) return await FirstOrDefaultAsync<T>(predicate);
-			DbSet<T> dbSet = DbSet<T>();
-			IIncludableQueryable<T, object>? dbSetWithIncludes = dbSet.Include(includes[0]);
-			for (int i = 1; i < includes.Length; i++)
+            IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
 			{
-				dbSetWithIncludes = dbSetWithIncludes.Include(includes[i]);
+				query = query.Include(include);
             }
 
-            return await dbSetWithIncludes!.FirstAsync(predicate);
+            return await query!.FirstAsync(predicate);
         }
 		public IEnumerable<T> Where<T>(Func<T, bool> predicate) where T : class => [.. DbSet<T>().Where(x => predicate(x))];
         public async Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class
@@ -63,19 +58,12 @@ namespace AnimeDbWebApp.Data.Repositories
             params Expression<Func<T, object>>[] includes)
             where T : class
 		{
-			DbSet<T> dbSet = DbSet<T>();
-			IQueryable<T> query;
-			if (includes.Any())
+			IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
 			{
-                IIncludableQueryable<T, object>? dbSetWithIncludes = dbSet.Include(includes[0]);
-                for (var i = 1; i < includes.Length; i++)
-                {
-                    dbSetWithIncludes = dbSetWithIncludes.Include(includes[i]);
-                }
-                query = dbSetWithIncludes.Where(predicate ?? (x => true));
+				query = query.Include(include);
             }
-            else query = dbSet.Where(predicate ?? (x => true));
-			 
+            query = query.Where(predicate ?? (x => true));
 
 			int total = (query.Count() - 1) / items + 1;
 			if (total < page) page = total;
@@ -88,18 +76,12 @@ namespace AnimeDbWebApp.Data.Repositories
             Expression<Func<T, bool>>? predicate = null, params Expression<Func<T, object>>[] includes) 
             where T : class
 		{
-            DbSet<T> dbSet = DbSet<T>();
-            IQueryable<T> query;
-			if (includes.Any())
-            {
-                IIncludableQueryable<T, object>? dbSetWithIncludes = dbSet.Include(includes[0]);
-                for (var i = 1; i < includes.Length; i++)
-                {
-                    dbSetWithIncludes = dbSetWithIncludes.Include(includes[i]);
-                }
-                query = dbSetWithIncludes.Where(predicate ?? (x => true));
+            IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
             }
-            else query = dbSet.Where(predicate ?? (x => true));
+            query = query.Where(predicate ?? (x => true));
 
             int test = await query.CountAsync();
 			int total = (await query.CountAsync() - 1) / items + 1;

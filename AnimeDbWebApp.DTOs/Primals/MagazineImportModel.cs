@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.CodeAnalysis;
+
 using static AnimeDbWebApp.Common.ValidationConstants.MagazineValidations;
 
 namespace AnimeDbWebApp.DTOs.Primals

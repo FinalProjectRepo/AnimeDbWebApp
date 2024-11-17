@@ -53,18 +53,12 @@ namespace AnimeDbWebApp.Services
 
         public async Task<AnimeDetailsViewModel> GetAnime(int animeId)
 		{
-            Expression<Func<Anime, object>>[] includes =
+            string[] includes =
             {
-                a => a.Type,
-                a => a.Source,
-                a => a.Genres,
-                a => a.AnimesProducers,
-                a => a.AnimesLicensors,
-                a => a.AnimesStudios,
-                a => a.AnimesLicensors,
-                a => a.AnimesRelations,
-                a => a.Adaptations,
-            };
+                "Type","Source", "Genres", "Genres.Genre", "AnimesProducers", "AnimesProducers.Producer",
+				"AnimesLicensors", "AnimesLicensors.Licensor", "AnimesStudios", "AnimesStudios.Studio", 
+				 "AnimesRelations", "AnimesRelations.Relation", "Adaptations", "Adaptations.Manga"
+			};
 			
 			Expression<Func<Anime, bool>> firstFunc = a => a.Id == animeId;
 			var anime = await _repo.FirstWithIncludeAsync<Anime>(firstFunc, includes);

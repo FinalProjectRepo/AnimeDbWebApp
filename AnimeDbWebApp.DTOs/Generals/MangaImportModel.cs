@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -40,7 +39,6 @@ namespace AnimeDbWebApp.DTOs.Generals
         [JsonProperty("chapters")]
         public int? Chapters { get; set; }
 
-        [Comment("Number of volumes, chapters combined in")]
         [JsonProperty("volumes")]
         public int? Volumes { get; set; }
 

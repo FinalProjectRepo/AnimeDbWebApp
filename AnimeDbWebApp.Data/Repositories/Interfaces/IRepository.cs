@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
@@ -17,9 +16,9 @@ namespace AnimeDbWebApp.Data.Repositories.Interfaces
         public Task<T?> FindAsync<T, TT>(TT id) where T : class;
 		public T? FirstOrDefault<T>(Func<T, bool> predicate) where T : class;
         public Task<T?> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
-        public T? FirstWithInclude<T>(Func<T, bool> predicate, params Expression<Func<T, object>>[] includes) where T : class;
+        public T? FirstWithInclude<T>(Func<T, bool> predicate, string[] includes) where T : class;
         public Task<T?> FirstWithIncludeAsync<T>(Expression<Func<T, bool>> predicate,
-            Expression<Func<T, object>>[] includes) where T : class;
+            string[] includes) where T : class;
         public IEnumerable<T> Where<T>(Func<T,bool> predicate) where T : class;
         public Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
         public IEnumerable<T> All<T>() where T : class;

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -108,27 +107,41 @@ namespace AnimeDbWebApp.Mapping
             var inputProps = typeof(T).GetProperties();
             var innerProp = typeof(T).GetProperties().FirstOrDefault(p => p.Name == mappingProp);
 			if (innerProp == null) return;
-            var outputProps = typeof(TT).GetProperties();
-            foreach (var input in inputCollection)
+			if (typeof(TT) == typeof(string))
 			{
-				var output = Activator.CreateInstance(typeof(TT)) as TT;
-				foreach(var prop in outputProps)
-                {
-					var valueProp = inputProps.FirstOrDefault(p => p.Name == prop.Name);
-
-					if (valueProp == null)
-					{
-                        var innerValue = innerProp.GetValue(input);
-						if (innerValue == null) continue;
-                        var inputProp = innerValue.GetType().GetProperties().FirstOrDefault(p => p.Name == prop.Name);
-						if (inputProp == null) continue;
-                        var value = inputProp.GetValue(innerValue);
-                        prop.SetValue(output, value);
-                    }
-					else prop.SetValue(output, valueProp.GetValue(input));
+				foreach (var input in inputCollection)
+				{
+					var innerValue = innerProp.GetValue(input);
+					if (innerValue == null) continue;
+					var inputProp = innerValue.GetType().GetProperty("Name");
+					if (inputProp == null) continue;
+					var value = inputProp.GetValue(innerValue);
+					outputCollection.Add((value as TT)!);
 				}
-                outputCollection.Add(output!);
-            }
+			}
+			else
+			{
+				var outputProps = typeof(TT).GetProperties();
+				foreach (var input in inputCollection)
+				{
+					var innerValue = innerProp.GetValue(input);
+					var output = Activator.CreateInstance(typeof(TT)) as TT;
+					foreach (var prop in outputProps)
+					{
+						var valueProp = inputProps.FirstOrDefault(p => p.Name == prop.Name);
+						if (valueProp == null)
+						{
+							if (innerValue == null) continue;
+							var inputProp = innerValue.GetType().GetProperties().FirstOrDefault(p => p.Name == prop.Name);
+							if (inputProp == null) continue;
+							var value = inputProp.GetValue(innerValue);
+							prop.SetValue(output, value);
+						}
+						else prop.SetValue(output, valueProp.GetValue(input));
+					}
+					outputCollection.Add(output!);
+				}
+			}
         }
     }
 }

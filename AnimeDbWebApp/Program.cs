@@ -14,8 +14,6 @@ using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Data.Repositories;
 using AnimeDbWebApp.Extensions;
 using AnimeDbWebApp.Services;
-using AnimeDbWebApp.Services.Interfaces;
-using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp
 {
