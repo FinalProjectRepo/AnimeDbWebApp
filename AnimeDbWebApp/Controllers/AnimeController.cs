@@ -1,26 +1,36 @@
-﻿using AnimeDbWebApp.Services.Interfaces;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using System.Security.Claims;
 using System.Threading.Tasks;
 
+using AnimeDbWebApp.Models;
+using AnimeDbWebApp.Services.Interfaces;
+using AnimeDbWebApp.ViewModels.Anime;
+
 namespace AnimeDbWebApp.Controllers
 {
-    public class AnimeController(IAnimeService service) : Controller
+    public class AnimeController(IGeneralService service) : Controller
     {
-        private readonly IAnimeService _service = service;
+        private readonly IGeneralService _service = service;
 
         [HttpGet]
         public async Task<IActionResult> Index(int page = 1, int itemsPerPage = 50, string search = "")
         {
             var userId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
-            var model = await _service.GetAll(userId, page, itemsPerPage, search);
+            var model = await _service.GetAll<Anime, AnimeViewModel, AppUserAnime>(userId, page, itemsPerPage, search);
             return View(model);
         }
 
         [HttpGet]
-        public async Task<IActionResult> Details(int animeId)
+        public async Task<IActionResult> Details(int id)
         {
-            var model = await _service.GetAnime(animeId);
+			string[] includes =
+			{
+				"Type","Source", "Genres", "Genres.Genre", "AnimesProducers", "AnimesProducers.Producer",
+				"AnimesLicensors", "AnimesLicensors.Licensor", "AnimesStudios", "AnimesStudios.Studio",
+				 "AnimesRelations", "AnimesRelations.Relation", "MangaAdaptations", "MangaAdaptations.Manga"
+			};
+			var model = await _service.GetModel<Anime, AnimeDetailsViewModel>(id, includes);
             return View(model);
         }
     }

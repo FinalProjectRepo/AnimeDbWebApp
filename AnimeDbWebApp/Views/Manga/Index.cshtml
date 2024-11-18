@@ -1,4 +1,4 @@
-﻿@model MangaWithCountViewModel
+﻿@model GeneralWithCountViewModel<MangaViewModel>
 
 @{
 	ViewData["Title"] = "Manga Page";
@@ -22,7 +22,7 @@
 
 <div class="btn-toolbar container-fluid row justify-content-center my-4">
 	<div class="col-sm-10 d-flex justify-content-end align-baseline">
-		<p class="mr-4" style="font-size:1.3em">Items per page: </p>
+		<p class="mr-4">Items per page: </p>
 		<a class="btn btn-secondary mr-2" asp-controller="Manga" asp-action="Index" asp-route-itemsPerPage=10>10</a>
 		<a class="btn btn-secondary mr-2" asp-controller="Manga" asp-action="Index" asp-route-itemsPerPage=20>20</a>
 		<a class="btn btn-secondary mr-2" asp-controller="Manga" asp-action="Index" asp-route-itemsPerPage=50>50</a>
@@ -49,12 +49,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var manga in Model.Mangas)
+			@foreach (var manga in Model.Entities)
 			{
 				<tr>
 					<td>
-						<div class="container" style="aspect-ratio: 4/1">
-							<a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@manga.Id">
+						<div style="height:40px">
+							<a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id">
 								<img class="custom-scale h-100" src="@manga.PosterUrl" alt="Manga img">
 							</a>
 						</div>
@@ -69,10 +69,10 @@
 					@if (User?.Identity?.IsAuthenticated ?? false)
 					{
 						int option = 1;
-						if (Model.AddedMangas.ContainsKey(manga.Id)) option = Model.AddedMangas[manga.Id];
+						if (Model.UserAddedEntities.ContainsKey(manga.Id)) option = Model.UserAddedEntities[manga.Id];
 						<td>
 							<form asp-controller="MangaList" asp-action="Add" metod="get">
-								<input name="mangaId" type="hidden" value="@manga.Id">
+								<input name="id" type="hidden" value="@manga.Id">
 								<select name="status" class="form-control" aria-required="true" value="@option">
 									<option value="1">Plan To Watch</option>
 									<option value="2">Watching</option>

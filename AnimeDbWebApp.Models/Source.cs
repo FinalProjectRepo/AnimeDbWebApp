@@ -14,7 +14,7 @@ namespace AnimeDbWebApp.Models
         public int Id { get; set; }
 
         [Required]
-        [Comment("Type name")]
+        [Comment("Source name")]
         [MaxLength(MaxNameLength)]
         public string Name { get; set; } = null!;
 

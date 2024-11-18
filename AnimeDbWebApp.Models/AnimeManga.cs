@@ -13,7 +13,7 @@ namespace AnimeDbWebApp.Models
         public Anime Anime { get; set; } = null!;
 
         [Required]
-        [Comment("Unique identifier of anime")]
+        [Comment("Unique identifier of manga")]
         public int MangaId { get; set; }
         [ForeignKey(nameof(MangaId))]
         public Manga Manga { get; set; } = null!;

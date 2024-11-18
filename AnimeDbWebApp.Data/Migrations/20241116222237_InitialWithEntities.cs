@@ -72,11 +72,11 @@ namespace AnimeDbWebApp.Data.Migrations
                     Url = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Url link to mal site"),
                     Website = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Person website"),
                     PosterUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Person poster url"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Anime title"),
-                    GivenName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Anime title in english translated"),
-                    FamilyName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Anime title in japanese characters"),
-                    Birthdate = table.Column<DateTime>(type: "DATETIME2", nullable: true, comment: "Date of birth"),
-                    About = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Aditional information about person")
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Author name"),
+                    GivenName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Author given name"),
+                    FamilyName = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: true, comment: "Author family name"),
+                    Birthdate = table.Column<DateTime>(type: "DATETIME2", nullable: true, comment: "Author birthdate"),
+                    About = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Aditional information about author")
                 },
                 constraints: table =>
                 {
@@ -116,7 +116,7 @@ namespace AnimeDbWebApp.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Unique identifier that equals mal_id")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Url link to mal site"),
-                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Anime title")
+                    Name = table.Column<string>(type: "nvarchar(255)", maxLength: 255, nullable: false, comment: "Magazine name")
                 },
                 constraints: table =>
                 {
@@ -143,10 +143,10 @@ namespace AnimeDbWebApp.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Unique Identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Url link to mal site of producer"),
-                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "English name of the studio"),
-                    JpName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Japanese name of the studio"),
-                    ImgUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Anime poster url"),
-                    Established = table.Column<DateTime>(type: "DATETIME2", nullable: true, comment: "Date the studio is established"),
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false, comment: "English name of the producer"),
+                    JpName = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true, comment: "Japanese name of the producer"),
+                    ImgUrl = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: true, comment: "Producer image url"),
+                    Established = table.Column<DateTime>(type: "DATETIME2", nullable: true, comment: "Date the producer is established"),
                     About = table.Column<string>(type: "nvarchar(max)", nullable: true, comment: "Information about producer")
                 },
                 constraints: table =>
@@ -160,7 +160,7 @@ namespace AnimeDbWebApp.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false, comment: "Unique Identifier")
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Type name")
+                    Name = table.Column<string>(type: "nvarchar(30)", maxLength: 30, nullable: false, comment: "Source name")
                 },
                 constraints: table =>
                 {
@@ -522,7 +522,7 @@ namespace AnimeDbWebApp.Data.Migrations
                 columns: table => new
                 {
                     AnimeId = table.Column<int>(type: "int", nullable: false, comment: "Unique identifier of anime"),
-                    MangaId = table.Column<int>(type: "int", nullable: false, comment: "Unique identifier of anime")
+                    MangaId = table.Column<int>(type: "int", nullable: false, comment: "Unique identifier of manga")
                 },
                 constraints: table =>
                 {

@@ -1,0 +1,59 @@
+﻿@model ProducerDetailsViewModel
+
+@{
+	ViewData["Title"] = Model.Name;
+}
+<style>
+	p { margin-bottom: 0.2em !important; }
+	a { margin: 0 !important; }
+</style>
+<div class="container text-left p-sm-0">
+	<div class="row mb-4">
+		<div class ="col-sm-3">
+			<img src="@Model.ImgUrl" alt="Producer Poster" class="img-fluid" />
+		</div>
+		<div class="col-sm-8">
+			<p><b>Name:</b> @Model.Name</p>
+			<p><b>Japanesse name:</b> @Model.JpName</p>
+			<p><b>Established:</b> @Model.Established</p>
+		</div>
+	</div>
+	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-4"><b>About:</b> @Model.About</p>
+	<div class="mb-4">
+		@if (Model.AnimesProducers.Any())
+		{
+			<p class="mb-sm-2"><b>Producer of animes:</b></p>
+			@foreach (var producer in Model.AnimesProducers)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-id="@producer.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @producer.Title</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.AnimesStudios.Any())
+		{
+			<p class="mb-sm-2"><b>Studio of animes:</b></p>
+			@foreach (var studio in Model.AnimesStudios)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-id="@studio.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @studio.Title</p>
+				</a>
+			}
+		}
+	</div>
+	<div class="mb-4">
+		@if (Model.AnimesLicensors.Any())
+		{
+			<p class="mb-sm-2"><b>Producer of animes:</b></p>
+			@foreach (var licensor in Model.AnimesProducers)
+			{
+				<a asp-controller="Anime" asp-action="Details" asp-route-id="@licensor.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @licensor.Title</p>
+				</a>
+			}
+		}
+	</div>
+</div>

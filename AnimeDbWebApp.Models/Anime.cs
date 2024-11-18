@@ -8,15 +8,12 @@ using System.Collections.Generic;
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
+using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Anime
+    public class Anime : General
     {
-        [Key]
-        [Comment("Unique identifier that equals mal_id")]
-        public int Id { get; set; }
-
         [Comment("Url link to mal site")]
         [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
@@ -32,7 +29,7 @@ namespace AnimeDbWebApp.Models
         [Required]
         [Comment("Anime title")]
         [MaxLength(MaxTitleLength)]
-        public string Title { get; set; } = null!;
+        public new string Title { get; set; } = null!;
 
         [Comment("Anime title in english translated")]
         [MaxLength(MaxEngTitleLength)]
@@ -47,8 +44,8 @@ namespace AnimeDbWebApp.Models
         public int? Episodes { get; set; }
 
         [Required]
-        [Range(MinRangeAnimeStatus, MaxRangeAnimeStatus)]
         [Comment("Airing status")]
+        [Range(MinRangeAnimeStatus, MaxRangeAnimeStatus)]
         public AnimeStatus Status { get; set; }
 
         [Comment("Airing start date")]
@@ -103,7 +100,7 @@ namespace AnimeDbWebApp.Models
         public ICollection<AnimeStudio> AnimesStudios { get; set; } = [];
         public ICollection<AnimeGenre> Genres { get; set; } = [];
         public ICollection<AnimeRelation> AnimesRelations { get; set; } = [];
-        public ICollection<AnimeManga> Adaptations { get; set; } = [];
+        public ICollection<AnimeManga> MangaAdaptations { get; set; } = [];
         public ICollection<AppUserAnime> AppUsers { get; set; } = [];
     }
 }

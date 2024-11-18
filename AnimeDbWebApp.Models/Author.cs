@@ -6,15 +6,12 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using static AnimeDbWebApp.Common.ValidationConstants.AuthorValidations;
+using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Author
+    public class Author : Primal
     {
-        [Key]
-        [Comment("Unique identifier that equals mal_id")]
-        public int Id { get; set; }
-
         [Comment("Url link to mal site")]
         [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
@@ -28,23 +25,23 @@ namespace AnimeDbWebApp.Models
         public string? PosterUrl { get; set; }
 
         [Required]
-        [Comment("Anime title")]
+        [Comment("Author name")]
         [MaxLength(MaxNameLength)]
-        public string Name { get; set; } = null!;
+        public new string Name { get; set; } = null!;
 
-        [Comment("Anime title in english translated")]
+        [Comment("Author given name")]
         [MaxLength(MaxGivenNameLength)]
-        public string? GivenName { get; set; } = null!;
+        public string? GivenName { get; set; }
 
-        [Comment("Anime title in japanese characters")]
+        [Comment("Author family name")]
         [MaxLength(MaxFamilyNameLength)]
-        public string? FamilyName { get; set; } = null!;
+        public string? FamilyName { get; set; }
 
-        [Comment("Date of birth")]
+        [Comment("Author birthdate")]
         [Column(TypeName = "DATETIME2")]
         public DateTime? Birthdate { get; set; }
 
-        [Comment("Aditional information about person")]
+        [Comment("Aditional information about author")]
         public string? About { get; set; }
 
         public ICollection<MangaAuthor> MangasAuthors { get; set; } = [];

@@ -1,4 +1,4 @@
-﻿@model AnimeWithCountViewModel
+﻿@model GeneralWithCountViewModel<AnimeViewModel>
 
 @{
 	ViewData["Title"] = "Anime Page";
@@ -22,7 +22,7 @@
 
 <div class="btn-toolbar container-fluid row justify-content-center my-4">
 	<div class="col-sm-10 d-flex justify-content-end align-baseline">
-		<p class="mr-4" style="font-size:1.3em">Items per page: </p>
+		<p class="mr-4">Items per page: </p>
 		<a class="btn btn-secondary mr-2" asp-controller="Anime" asp-action="Index" asp-route-itemsPerPage=10>10</a>
 		<a class="btn btn-secondary mr-2" asp-controller="Anime" asp-action="Index" asp-route-itemsPerPage=20>20</a>
 		<a class="btn btn-secondary mr-2" asp-controller="Anime" asp-action="Index" asp-route-itemsPerPage=50>50</a>
@@ -49,13 +49,13 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach (var anime in Model.Animes)
+			@foreach (var anime in Model.Entities)
 			{
 				<tr>
 					<td>
-						<div class="container" style="aspect-ratio: 4/1">
-							<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@anime.Id">
-								<img class="custom-scale h-100" src="@anime.PosterUrl" alt="Anime img">
+						<div style="height:40px">
+							<a asp-controller="Anime" asp-action="Details" asp-route-id="@anime.Id">
+								<img class="custom-scale h-100" src="@anime.PosterUrl" alt="Anime image">
 							</a>
 						</div>
 					</td>
@@ -69,10 +69,10 @@
 					@if(User?.Identity?.IsAuthenticated ?? false)
 					{
 						int option = 1;
-						if (Model.AddedAnimes.ContainsKey(anime.Id)) option = Model.AddedAnimes[anime.Id];
+						if (Model.UserAddedEntities.ContainsKey(anime.Id)) option = Model.UserAddedEntities[anime.Id];
 						<td>
 							<form asp-controller="AnimeList" asp-action="Add" metod="get">
-								<input name="animeId" type="hidden" value="@anime.Id">
+								<input name="id" type="hidden" value="@anime.Id">
 								<select name="status" class="form-control" aria-required="true" value="@option">
 									<option value="1">Plan To Watch</option>
 									<option value="2">Watching</option>

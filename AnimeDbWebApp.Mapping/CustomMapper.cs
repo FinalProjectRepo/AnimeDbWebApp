@@ -91,7 +91,7 @@ namespace AnimeDbWebApp.Mapping
 						var map = method!.MakeGenericMethod(methodTType, methodTTType);
 						var value = outputProperty.GetValue(output);
 
-                        map.Invoke(typeof(CustomMapper), [inputProperty.GetValue(input), value]);
+                        map.Invoke(typeof(CustomMapper), [inputProperty.GetValue(input), value, outputProperty.Name]);
                         outputProperty.SetValue(output, value);
                     }
 					else outputProperty.SetValue(output, null);
@@ -100,11 +100,13 @@ namespace AnimeDbWebApp.Mapping
 			}
 		}
 
-		public static void MapCollections<T, TT>(ICollection<T> inputCollection, ICollection<TT> outputCollection)
+		public static void MapCollections<T, TT>(ICollection<T> inputCollection, ICollection<TT> outputCollection, string outputPropName)
 			where T : class where TT : class
 		{
-			string mappingProp = typeof(T).Name.Substring(5);
-			if (typeof(T).Name == "AnimeManga" && typeof(TT).Name.Contains("Manga")) mappingProp = "Anime";
+			string mappingProp = typeof(T).Name.Substring(GeneralModelLength);
+			if (typeof(TT).Name.Contains("General") && !outputPropName.StartsWith(mappingProp)) 
+				mappingProp = typeof(T).Name.Substring(0, GeneralModelLength);
+
 			var inputProps = typeof(T).GetProperties();
             var innerProp = typeof(T).GetProperties().FirstOrDefault(p => p.Name == mappingProp);
 			if (innerProp == null) return;

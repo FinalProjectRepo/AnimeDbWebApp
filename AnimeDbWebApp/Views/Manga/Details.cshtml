@@ -10,7 +10,7 @@
 <div class="container text-left p-sm-0">
 	<div class="row mb-4">
 		<div class="col-lg-3">
-			<img src="@Model.PosterUrl" alt="Manga Poster" />
+			<img src="@Model.PosterUrl" alt="Manga Poster" class="img-fluid" />
 		</div>
 		<div class="col-sm-8">
 			<p><b>Title:</b> @Model.Title</p>
@@ -36,7 +36,7 @@
 			<p class="mb-sm-2"><b>Manga relations:</b></p>
 			@foreach (var relation in Model.MangaRelations)
 			{
-				<a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@relation.Id" class="row">
+				<a asp-controller="Manga" asp-action="Details" asp-route-id="@relation.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @relation.Title</p>
 					<p class="pl-sm-3 text-dark"><b>Relation Type:</b> @relation.RelationType</p>
 				</a>
@@ -44,12 +44,12 @@
 		}
 	</div>
 	<div class="mb-4">
-		@if (Model.Adaptations.Any())
+		@if (Model.AnimeAdaptations.Any())
 		{
-			<p class="mb-sm-2"><b>Adaptations:</b></p>
-			@foreach (var adaptation in Model.Adaptations)
+			<p class="mb-sm-2"><b>Anime adaptations:</b></p>
+			@foreach (var adaptation in Model.AnimeAdaptations)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@adaptation.Id" class="row">
+				<a asp-controller="Anime" asp-action="Details" asp-route-id="@adaptation.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @adaptation.Title</p>
 				</a>
 			}
@@ -61,7 +61,7 @@
 			<p class="mb-sm-2"><b>Authors:</b></p>
 			@foreach (var author in Model.MangasAuthors)
 			{
-				<a asp-controller="Author" asp-action="Details" asp-route-authorId="@author.Id" class="row">
+				<a asp-controller="Author" asp-action="Details" asp-route-id="@author.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @author.Name</p>
 				</a>
 			}
@@ -73,7 +73,7 @@
 			<p class="mb-sm-2"><b>Magazines:</b></p>
 			@foreach (var magazine in Model.MangasMagazines)
 			{
-				<a asp-controller="Magazine" asp-action="Details" asp-route-magazineId="@magazine.Id" class="row">
+				<a asp-controller="Magazine" asp-action="Details" asp-route-id="@magazine.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @magazine.Name</p>
 				</a>
 			}

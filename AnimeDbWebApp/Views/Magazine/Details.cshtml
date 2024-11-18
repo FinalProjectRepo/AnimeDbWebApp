@@ -1,0 +1,25 @@
+﻿@model MagazineDetailsViewModel
+
+@{
+	ViewData["Title"] = Model.Name;
+}
+<style>
+	p { margin-bottom: 0.2em !important; }
+	a { margin: 0 !important; }
+</style>
+<div class="container text-left p-sm-0">
+	<p class ="mb-sm-2"><b>Name:</b> @Model.Name</p>
+	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<div class="mb-4">
+		@if (Model.MangasMagazines.Any())
+		{
+			<p class="mb-sm-2"><b>Mangas:</b></p>
+			@foreach (var manga in Model.MangasMagazines)
+			{
+				<a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @manga.Title</p>
+				</a>
+			}
+		}
+	</div>
+</div>

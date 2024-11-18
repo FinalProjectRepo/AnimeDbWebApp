@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Anime
 {
@@ -24,42 +25,11 @@ namespace AnimeDbWebApp.ViewModels.Anime
 		public string Source { get; set; } = null!;
 		public string? Type { get; set; }
 
-		public ICollection<ProducerForAnimeViewModel> AnimesProducers { get; set; } = [];
-		public ICollection<LicensorForAnimeViewModel> AnimesLicensors { get; set; } = [];
-		public ICollection<StudioForAnimeViewModel> AnimesStudios { get; set; } = [];
+		public ICollection<MappingForNonRelationViewModel> AnimesProducers { get; set; } = [];
+		public ICollection<MappingForNonRelationViewModel> AnimesLicensors { get; set; } = [];
+		public ICollection<MappingForNonRelationViewModel> AnimesStudios { get; set; } = [];
 		public ICollection<string> Genres { get; set; } = [];
-		public ICollection<RelationForAnimeViewModel> AnimesRelations { get; set; } = [];
-		public ICollection<AdaptationForAnimeViewModel> Adaptations { get; set; } = [];
+		public ICollection<MappingForRelationViewModel> AnimesRelations { get; set; } = [];
+		public ICollection<MappingForGeneralViewModel> MangaAdaptations { get; set; } = [];
 	}
-
-	public class ProducerForAnimeViewModel
-	{
-		public int Id { get; set; }
-		public string Name { get; set; } = null!;
-	}
-
-    public class LicensorForAnimeViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-    }
-
-    public class StudioForAnimeViewModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; } = null!;
-    }
-
-	public class RelationForAnimeViewModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; } = null!;
-		public string RelationType { get; set; } = null!;
-    }
-
-    public class AdaptationForAnimeViewModel
-    {
-        public int Id { get; set; }
-        public string Title { get; set; } = null!;
-    }
 }

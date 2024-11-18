@@ -10,7 +10,7 @@
 <div class="container text-left p-sm-0">
 	<div class="row mb-4">
 		<div class="col-lg-3">
-			<img src="@Model.PosterUrl" alt="Anime Poster" />
+			<img src="@Model.PosterUrl" alt="Anime Poster" class="img-fluid" />
 		</div>
 		<div class ="col-sm-8">
 			<p><b>Title:</b> @Model.Title</p>
@@ -40,7 +40,7 @@
 			<p class="mb-sm-2"><b>Anime relations:</b></p>
 			@foreach (var relation in Model.AnimesRelations)
 			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-animeId="@relation.Id" class="row">
+				<a asp-controller="Anime" asp-action="Details" asp-route-id="@relation.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @relation.Title</p>
 					<p class="pl-sm-3 text-dark"><b>Relation Type:</b> @relation.RelationType</p>
 				</a>
@@ -48,12 +48,12 @@
 		}
 	</div>
 	<div class="mb-4">
-		@if (Model.Adaptations.Any())
+		@if (Model.MangaAdaptations.Any())
 		{
-			<p class="mb-sm-2"><b>Adaptations:</b></p>
-			@foreach (var adaptation in Model.Adaptations)
+			<p class="mb-sm-2"><b>Manga adaptations:</b></p>
+			@foreach (var adaptation in Model.MangaAdaptations)
 			{
-				<a asp-controller="Manga" asp-action="Details" asp-route-mangaId="@adaptation.Id" class="row">
+				<a asp-controller="Manga" asp-action="Details" asp-route-id="@adaptation.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @adaptation.Title</p>
 				</a>
 			}
@@ -65,7 +65,7 @@
 			<p class="mb-sm-2"><b>Producers:</b></p>
 			@foreach (var producer in Model.AnimesProducers)
 			{
-				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@producer.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-id="@producer.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @producer.Name</p>
 				</a>
 			}
@@ -77,7 +77,7 @@
 			<p class="mb-sm-2"><b>Studios:</b></p>
 			@foreach (var studio in Model.AnimesStudios)
 			{
-				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@studio.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-id="@studio.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @studio.Name</p>
 				</a>
 			}
@@ -89,7 +89,7 @@
 			<p class="mb-sm-2"><b>Licensors:</b></p>
 			@foreach (var licensor in Model.AnimesLicensors)
 			{
-				<a asp-controller="Producer" asp-action="Details" asp-route-producerId="@licensor.Id" class="row">
+				<a asp-controller="Producer" asp-action="Details" asp-route-id="@licensor.Id" class="row">
 					<p class="text-dark"><b>Title:</b> @licensor.Name</p>
 				</a>
 			}

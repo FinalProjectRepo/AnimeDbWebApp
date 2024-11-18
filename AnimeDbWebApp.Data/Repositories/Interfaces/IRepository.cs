@@ -24,9 +24,9 @@ namespace AnimeDbWebApp.Data.Repositories.Interfaces
         public IEnumerable<T> All<T>() where T : class;
         public Task<IEnumerable<T>> AllAsync<T>() where T : class;
         public Tuple<int, IEnumerable<T>> TakePage<T>(int items, int page,
-			Expression<Func<T, bool>>? predicate = null, params Expression<Func<T, object>>[] includes) where T : class;
+			Expression<Func<T, bool>>? predicate = null, params string[] includes) where T : class;
 		public Task<Tuple<int, IEnumerable<T>>> TakePageAsync<T>(int items, int page,
-            Expression<Func<T, bool>>? predicate = null, params Expression<Func<T, object>>[] includes)
+            Expression<Func<T, bool>>? predicate = null, params string[] includes)
             where T : class;
         public int SaveChanges<T>() where T : class;
         public Task<int> SaveChangesAsync<T>() where T : class;

@@ -10,6 +10,7 @@
         public const string MappingImportsNamespace = "Mappings";
         public const string MultipleTypesSeparator = "For";
         public const int ImportModelLength = 11;
+        public const int GeneralModelLength = 5;
         public const string DataFolderName = "AnimeDbWebApp.Data";
         public const string DatasetFolderName = "Datasets";
         public const string TypeForAnimeDatasetFileName = "animeTypes.json";

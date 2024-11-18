@@ -55,8 +55,7 @@ namespace AnimeDbWebApp.Data.Repositories
         public async Task<IEnumerable<T>> AllAsync<T>() where T : class => await DbSet<T>().ToArrayAsync();
         public void Remove<T>(T entity) where T : class => DbSet<T>().Remove(entity);
         public Tuple<int, IEnumerable<T>> TakePage<T>(int items, int page, Expression<Func<T, bool>>? predicate = null, 
-            params Expression<Func<T, object>>[] includes)
-            where T : class
+			params string[] includes) where T : class
 		{
 			IQueryable<T> query = DbSet<T>();
 			foreach (var include in includes)
@@ -73,7 +72,7 @@ namespace AnimeDbWebApp.Data.Repositories
 		}
 
 		public async Task<Tuple<int, IEnumerable<T>>> TakePageAsync<T>(int items, int page,
-            Expression<Func<T, bool>>? predicate = null, params Expression<Func<T, object>>[] includes) 
+            Expression<Func<T, bool>>? predicate = null, params string[] includes) 
             where T : class
 		{
             IQueryable<T> query = DbSet<T>();

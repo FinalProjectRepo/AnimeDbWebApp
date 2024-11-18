@@ -1,0 +1,68 @@
+﻿@model PrimalWithCountViewModel<MagazineViewModel>
+
+@{
+	ViewData["Title"] = "Magazine Page";
+	int start = -2;
+	if (Model.Page == 1) start = 0;
+	else if (Model.Page == 2) start = -1;
+
+	int end = 2;
+	if (Model.Page == Model.TotalPages) end = 0;
+	else if (Model.Page + 1 == Model.TotalPages) end = 1;
+}
+
+<div class="btn-toolbar container-fluid row justify-content-center my-4">
+	<form class="form-inline col-sm-10 justify-content-center" asp-controller="Magazine" asp-action="Index" method="get">
+		<input name="page" type="hidden" value="@Model.Page">
+		<input name="itemsPerPage" type="hidden" value="@Model.ItemsPerPage">
+		<input name="search" class="py-1 ml-2 w-25" type="text" placeholder="Search">
+		<button type="submit" class="btn btn-primary">Seach</button>
+	</form>
+</div>
+
+<div class="btn-toolbar container-fluid row justify-content-center my-4">
+	<div class="col-sm-10 d-flex justify-content-end align-baseline">
+		<p class="mr-4">Items per page: </p>
+		<a class="btn btn-secondary mr-2" asp-controller="Magazine" asp-action="Index" asp-route-itemsPerPage=10>10</a>
+		<a class="btn btn-secondary mr-2" asp-controller="Magazine" asp-action="Index" asp-route-itemsPerPage=20>20</a>
+		<a class="btn btn-secondary mr-2" asp-controller="Magazine" asp-action="Index" asp-route-itemsPerPage=50>50</a>
+	</div>
+</div>
+
+
+<div class="container-fluid row justify-content-center">
+	<table class="table table-striped table-bordered table-hover col-sm-10">
+		<thead>
+			<tr>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach (var entity in Model.Entities)
+			{
+				<tr>
+					<td>
+						<a asp-controller="Magazine" asp-action="Details" asp-route-id="@entity.Id">
+							<p class="text-dark">@entity.Name</p>
+						</a>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+</div>
+
+<div class="btn-toolbar mb-3 justify-content-center" role="toolbar" aria-label="Toolbar with button groups">
+	<div class="btn-group mr-2" role="group" aria-label="First group">
+		@for (int i = start; i <= end; i++)
+		{
+			<a asp-controller="Magazine" asp-action="Index" asp-route-page=@(Model.Page + i) asp-route-itemsPerPage=@(Model.ItemsPerPage) asp-route-search="@Model.Search" class="btn btn-secondary">@(Model.Page + i)</a>
+		}
+		<form class="form-inline" asp-controller="Magazine" asp-action="Index" method="get">
+			<input name="page" class="py-1 ml-2 w-25" type="number" placeholder="@Model.Page">
+			<input name="itemsPerPage" type="hidden" value=@Model.ItemsPerPage>
+			<input name="search" type="hidden" value=@Model.Search>
+			<input type="submit" class="btn btn-primary" value="Go">
+		</form>
+	</div>
+</div>

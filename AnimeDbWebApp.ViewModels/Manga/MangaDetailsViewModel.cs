@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System;
+using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Manga
 {
@@ -22,35 +22,10 @@ namespace AnimeDbWebApp.ViewModels.Manga
 		public string? Background { get; set; }
 		public string? Type { get; set; }
 
-		public ICollection<AuthorsForMangaViewModel> MangasAuthors { get; set; } = [];
+		public ICollection<MappingForNonRelationViewModel> MangasAuthors { get; set; } = [];
 		public ICollection<string> Genres { get; set; } = [];
-		public ICollection<RelationForMangaViewModel> MangaRelations { get; set; } = [];
-		public ICollection<AdaptationForMangaViewModel> Adaptations { get; set; } = [];
-		public ICollection<MagazineForMangaViewModel> MangasMagazines { get; set; } = [];
-	}
-
-	public class AuthorsForMangaViewModel
-	{
-		public int Id { get; set; }
-		public string Name { get; set; } = null!;
-	}
-
-	public class RelationForMangaViewModel
-	{
-		public int Id { get; set; }
-		public string Title { get; set; } = null!;
-		public string RelationType { get; set; } = null!;
-	}
-
-	public class AdaptationForMangaViewModel
-	{
-		public int Id { get; set; }
-		public string Title { get; set; } = null!;
-	}
-
-	public class MagazineForMangaViewModel
-	{
-		public int Id { get; set; }
-		public string Name { get; set; } = null!;
+		public ICollection<MappingForRelationViewModel> MangaRelations { get; set; } = [];
+		public ICollection<MappingForGeneralViewModel> AnimeAdaptations { get; set; } = [];
+		public ICollection<MappingForNonRelationViewModel> MangasMagazines { get; set; } = [];
 	}
 }

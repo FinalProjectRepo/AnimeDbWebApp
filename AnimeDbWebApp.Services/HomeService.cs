@@ -10,7 +10,7 @@ using AnimeDbWebApp.ViewModels.Home;
 
 namespace AnimeDbWebApp.Services
 {
-    public class HomeService(IRepository repository) : IHomeService
+	public class HomeService(IRepository repository) : IHomeService
     {
         private readonly IRepository _repo = repository;
 

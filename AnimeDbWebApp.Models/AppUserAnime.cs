@@ -6,10 +6,11 @@ using System;
 
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
+using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class AppUserAnime
+    public class AppUserAnime : UserGeneral
     {
         [Required]
         [Comment("Unique identifier of anime")]
@@ -19,7 +20,7 @@ namespace AnimeDbWebApp.Models
 
         [Required]
         [Comment("User unique identifier")]
-        public Guid UserId { get; set; }
+        public new Guid UserId { get; set; }
         [ForeignKey(nameof(UserId))]
         public AppUser AppUser { get; set; } = null!;
 

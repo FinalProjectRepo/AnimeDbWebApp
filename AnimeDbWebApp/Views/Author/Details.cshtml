@@ -1,0 +1,37 @@
+﻿@model AuthorDetailsViewModel
+
+@{
+	ViewData["Title"] = Model.Name;
+}
+<style>
+	p { margin-bottom: 0.2em !important; }
+	a { margin: 0 !important; }
+</style>
+<div class="container text-left p-sm-0">
+	<div class="row mb-4">
+		<div class="col-lg-3">
+			<img src="@Model.PosterUrl" alt="Author Poster" class="img-fluid" />
+		</div>
+		<div class="col-sm-8">
+			<p><b>Name:</b> @Model.Name</p>
+			<p><b>Given name:</b> @Model.GivenName</p>
+			<p><b>Family name:</b> @Model.FamilyName</p>
+			<p><b>Birthdate:</b> @Model.Birthdate</p>
+		</div>
+	</div>
+	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Website:</b> @Model.Website</p>
+	<p class="mb-sm-4"><b>About:</b> @Model.About</p>
+	<div class="mb-4">
+		@if (Model.MangasAuthors.Any())
+		{
+			<p class="mb-sm-2"><b>Mangas:</b></p>
+			@foreach (var manga in Model.MangasAuthors)
+			{
+				<a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id" class="row">
+					<p class="text-dark"><b>Title:</b> @manga.Title</p>
+				</a>
+			}
+		}
+	</div>
+</div>

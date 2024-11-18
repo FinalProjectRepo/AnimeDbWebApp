@@ -8,15 +8,12 @@ using System.ComponentModel.DataAnnotations;
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
+using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Manga
+    public class Manga : General
     {
-        [Key]
-        [Comment("Unique identifier that equals mal_id")]
-        public int Id { get; set; }
-
         [MaxLength(MaxUrlLength)]
         [Comment("Url link to mal site")]
         public string? Url { get; set; }
@@ -28,7 +25,7 @@ namespace AnimeDbWebApp.Models
         [Required]
         [Comment("Manga title")]
         [MaxLength(MaxTitleLength)]
-        public string Title { get; set; } = null!;
+        public new string Title { get; set; } = null!;
 
         [Comment("Manga title in english translated")]
         [MaxLength(MaxEngTitleLength)]
@@ -80,7 +77,7 @@ namespace AnimeDbWebApp.Models
         public ICollection<MangaAuthor> MangasAuthors { get; set; } = [];
         public ICollection<MangaGenre> Genres { get; set; } = [];
         public ICollection<MangaRelation> MangaRelations { get; set; } = [];
-        public ICollection<AnimeManga> Adaptations { get; set; } = [];
+        public ICollection<AnimeManga> AnimeAdaptations { get; set; } = [];
         public ICollection<MangaMagazine> MangasMagazines { get; set; } = [];
         public ICollection<AppUserManga> AppUsers { get; set; } = [];
     }

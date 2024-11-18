@@ -9,15 +9,15 @@ using System;
 using System.Reflection;
 
 using AnimeDbWebApp.Data;
-using AnimeDbWebApp.Models;
-using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Data.Repositories;
+using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Extensions;
+using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Services;
 
 namespace AnimeDbWebApp
 {
-    public class Program
+	public class Program
     {
         public static void Main(string[] args)
         {
@@ -46,7 +46,7 @@ namespace AnimeDbWebApp
 			});
 
             builder.Services.AddScoped<IRepository, Repository>();
-            builder.Services.RegisterServices(Assembly.GetAssembly(typeof(AnimeService))!);
+            builder.Services.RegisterServices(Assembly.GetAssembly(typeof(HomeService))!);
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
