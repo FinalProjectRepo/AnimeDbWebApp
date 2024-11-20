@@ -10,7 +10,7 @@ using AnimeDbWebApp.Data.Extensions;
 
 namespace AnimeDbWebApp.Data
 {
-    public class AnimeDbContext : IdentityDbContext<AppUser, IdentityRole<Guid>, Guid>
+    public class AnimeDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
 		public AnimeDbContext() { }
 

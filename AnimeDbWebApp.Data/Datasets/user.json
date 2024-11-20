@@ -1,0 +1,50 @@
+[
+    {
+        "Id": "38ac6343-c319-40fc-a62b-fd4c5948f1c6",
+        "UserName": "Shefcheto",
+        "NormalizedUserName": "SHEFCHETO",
+        "Email": "shefcheto@users.com",
+        "NormalizedEmail": "SHEFCHETO@USERS.COM",
+        "EmailConfirmed": true,
+        "PasswordHash": "AQAAAAIAAYagAAAAEBXBWbiIcNJ3mn3f/chNvQYcYbDYXHtAPlP/ccChWi0qlRTjoaoC8IbcyWUdMeSDig==",
+        "SecurityStamp": "CH6VK6AKNJKXFYULEYFXPC62JR7UTMC1",
+        "ConcurrencyStamp": "51c071cd-e4d1-4217-af12-54881813934d",
+        "PhoneNumber": "+111111111111",
+        "PhoneNumberConfirmed": true,
+        "TwoFactorEnabled": false,
+        "LockoutEnabled": false,
+        "AccessFailedCount": 0
+    },
+    {
+        "Id": "44cc80e4-84e1-437a-b943-90730089868a",
+        "UserName": "AnimeManiac",
+        "NormalizedUserName": "ANIMEMANIAC",
+        "Email": "animemaniac@users.com",
+        "NormalizedEmail": "ANIMEMANIAC@USERS.COM",
+        "EmailConfirmed": true,
+        "PasswordHash": "AQAAAAIAAYagAAAAEBXBWbiIcNJ3mn3f/chNvQYcYbDYXHtAPlP/ccChWi0qlRTjoaoC8IbcyWUdMeSDig==",
+        "SecurityStamp": "CH6VK6AKNJKXFYULEYFXPC62JR7UTMC2",
+        "ConcurrencyStamp": "295a0bbd-e5b8-48c3-9947-f378c0a14fc3",
+        "PhoneNumber": "+222222222222",
+        "PhoneNumberConfirmed": true,
+        "TwoFactorEnabled": false,
+        "LockoutEnabled": false,
+        "AccessFailedCount": 0
+    },
+    {
+        "Id": "f1b58bac-8ebe-4db5-a9ed-656326479f62",
+        "UserName": "Casual",
+        "NormalizedUserName": "CASUAL",
+        "Email": "casual@users.com",
+        "NormalizedEmail": "CASUAL@USERS.COM",
+        "EmailConfirmed": true,
+        "PasswordHash": "AQAAAAIAAYagAAAAEBXBWbiIcNJ3mn3f/chNvQYcYbDYXHtAPlP/ccChWi0qlRTjoaoC8IbcyWUdMeSDig==",
+        "SecurityStamp": "CH6VK6AKNJKXFYULEYFXPC62JR7UTMC3",
+        "ConcurrencyStamp": "5ae88d28-aedc-4175-9dcf-c100898e93d7",
+        "PhoneNumber": "+333333333333",
+        "PhoneNumberConfirmed": true,
+        "TwoFactorEnabled": false,
+        "LockoutEnabled": false,
+        "AccessFailedCount": 0
+    }
+]

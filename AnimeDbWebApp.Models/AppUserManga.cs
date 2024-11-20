@@ -14,19 +14,12 @@ namespace AnimeDbWebApp.Models
     {
         [Required]
         [Comment("Unique identifier of manga")]
-        public int MangaId { get; set; }
-        [ForeignKey(nameof(MangaId))]
+        public new int Id { get; set; }
+        [ForeignKey(nameof(Id))]
         public Manga Manga { get; set; } = null!;
 
-        [Required]
-        [Comment("User unique identifier")]
-        public new Guid UserId { get; set; }
+
         [ForeignKey(nameof(UserId))]
         public AppUser AppUser { get; set; } = null!;
-
-        [Required]
-        [Comment("Watching status")]
-        [Range(MinRangeWatchingStatus, MaxRangeWatchingStatus)]
-        public WatchingStatus Status { get; set; }
     }
 }

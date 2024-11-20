@@ -7,7 +7,7 @@ using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models.BaseModels;
 using AnimeDbWebApp.Services.Interfaces;
-using AnimeDbWebApp.ViewModels;
+using AnimeDbWebApp.ViewModels.Generic;
 
 namespace AnimeDbWebApp.Services
 {

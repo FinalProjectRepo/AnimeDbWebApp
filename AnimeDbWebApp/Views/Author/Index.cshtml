@@ -43,7 +43,7 @@
 			@foreach (var entity in Model.Entities)
 			{
 				<tr>
-					<td>
+					<td style="vertical-align:middle;">
 						<div style="height:40px">
 							<a asp-controller="Author" asp-action="Details" asp-route-id="@entity.Id">
 								<img class="custom-scale h-100" src="@entity.PosterUrl" alt="Author image">

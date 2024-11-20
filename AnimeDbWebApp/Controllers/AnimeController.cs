@@ -23,14 +23,15 @@ namespace AnimeDbWebApp.Controllers
 
         [HttpGet]
         public async Task<IActionResult> Details(int id)
-        {
+		{
+			var userId = User?.FindFirstValue(ClaimTypes.NameIdentifier);
 			string[] includes =
 			{
 				"Type","Source", "Genres", "Genres.Genre", "AnimesProducers", "AnimesProducers.Producer",
 				"AnimesLicensors", "AnimesLicensors.Licensor", "AnimesStudios", "AnimesStudios.Studio",
 				 "AnimesRelations", "AnimesRelations.Relation", "MangaAdaptations", "MangaAdaptations.Manga"
 			};
-			var model = await _service.GetModel<Anime, AnimeDetailsViewModel>(id, includes);
+			var model = await _service.GetModel<Anime, AnimeDetailsViewModel, AppUserAnime>(userId, id, includes);
             return View(model);
         }
     }

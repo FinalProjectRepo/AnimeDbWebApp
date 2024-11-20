@@ -5,11 +5,11 @@
 }
 <style>
 	p { margin-bottom: 0.2em !important; }
-	a { margin: 0 !important; }
+	a { margin-left: 0 !important; }
 </style>
 <div class="container text-left p-sm-0">
 	<p class ="mb-sm-2"><b>Name:</b> @Model.Name</p>
-	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Link to mal:</b><a class="text-dark pl-2" href="@Model.Url">@Model.Url</a></p>
 	<div class="mb-4">
 		@if (Model.MangasMagazines.Any())
 		{

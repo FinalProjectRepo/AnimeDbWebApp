@@ -8,11 +8,11 @@ using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models.BaseModels;
 using AnimeDbWebApp.Services.Interfaces;
-using AnimeDbWebApp.ViewModels;
+using AnimeDbWebApp.ViewModels.Generic;
 
 namespace AnimeDbWebApp.Services
 {
-	public class GeneralService(IRepository repository) : IGeneralService
+    public class GeneralService(IRepository repository) : IGeneralService
 	{
 		private readonly IRepository _repo = repository;
 
@@ -25,9 +25,9 @@ namespace AnimeDbWebApp.Services
 
 			Expression<Func<T, bool>>? whereFunc = null;
 			if (!string.IsNullOrEmpty(search)) whereFunc = a => a.Title.Contains(search);
-			IEnumerable<T> mangas = [];
+			IEnumerable<T> entities = [];
 			int totalPages = 0;
-			(totalPages, mangas) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereFunc, "Type");
+			(totalPages, entities) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereFunc, "Type");
 
 			var viewModel = new GeneralWithCountViewModel<TT>()
 			{
@@ -39,36 +39,43 @@ namespace AnimeDbWebApp.Services
 
 			var dict = new Dictionary<int, int>();
 			bool userParse = Guid.TryParse(userId, out Guid userGuid);
-			if (userParse)
-			{
-				var userMangas = await _repo.WhereAsync<TU>(ua => ua.UserId == userGuid);
-				var props = typeof(TU).GetProperties();
-				var entityId = props.FirstOrDefault(p => p.Name.Contains("Id") && p.Name != "UserId");
-				var status = props.FirstOrDefault(p => p.Name.Contains("Status"));
-				if (status == null || entityId == null) return viewModel;
-				foreach (var entity in userMangas)
-				{
-					int.TryParse($"{status.GetValue(entity)}", out int statusValue);
-					int.TryParse($"{status.GetValue(entity)}", out int id);
-					dict[statusValue] = id;
-				}
-			}
-
+			if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
 			viewModel.UserAddedEntities = dict;
-			CustomMapper.MapAll(mangas, viewModel.Entities, true);
+			CustomMapper.MapAll(entities, viewModel.Entities, true);
 			return viewModel;
 		}
 
-		public async Task<TT> GetModel<T, TT>(int id, string[] includes)
-			where T : General where TT : class
+		public async Task<TT> GetModel<T, TT, TU>(string? userId, int id, string[] includes)
+			where T : General where TT : GeneralDetailsViewModel where TU : UserGeneral
 		{
 			Expression<Func<T, bool>> firstFunc = a => a.Id == id;
 			var entity = await _repo.FirstWithIncludeAsync<T>(firstFunc, includes);
-			var model = Activator.CreateInstance(typeof(TT)) as TT;
-			if (entity == null) return model!;
+			var viewModel = Activator.CreateInstance(typeof(TT)) as TT;
+			if (entity == null) return viewModel!;
 
-			CustomMapper.MapViews(entity, model!);
-			return model!;
+			var dict = new Dictionary<int, int>();
+			bool userParse = Guid.TryParse(userId, out Guid userGuid);
+			if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
+			viewModel!.AddedEntity = dict;
+
+			CustomMapper.MapViews(entity, viewModel!);
+			return viewModel!;
+		}
+
+		private async Task FillDictionary<TU>(Guid userGuid, Dictionary<int, int> addedEntities, Expression<Func<TU, bool>> filter)
+			where TU : UserGeneral
+		{
+			var userMangas = await _repo.WhereAsync<TU>(filter);
+			var props = typeof(TU).GetProperties();
+			var entityId = props.FirstOrDefault(p => p.Name == "Id" && p.Name != "UserId");
+			var status = props.FirstOrDefault(p => p.Name.Contains("Status"));
+			if (status == null || entityId == null) return;
+			foreach (var entity in userMangas)
+			{
+				int.TryParse($"{status.GetValue(entity)}", out int statusValue);
+				int.TryParse($"{status.GetValue(entity)}", out int id);
+				addedEntities[statusValue] = id;
+			}
 		}
 	}
 }

@@ -42,6 +42,11 @@ namespace AnimeDbWebApp.Mapping
                         success = DateTime.TryParse(inputValue, out DateTime outputValue);
                         if (success) outputProperty.SetValue(output, outputValue);
                     }
+					else if(outputProperty.PropertyType == typeof(Guid))
+					{
+						success = Guid.TryParse(inputValue, out Guid outputValue);
+						if (success) outputProperty.SetValue(output, outputValue);
+					}
                     else outputProperty.SetValue(output, null);
                 }
                 else outputProperty.SetValue(output, inputProperty.GetValue(input));
@@ -103,9 +108,12 @@ namespace AnimeDbWebApp.Mapping
 		public static void MapCollections<T, TT>(ICollection<T> inputCollection, ICollection<TT> outputCollection, string outputPropName)
 			where T : class where TT : class
 		{
-			string mappingProp = typeof(T).Name.Substring(GeneralModelLength);
+			int mappingLength = GeneralModelLength;
+			if (typeof(T).Name.Contains(nameof(AppUser))) mappingLength = nameof(AppUser).Length;
+
+			string mappingProp = typeof(T).Name.Substring(mappingLength);
 			if (typeof(TT).Name.Contains("General") && !outputPropName.StartsWith(mappingProp)) 
-				mappingProp = typeof(T).Name.Substring(0, GeneralModelLength);
+				mappingProp = typeof(T).Name.Substring(0, mappingLength);
 
 			var inputProps = typeof(T).GetProperties();
             var innerProp = typeof(T).GetProperties().FirstOrDefault(p => p.Name == mappingProp);

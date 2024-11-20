@@ -1,18 +1,7 @@
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using System;
 using System.Reflection;
-
-using AnimeDbWebApp.Data;
-using AnimeDbWebApp.Data.Repositories;
-using AnimeDbWebApp.Data.Repositories.Interfaces;
-using AnimeDbWebApp.Extensions;
-using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Services;
 
 namespace AnimeDbWebApp
@@ -23,45 +12,19 @@ namespace AnimeDbWebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            var connectionString = builder.Configuration.GetConnectionString("SqlServer") 
-                ?? throw new InvalidOperationException("Connection string not found.");
-
-            builder.Services.AddDbContext<AnimeDbContext>(options =>
-                options.UseSqlServer(connectionString));
-            builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-
-            builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>(
-                options => options.SignIn.RequireConfirmedAccount = false
-                )
-                .AddEntityFrameworkStores<AnimeDbContext>()
-				.AddRoles<IdentityRole<Guid>>()
-				.AddSignInManager<SignInManager<AppUser>>()
-				.AddUserManager<UserManager<AppUser>>();
-
-			builder.Services.ConfigureApplicationCookie(cfg =>
-			{
-				cfg.LoginPath = "/Identity/Account/Login";
-			});
-
-            builder.Services.AddScoped<IRepository, Repository>();
-            builder.Services.RegisterServices(Assembly.GetAssembly(typeof(HomeService))!);
+            builder.Services.AddDatabase(builder.Configuration);
+            builder.Services.AddApplicationIdentity(builder.Configuration);
+            builder.Services.AddApplicationServices(builder.Configuration, Assembly.GetAssembly(typeof(HomeService)));
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseMigrationsEndPoint();
-            }
+            if (app.Environment.IsDevelopment()) app.UseMigrationsEndPoint();
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -78,7 +41,12 @@ namespace AnimeDbWebApp
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
-            app.Run();
+   //         using (var scope = app.Services.CreateScope()) 
+   //         {
+			//	scope.ServiceProvider.AddRoleToUser();
+			//};
+
+			app.Run();
         }
     }
 }

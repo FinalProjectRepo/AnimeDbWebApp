@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using AnimeDbWebApp.ViewModels.Generic;
 using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Anime
 {
-	public class AnimeDetailsViewModel
+    public class AnimeDetailsViewModel : GeneralDetailsViewModel
 	{
+		public int Id { get; set; }
 		public string? Url { get; set; }
 		public string? PosterUrl { get; set; }
 		public string? TrailerUrl { get; set; }

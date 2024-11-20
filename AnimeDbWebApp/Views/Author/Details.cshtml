@@ -5,7 +5,7 @@
 }
 <style>
 	p { margin-bottom: 0.2em !important; }
-	a { margin: 0 !important; }
+	a { margin-left: 0 !important; }
 </style>
 <div class="container text-left p-sm-0">
 	<div class="row mb-4">
@@ -19,7 +19,7 @@
 			<p><b>Birthdate:</b> @Model.Birthdate</p>
 		</div>
 	</div>
-	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Link to mal:</b><a class="text-dark pl-2" href="@Model.Url">@Model.Url</a></p>
 	<p class="mb-sm-2"><b>Website:</b> @Model.Website</p>
 	<p class="mb-sm-4"><b>About:</b> @Model.About</p>
 	<div class="mb-4">

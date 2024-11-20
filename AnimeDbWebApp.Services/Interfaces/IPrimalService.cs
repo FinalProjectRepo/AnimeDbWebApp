@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
 using AnimeDbWebApp.Models.BaseModels;
-using AnimeDbWebApp.ViewModels;
+using AnimeDbWebApp.ViewModels.Generic;
 using AnimeDbWebApp.ViewModels.Manga;
 using AnimeDbWebApp.ViewModels.Producer;
 
 namespace AnimeDbWebApp.Services.Interfaces
 {
-	public interface IPrimalService
+    public interface IPrimalService
 	{
 		public Task<PrimalWithCountViewModel<TT>> GetAll<T, TT>(int page, int itemsPerPage, string search)
 			where T : Primal where TT : class;

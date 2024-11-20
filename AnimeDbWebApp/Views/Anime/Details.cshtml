@@ -5,9 +5,9 @@
 }
 <style>
 	p { margin-bottom: 0.2em !important; }
-	a { margin: 0 !important; }
+	a { margin-left: 0 !important; }
 </style>
-<div class="container text-left p-sm-0">
+<div class="container text-left py-2">
 	<div class="row mb-4">
 		<div class="col-lg-3">
 			<img src="@Model.PosterUrl" alt="Anime Poster" class="img-fluid" />
@@ -30,7 +30,7 @@
 			<p><b>Genres:</b> @string.Join(", ", Model.Genres)</p>
 		</div>
 	</div>
-	<p class="mb-sm-2"><b>Link to mal:</b> @Model.Url</p>
+	<p class="mb-sm-2"><b>Link to mal:</b><a class="text-dark pl-2" href="@Model.Url">@Model.Url</a></p>
 	<p class="mb-sm-2"><b>Trailer:</b> @Model.TrailerUrl</p>
 	<p class="mb-sm-2"><b>Synopsis:</b> @Model.Synopsis</p>
 	<p class="mb-sm-4"><b>Background:</b> @Model.Background</p>
@@ -38,13 +38,27 @@
 		@if(Model.AnimesRelations.Any())
 		{
 			<p class="mb-sm-2"><b>Anime relations:</b></p>
-			@foreach (var relation in Model.AnimesRelations)
-			{
-				<a asp-controller="Anime" asp-action="Details" asp-route-id="@relation.Id" class="row">
-					<p class="text-dark"><b>Title:</b> @relation.Title</p>
-					<p class="pl-sm-3 text-dark"><b>Relation Type:</b> @relation.RelationType</p>
-				</a>
-			}
+			<table>
+				<thead class="text-center pb-2">
+					<tr>
+						<th>Anime name</th>
+						<th>Relation type</th>
+					</tr>
+				</thead>
+				<tbody>
+					@foreach (var relation in Model.AnimesRelations)
+					{
+						<tr class="clickable-row">
+							<td class="pr-4">
+								<a asp-controller="Anime" asp-action="Details" asp-route-id="@relation.Id" class="row text-dark">
+									@relation.Title
+								</a>
+							</td>
+							<td>@relation.RelationType</td>
+						</tr>
+					}
+				</tbody>
+			</table>
 		}
 	</div>
 	<div class="mb-4">
@@ -95,4 +109,21 @@
 			}
 		}
 	</div>
+	@if(User?.Identity?.IsAuthenticated ?? false)
+	{
+		int option = 1;
+		if (Model.AddedEntity.ContainsKey(Model.Id)) option = Model.AddedEntity[Model.Id];
+		<div style="max-width:210px">
+			<form asp-controller="Added" asp-action="AddAnime" metod="get" class="row mx-0 justify-content-center">
+				<input name="id" type="hidden" value="@Model.Id">
+				<select name="status" class="form-control" style="max-width:140px" aria-required="true" value="@option">
+					<option value="1">Plan To Watch</option>
+					<option value="2">Watching</option>
+					<option value="3">Finished</option>
+					<option value="4">Abandon</option>
+				</select>
+				<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
+			</form>
+		</div>
+	}
 </div>

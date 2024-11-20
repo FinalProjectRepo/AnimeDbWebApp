@@ -41,7 +41,31 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Magazine" asp-action="Index">Magazines</a>
                         </li>
                     </ul>
-                    <partial name="_LoginPartial" />
+                    <div class="row">
+                        @if(User?.Identity?.IsAuthenticated ?? false)
+                        {
+                            if(User.IsInRole("Admin"))
+                            {
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="AdminPanel" asp-action="Index">Admin Panel</a>
+                                    </li>
+                                </ul>
+                            }
+                            else
+                            {
+                                <ul class="navbar-nav flex-grow-1">
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Added" asp-action="AddedAnime">Added Animes</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link text-dark" asp-area="" asp-controller="Added" asp-action="AddedManga">Added Mangas</a>
+                                    </li>
+                                </ul>
+                            }
+                        }
+                        <partial name="_LoginPartial" />
+                    </div>
                 </div>
             </div>
         </nav>
@@ -52,7 +76,7 @@
         </main>
     </div>
 
-    <footer class="border-top text-muted py-3" >
+    <footer class="border-top py-3" >
         <div class="container">
             &copy; @footerNote AnimeDbWebApp
         </div>
