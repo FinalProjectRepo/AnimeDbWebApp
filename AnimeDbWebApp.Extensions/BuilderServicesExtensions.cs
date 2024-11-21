@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 using System;
 using System.Linq;
@@ -13,7 +11,6 @@ using AnimeDbWebApp.Data;
 using AnimeDbWebApp.Data.Repositories;
 using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Models;
-using System.Threading.Tasks;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -35,10 +32,10 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddIdentity<AppUser, AppRole>(
 				options => options.IdentityOptions(configuration))
 			.AddEntityFrameworkStores<AnimeDbContext>()
-			.AddUserManager<UserManager<AppUser>>()
 			.AddRoles<AppRole>()
 			.AddRoleManager<RoleManager<AppRole>>()
-			.AddSignInManager<SignInManager<AppUser>>();
+			.AddSignInManager<SignInManager<AppUser>>()
+			.AddUserManager<UserManager<AppUser>>();
 
 			services.ConfigureApplicationCookie(options => options.CookieOptions(configuration));
 		}

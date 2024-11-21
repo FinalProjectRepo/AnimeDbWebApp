@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using AnimeDbWebApp.ViewModels.ExtraForUser;
 
 namespace AnimeDbWebApp.ViewModels.Generic
 {
-	public class AddedWithCountViewModel<T>
+    public class AddedWithCountViewModel<T> : EnumSelectListViewModel
 	{
 		public int TotalPages { get; set; }
 		public int Page { get; set; }

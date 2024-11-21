@@ -22,6 +22,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Extensions\AnimeDbWebApp.Extensions.csproj" />
+    <ProjectReference Include="..\AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Services\AnimeDbWebApp.Services.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj" />
   </ItemGroup>

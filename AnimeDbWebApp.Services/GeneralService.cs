@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models.BaseModels;
+using AnimeDbWebApp.Models.Enums;
 using AnimeDbWebApp.Services.Interfaces;
+using AnimeDbWebApp.ViewModels.ExtraForUser;
 using AnimeDbWebApp.ViewModels.Generic;
 
 namespace AnimeDbWebApp.Services
@@ -25,7 +28,7 @@ namespace AnimeDbWebApp.Services
 
 			Expression<Func<T, bool>>? whereFunc = null;
 			if (!string.IsNullOrEmpty(search)) whereFunc = a => a.Title.Contains(search);
-			IEnumerable<T> entities = [];
+			ICollection<T> entities = [];
 			int totalPages = 0;
 			(totalPages, entities) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereFunc, "Type");
 
@@ -40,26 +43,28 @@ namespace AnimeDbWebApp.Services
 			var dict = new Dictionary<int, int>();
 			bool userParse = Guid.TryParse(userId, out Guid userGuid);
 			if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
-			viewModel.UserAddedEntities = dict;
-			CustomMapper.MapAll(entities, viewModel.Entities, true);
+			viewModel.UserAdded = dict;
+			CustomMapper.MapAll(entities, viewModel.Entities, "view");
 			return viewModel;
 		}
 
 		public async Task<TT> GetModel<T, TT, TU>(string? userId, int id, string[] includes)
-			where T : General where TT : GeneralDetailsViewModel where TU : UserGeneral
+			where T : General where TT : InheritedForWatchingStatus where TU : UserGeneral
 		{
 			Expression<Func<T, bool>> firstFunc = a => a.Id == id;
 			var entity = await _repo.FirstWithIncludeAsync<T>(firstFunc, includes);
 			var viewModel = Activator.CreateInstance(typeof(TT)) as TT;
-			if (entity == null) return viewModel!;
+			if (entity == null) return viewModel!;			
 
-			var dict = new Dictionary<int, int>();
-			bool userParse = Guid.TryParse(userId, out Guid userGuid);
-			if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
-			viewModel!.AddedEntity = dict;
+			var inputProps = typeof(T).GetProperties();
+			var outputProps = typeof(TT).GetProperties();
+			CustomMapper.MapViews(entity, viewModel!, inputProps, outputProps);
 
-			CustomMapper.MapViews(entity, viewModel!);
-			return viewModel!;
+            var dict = new Dictionary<int, int>();
+            bool userParse = Guid.TryParse(userId, out Guid userGuid);
+            if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
+            viewModel!.UserAdded = dict;
+            return viewModel!;
 		}
 
 		private async Task FillDictionary<TU>(Guid userGuid, Dictionary<int, int> addedEntities, Expression<Func<TU, bool>> filter)
@@ -67,14 +72,14 @@ namespace AnimeDbWebApp.Services
 		{
 			var userMangas = await _repo.WhereAsync<TU>(filter);
 			var props = typeof(TU).GetProperties();
-			var entityId = props.FirstOrDefault(p => p.Name == "Id" && p.Name != "UserId");
+			var entityId = props.FirstOrDefault(p => p.Name == "Id");
 			var status = props.FirstOrDefault(p => p.Name.Contains("Status"));
 			if (status == null || entityId == null) return;
 			foreach (var entity in userMangas)
 			{
-				int.TryParse($"{status.GetValue(entity)}", out int statusValue);
-				int.TryParse($"{status.GetValue(entity)}", out int id);
-				addedEntities[statusValue] = id;
+				Enum.TryParse($"{status.GetValue(entity)}", out WatchingStatus statusValue);
+				int.TryParse($"{entityId.GetValue(entity)}", out int id);
+				addedEntities[id] = (int)statusValue;
 			}
 		}
 	}

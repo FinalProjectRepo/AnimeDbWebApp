@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+
 using System.Reflection;
+
 using AnimeDbWebApp.Services;
 
 namespace AnimeDbWebApp
@@ -41,12 +43,12 @@ namespace AnimeDbWebApp
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
-   //         using (var scope = app.Services.CreateScope()) 
-   //         {
-			//	scope.ServiceProvider.AddRoleToUser();
-			//};
+            using (var scope = app.Services.CreateScope())
+            {
+                scope.ServiceProvider.AddRoleToUser().Wait();
+            };
 
-			app.Run();
+            app.Run();
         }
     }
 }

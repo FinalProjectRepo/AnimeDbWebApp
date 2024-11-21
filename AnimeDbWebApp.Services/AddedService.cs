@@ -18,7 +18,7 @@ namespace AnimeDbWebApp.Services
 		private readonly IRepository _repo = repository;
 
 		public async Task<AddedWithCountViewModel<TT>> GetAdded<T, TT, TU>
-			(string userId, int page, int itemsPerPage, int status)
+			(string userId, int page, int itemsPerPage, int status, string mappingProp)
 			where T : class where TT : class where TU : UserGeneral
 		{
 			if (page <= 0) page = 1;
@@ -29,9 +29,9 @@ namespace AnimeDbWebApp.Services
 			if (status < MinRangeWatchingStatus || status > MaxRangeWatchingStatus) whereFunc = a => a.UserId == userGuid;
 			else whereFunc = a => (a.UserId == userGuid && a.WatchingStatus == (WatchingStatus)status);
 
-			IEnumerable<TU> entities = [];
+			ICollection<TU> entities = [];
 			int totalPages = 0;
-			(totalPages, entities) = await _repo.TakePageAsync<TU>(itemsPerPage, page, whereFunc, nameof(T));
+			(totalPages, entities) = await _repo.TakePageAsync<TU>(itemsPerPage, page, whereFunc, typeof(T).Name, $"{typeof(T).Name}.Type");
 
 			var viewModel = new AddedWithCountViewModel<TT>()
 			{
@@ -41,7 +41,7 @@ namespace AnimeDbWebApp.Services
 				Status = status,
 			};
 
-			CustomMapper.MapAll(entities, viewModel.Entities, true);
+			CustomMapper.MapAll(entities, viewModel.Entities, "withInner", mappingProp);
 			return viewModel;
 		}
 	}

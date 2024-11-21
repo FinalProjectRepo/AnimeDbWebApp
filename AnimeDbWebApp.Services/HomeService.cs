@@ -21,8 +21,8 @@ namespace AnimeDbWebApp.Services
             var animes = await _repo.WhereAsync<Anime>(a => a.Status == AnimeStatus.NotYetAired);
             var mangas = await _repo.WhereAsync<Manga>(a => a.StartDate > DateTime.Parse("2023/1/1"));
 
-            CustomMapper.MapAll(animes, viewModel.Animes, true);
-            CustomMapper.MapAll(mangas, viewModel.Mangas, true);
+            CustomMapper.MapAll(animes, viewModel.Animes, "view");
+            CustomMapper.MapAll(mangas, viewModel.Mangas, "view");
             return viewModel;
         }
     }

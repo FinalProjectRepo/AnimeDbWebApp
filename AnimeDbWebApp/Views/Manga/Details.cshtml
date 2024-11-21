@@ -94,15 +94,11 @@
 	@if (User?.Identity?.IsAuthenticated ?? false)
 	{
 		int option = 1;
-		if (Model.AddedEntity.ContainsKey(Model.Id)) option = Model.AddedEntity[Model.Id];
+		if (Model.UserAdded.ContainsKey(Model.Id)) option = Model.UserAdded[Model.Id];
 		<div style="max-width:210px">
 			<form asp-controller="Added" asp-action="AddManga" metod="get" class="row mx-0 justify-content-center">
 				<input name="id" type="hidden" value="@Model.Id">
-				<select name="status" class="form-control" style="max-width:140px" aria-required="true" value="@option">
-					<option value="1">Plan To Watch</option>
-					<option value="2">Watching</option>
-					<option value="3">Finished</option>
-					<option value="4">Abandon</option>
+				<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", option))">
 				</select>
 				<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
 			</form>

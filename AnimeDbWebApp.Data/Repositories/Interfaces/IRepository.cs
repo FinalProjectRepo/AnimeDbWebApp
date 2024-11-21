@@ -19,13 +19,13 @@ namespace AnimeDbWebApp.Data.Repositories.Interfaces
         public T? FirstWithInclude<T>(Func<T, bool> predicate, string[] includes) where T : class;
         public Task<T?> FirstWithIncludeAsync<T>(Expression<Func<T, bool>> predicate,
             string[] includes) where T : class;
-        public IEnumerable<T> Where<T>(Func<T,bool> predicate) where T : class;
-        public Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
-        public IEnumerable<T> All<T>() where T : class;
-        public Task<IEnumerable<T>> AllAsync<T>() where T : class;
-        public Tuple<int, IEnumerable<T>> TakePage<T>(int items, int page,
+        public ICollection<T> Where<T>(Func<T,bool> predicate) where T : class;
+        public Task<ICollection<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class;
+        public ICollection<T> All<T>() where T : class;
+        public Task<ICollection<T>> AllAsync<T>() where T : class;
+        public Tuple<int, ICollection<T>> TakePage<T>(int items, int page,
 			Expression<Func<T, bool>>? predicate = null, params string[] includes) where T : class;
-		public Task<Tuple<int, IEnumerable<T>>> TakePageAsync<T>(int items, int page,
+		public Task<Tuple<int, ICollection<T>>> TakePageAsync<T>(int items, int page,
             Expression<Func<T, bool>>? predicate = null, params string[] includes)
             where T : class;
         public int SaveChanges<T>() where T : class;

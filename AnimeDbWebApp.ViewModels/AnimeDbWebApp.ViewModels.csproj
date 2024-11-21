@@ -5,4 +5,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="WatchingStatus\**" />
+    <EmbeddedResource Remove="WatchingStatus\**" />
+    <None Remove="WatchingStatus\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj" />
+  </ItemGroup>
+
 </Project>

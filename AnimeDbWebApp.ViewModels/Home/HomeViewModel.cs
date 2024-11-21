@@ -4,7 +4,7 @@ namespace AnimeDbWebApp.ViewModels.Home
 {
     public class HomeViewModel
     {
-        public IList<AnimeHomeViewModel> Animes { get; set; } = [];
-        public IList<MangaHomeViewModel> Mangas { get; set; } = [];
+        public ICollection<AnimeHomeViewModel> Animes { get; set; } = [];
+        public ICollection<MangaHomeViewModel> Mangas { get; set; } = [];
     }
 }

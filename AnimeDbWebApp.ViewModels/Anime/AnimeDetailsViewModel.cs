@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using AnimeDbWebApp.ViewModels.Generic;
+using AnimeDbWebApp.ViewModels.ExtraForUser;
 using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Anime
 {
-    public class AnimeDetailsViewModel : GeneralDetailsViewModel
+    public class AnimeDetailsViewModel : InheritedForWatchingStatus
 	{
 		public int Id { get; set; }
 		public string? Url { get; set; }

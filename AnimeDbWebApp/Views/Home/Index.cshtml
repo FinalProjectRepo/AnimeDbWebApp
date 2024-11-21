@@ -2,7 +2,6 @@
 
 @{
     ViewData["Title"] = "Home Page";
-    int i = 0;
 }
 
 <a asp-controller="Anime" asp-action="Index" class="text-dark h1-custom card-link">Check all animes</a>
@@ -10,25 +9,22 @@
 <div id="carouselExampleControls" class="carousel slide mx-auto pt-3 pb-5 mb-5 border-bottom" data-ride="carousel">
     <div class="carousel-inner" style="aspect-ratio:4/1">
         <div class="carousel-item active">
-            @while (i < 5)
-            {
-                <a asp-controller="Anime" asp-action="Details" asp-route-id="@Model.Animes[i].Id">
-                    <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
-                </a>
-                i++;
-            }
+        @foreach(var anime in Model.Animes.Take(5))
+        {
+            <a asp-controller="Anime" asp-action="Details" asp-route-id="@anime.Id">
+                <img class="col-sm-2" src="@anime.PosterUrl" alt="First slide">
+            </a>
+        }
         </div>
-        @while (i + 6 < Model.Animes.Count)
+        @foreach (var anime in Model.Animes.Skip(5))
         {
             <div class="carousel-item">
-                @for (int j = 0; j < 5; j++, i++)
-                {
-                    <a asp-controller="Anime" asp-action="Details" asp-route-id="@Model.Animes[i].Id">
-                        <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
-                    </a>
-                }
+                <a asp-controller="Anime" asp-action="Details" asp-route-id="anime.Id">
+                    <img class="col-sm-2" src="anime.PosterUrl" alt="First slide">
+                </a>
             </div>
         }
+            
     </div>
     <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -40,30 +36,24 @@
     </a>
 </div>
 
-@{i = 0;}
-
 <a asp-controller="Manga" asp-action="Index" class="text-dark h1-custom card-link">Check all mangas</a>
 
 <div id="carouselExampleControls2" class="carousel slide mx-auto pt-3 pb-5 mb-5" data-ride="carousel">
     <div class="carousel-inner" style="aspect-ratio:4.5/1">
         <div class="carousel-item active">
-            @while (i < 5)
+            @foreach (var manga in Model.Mangas.Take(5))
             {
-                <a asp-controller="Manga" asp-action="Details" asp-route-id="@Model.Mangas[i].Id">
-                    <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
+                <a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id">
+                    <img class="col-sm-2" src="@manga.PosterUrl" alt="First slide">
                 </a>
-                i++;
             }
         </div>
-        @while (i + 6 < Model.Mangas.Count)
+        @foreach (var manga in Model.Mangas.Skip(5))
         {
             <div class="carousel-item">
-                @for (int j = 0; j < 5; j++, i++)
-                {
-                    <a asp-controller="Manga" asp-action="Details" asp-route-id="@Model.Mangas[i].Id">
-                        <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
-                    </a>
-                }
+                <a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id">
+                    <img class="col-sm-2" src="@manga.PosterUrl" alt="First slide">
+                </a>
             </div>
         }
     </div>

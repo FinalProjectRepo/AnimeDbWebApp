@@ -23,7 +23,7 @@ namespace AnimeDbWebApp.Services
 
 			Expression<Func<T, bool>>? whereFunc = null;
 			if (!string.IsNullOrEmpty(search)) whereFunc = a => a.Name.Contains(search);
-			IEnumerable<T> entities = [];
+			ICollection<T> entities = [];
 			int totalPages = 0;
 			(totalPages, entities) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereFunc);
 
@@ -33,7 +33,7 @@ namespace AnimeDbWebApp.Services
 			viewModel.ItemsPerPage = itemsPerPage;
 			viewModel.Search = search;
 
-			CustomMapper.MapAll(entities, viewModel.Entities, true);
+			CustomMapper.MapAll(entities, viewModel.Entities, "view");
 			return viewModel;
 		}
 
@@ -45,7 +45,9 @@ namespace AnimeDbWebApp.Services
 			var model = Activator.CreateInstance(typeof(TT)) as TT;
 			if (entity == null) return model!;
 
-			CustomMapper.MapViews(entity, model!);
+			var inputProps = typeof(T).GetProperties();
+			var outputProps = typeof(T).GetProperties();
+			CustomMapper.MapViews(entity, model!, inputProps, outputProps);
 			return model!;
 		}
 	}

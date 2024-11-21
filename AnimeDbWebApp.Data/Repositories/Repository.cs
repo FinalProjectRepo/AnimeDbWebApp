@@ -12,7 +12,7 @@ namespace AnimeDbWebApp.Data.Repositories
 {
     public class Repository(AnimeDbContext dbContext) : IRepository
     {
-        protected AnimeDbContext _dbContext = dbContext;
+        protected DbContext _dbContext = dbContext;
         protected DbSet<T> DbSet<T>() where T : class => _dbContext.Set<T>();
 
         public int EntitiesCount<T>() where T : class => _dbContext.Set<T>().Count();
@@ -48,13 +48,13 @@ namespace AnimeDbWebApp.Data.Repositories
 
             return await query!.FirstOrDefaultAsync(predicate);
         }
-		public IEnumerable<T> Where<T>(Func<T, bool> predicate) where T : class => [.. DbSet<T>().Where(x => predicate(x))];
-        public async Task<IEnumerable<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class
+		public ICollection<T> Where<T>(Func<T, bool> predicate) where T : class => [.. DbSet<T>().Where(x => predicate(x))];
+        public async Task<ICollection<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class
             => await DbSet<T>().Where(predicate).ToArrayAsync();
-        public IEnumerable<T> All<T>() where T : class => [.. DbSet<T>()];
-        public async Task<IEnumerable<T>> AllAsync<T>() where T : class => await DbSet<T>().ToArrayAsync();
+        public ICollection<T> All<T>() where T : class => [.. DbSet<T>()];
+        public async Task<ICollection<T>> AllAsync<T>() where T : class => await DbSet<T>().ToArrayAsync();
         public void Remove<T>(T entity) where T : class => DbSet<T>().Remove(entity);
-        public Tuple<int, IEnumerable<T>> TakePage<T>(int items, int page, Expression<Func<T, bool>>? predicate = null, 
+        public Tuple<int, ICollection<T>> TakePage<T>(int items, int page, Expression<Func<T, bool>>? predicate = null, 
 			params string[] includes) where T : class
 		{
 			IQueryable<T> query = DbSet<T>();
@@ -67,11 +67,11 @@ namespace AnimeDbWebApp.Data.Repositories
 			int total = (query.Count() - 1) / items + 1;
 			if (total < page) page = total;
 
-			IEnumerable<T> collection = query.Skip((page - 1) * items).Take(items).ToArray();
+			ICollection<T> collection = query.Skip((page - 1) * items).Take(items).ToArray();
 			return Tuple.Create(total, collection);
 		}
 
-		public async Task<Tuple<int, IEnumerable<T>>> TakePageAsync<T>(int items, int page,
+		public async Task<Tuple<int, ICollection<T>>> TakePageAsync<T>(int items, int page,
             Expression<Func<T, bool>>? predicate = null, params string[] includes) 
             where T : class
 		{
@@ -86,7 +86,7 @@ namespace AnimeDbWebApp.Data.Repositories
 			int total = (await query.CountAsync() - 1) / items + 1;
             if (total < page) page = total;
 
-			IEnumerable < T > collection = await query.Skip((page - 1) * items).Take(items).ToArrayAsync();
+			ICollection< T > collection = await query.Skip((page - 1) * items).Take(items).ToArrayAsync();
 			return Tuple.Create(total, collection);
 		}
 
