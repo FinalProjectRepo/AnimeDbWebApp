@@ -1,0 +1,25 @@
+﻿@{
+	int status = int.Parse($"{ViewData["statusCode"]}");
+	ViewData["Title"] = status;
+}
+
+@if (status == 400)
+{
+	<h1 class="mb-4">400 Bad Request</h1>
+	<img src="https://giffiles.alphacoders.com/221/221968.gif" />
+}
+else if (status == 402)
+{
+	<h1 class="mb-4">402 Unauthorized</h1>
+	<img src="https://pbs.twimg.com/media/EoGryrMXEAAC74v.jpg" />
+}
+else if (status == 404)
+{
+	<h1 class="mb-4">404 Not Found</h1>
+	<img src="https://i.pinimg.com/736x/40/4a/29/404a299bccba2881cb717942cfb56528.jpg" />
+	}
+else
+{
+	<h1 class="mb-4">500 Internal Server Error</h1>
+	<img src="https://giffiles.alphacoders.com/221/221968.gif" />
+}

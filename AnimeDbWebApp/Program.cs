@@ -23,14 +23,20 @@ namespace AnimeDbWebApp
 
             var app = builder.Build();
 
-            if (app.Environment.IsDevelopment()) app.UseMigrationsEndPoint();
+            if (app.Environment.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+				app.UseMigrationsEndPoint();
+			}
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseHsts();
+				app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+			app.UseStatusCodePagesWithReExecute("/Home/Status", "?statusCode={0}");
+
+			app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
@@ -38,12 +44,12 @@ namespace AnimeDbWebApp
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapControllerRoute(
+			app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
             app.MapRazorPages();
 
-            using (var scope = app.Services.CreateScope())
+			using (var scope = app.Services.CreateScope())
             {
                 scope.ServiceProvider.AddRoleToUser().Wait();
             };

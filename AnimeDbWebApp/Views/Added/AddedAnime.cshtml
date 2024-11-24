@@ -1,7 +1,6 @@
 ﻿@model AddedWithCountViewModel<AddedAnimeViewModel>
 
 @{
-	ViewData["Title"] = "Added Animes";
 	int start = -2;
 	if (Model.Page == 1) start = 0;
 	else if (Model.Page == 2) start = -1;
@@ -26,12 +25,17 @@
 	</div>
 </div>
 
-<div class="btn-toolbar container-fluid row justify-content-center my-4">
-	<div class="col-sm-10 d-flex justify-content-end align-baseline">
-		<p class="mr-4">Items per page: </p>
-		<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=10>10</a>
-		<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=20>20</a>
-		<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=50>50</a>
+<div class="container-fluid justify-content-center  col-sm-10">
+	<div class="btn-toolbar row justify-content-between my-4">
+		<div>
+			<a class="btn btn-secondary mr-2" asp-controller="Api" asp-action="GetUserAnimeList" asp-route-status="@Model.Status" asp-route-itemsPerPage=20>Download Anime List</a>
+		</div>
+		<div class="col-sm-10 d-flex justify-content-end align-baseline">
+			<p class="mr-4">Items per page: </p>
+			<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=10>10</a>
+			<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=20>20</a>
+			<a class="btn btn-secondary mr-2" asp-controller="Added" asp-action="AddedAnime" asp-route-status="@Model.Status" asp-route-itemsPerPage=50>50</a>
+		</div>
 	</div>
 </div>
 
@@ -70,7 +74,7 @@
 					<td>@anime.StartDate</td>
 					<td>@anime.EndDate</td>
 					<td style="max-width:180px">
-						<form asp-controller="Added" asp-action="AddAnime" metod="get" class="row mx-0 justify-content-center">
+						<form asp-controller="Added" asp-action="AddAnime" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="row mx-0 justify-content-center">
 							<input name="id" type="hidden" value="@anime.Id">
 							<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)anime.WatchingStatus))">
 							</select>

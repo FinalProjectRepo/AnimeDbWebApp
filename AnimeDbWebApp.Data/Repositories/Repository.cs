@@ -15,11 +15,17 @@ namespace AnimeDbWebApp.Data.Repositories
         protected DbContext _dbContext = dbContext;
         protected DbSet<T> DbSet<T>() where T : class => _dbContext.Set<T>();
 
-        public int EntitiesCount<T>() where T : class => _dbContext.Set<T>().Count();
-        public async Task<int> EntitiesCountAsync<T>() where T : class => await _dbContext.Set<T>().CountAsync();
+        public int EntitiesCount<T>(Expression<Func<T, bool>>? predicate = null) where T : class 
+			=> _dbContext.Set<T>().Where(predicate?? (x => true)).Count();
+		public async Task<int> EntitiesCountAsync<T>(Expression<Func<T, bool>>? predicate = null) where T : class 
+			=> await _dbContext.Set<T>().Where(predicate ?? (x => true)).CountAsync();
         public void Add<T>(T entity) where T : class => DbSet<T>().Add(entity);
         public async Task AddAsync<T>(T entity) where T : class => await DbSet<T>().AddAsync(entity);
-        public T? Find<T, TT>(TT id) where T : class => DbSet<T>().Find(id);
+		public void Remove<T>(T entity) where T : class => DbSet<T>().Remove(entity);
+		public bool Any<T>(Expression<Func<T, bool>> predicate) where T : class => DbSet<T>().Any(predicate);
+		public async Task<bool> AnyAsync<T>(Expression<Func<T, bool>> predicate)
+			where T : class => await DbSet<T>().AnyAsync(predicate);
+		public T? Find<T, TT>(TT id) where T : class => DbSet<T>().Find(id);
         public async Task<T?> FindAsync<T, TT>(TT id) where T : class => await DbSet<T>().FindAsync(id);
 		public T? FirstOrDefault<T>(Func<T, bool> predicate) where T : class => DbSet<T>().FirstOrDefault(predicate);
         public async Task<T?> FirstOrDefaultAsync<T>(Expression<Func<T, bool>> predicate) where T : class
@@ -34,7 +40,7 @@ namespace AnimeDbWebApp.Data.Repositories
 				query = query.Include(include);
 			}
 
-			return query!.FirstOrDefault(predicate);
+			return query.FirstOrDefault(predicate);
 		}
 		public async Task<T?> FirstWithIncludeAsync<T>(Expression<Func<T, bool>> predicate, 
 			string[] includes) where T : class
@@ -46,14 +52,37 @@ namespace AnimeDbWebApp.Data.Repositories
 				query = query.Include(include);
             }
 
-            return await query!.FirstOrDefaultAsync(predicate);
+            return await query.FirstOrDefaultAsync(predicate);
         }
 		public ICollection<T> Where<T>(Func<T, bool> predicate) where T : class => [.. DbSet<T>().Where(x => predicate(x))];
         public async Task<ICollection<T>> WhereAsync<T>(Expression<Func<T, bool>> predicate) where T : class
             => await DbSet<T>().Where(predicate).ToArrayAsync();
-        public ICollection<T> All<T>() where T : class => [.. DbSet<T>()];
+		public ICollection<T> WhereWithInclude<T>(Func<T, bool> predicate, string[] includes)
+			where T : class
+		{
+			if (includes.Length == 0) return Where<T>(predicate);
+			IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
+			}
+
+			return query.Where(predicate).ToArray();
+		}
+		public async Task<ICollection<T>> WhereWithIncludeAsync<T>(Expression<Func<T, bool>> predicate,
+			string[] includes) where T : class
+		{
+			if (includes.Length == 0) return await WhereAsync<T>(predicate);
+			IQueryable<T> query = DbSet<T>();
+			foreach (var include in includes)
+			{
+				query = query.Include(include);
+			}
+
+			return await query.Where(predicate).ToArrayAsync();
+		}
+		public ICollection<T> All<T>() where T : class => [.. DbSet<T>()];
         public async Task<ICollection<T>> AllAsync<T>() where T : class => await DbSet<T>().ToArrayAsync();
-        public void Remove<T>(T entity) where T : class => DbSet<T>().Remove(entity);
         public Tuple<int, ICollection<T>> TakePage<T>(int items, int page, Expression<Func<T, bool>>? predicate = null, 
 			params string[] includes) where T : class
 		{
@@ -91,7 +120,7 @@ namespace AnimeDbWebApp.Data.Repositories
 		}
 
         public int SaveChanges<T>() where T : class => _dbContext.SaveChanges();
-        public Task<int> SaveChangesAsync<T>() where T : class => _dbContext.SaveChangesAsync();
+        public Task<int> SaveChangesAsync() => _dbContext.SaveChangesAsync();
         public void Dispose() => _dbContext.Dispose();
     }
 }

@@ -71,7 +71,7 @@
 						int option = 1;
 						if (Model.UserAdded.ContainsKey(manga.Id)) option = Model.UserAdded[manga.Id];
 						<td style="max-width:180px">
-							<form asp-controller="Added" asp-action="AddManga" metod="get" class="row mx-0 justify-content-center">
+							<form asp-controller="Added" asp-action="AddManga" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="row mx-0 justify-content-center">
 								<input name="id" type="hidden" value="@manga.Id">
 								<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", option))">
 								</select>

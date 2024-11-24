@@ -19,12 +19,15 @@ namespace AnimeDbWebApp.Data.Extensions
     {
         private static readonly string PathDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, DataFolderName, DatasetFolderName);
 
-        public static void Seed(this ModelBuilder builder)
+        public static ModelBuilder Seed(this ModelBuilder builder)
         {
             Seed(builder, PrimalImportsNamespace, MultipleTypesSeparator, ImportModelLength);
             Seed(builder, GeneralImportsNamespace, MultipleTypesSeparator, ImportModelLength);
             Seed(builder, MappingImportsNamespace, MultipleTypesSeparator, ImportModelLength);
-        }
+
+            return builder;
+
+		}
 
         private static void Seed(ModelBuilder builder,string namespaceToSeed, string multipleTypeSeparator, int extraCharsImportModel)
         {
@@ -55,8 +58,8 @@ namespace AnimeDbWebApp.Data.Extensions
         private static void InvokeMethod(ModelBuilder builder,Type type, Type entityType, MethodInfo seedMethod)
         {
             var fileNameProperty = typeof(GeneralConstants)
-            .GetFields(BindingFlags.Public | BindingFlags.Static)
-                        .FirstOrDefault(p => p.Name.StartsWith(entityType.Name));
+                        .GetFields(BindingFlags.Public | BindingFlags.Static)
+                        .FirstOrDefault(p => p.Name == $"{entityType.Name}DatasetFileName");
 
             var fileName = fileNameProperty!.GetValue(typeof(GeneralConstants));
             var method = seedMethod!.MakeGenericMethod(type, entityType!);

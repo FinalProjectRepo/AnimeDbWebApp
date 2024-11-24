@@ -2,6 +2,11 @@
 {
     public static class GeneralConstants
     {
+        public const string RoleAdmin = "Admin";
+        public const string RoleAnimeWeeb = "AnimeWeeb";
+        public const string RoleMangaWeeb = "MangaWeeb";
+        public const string AdminUser = "Shefcheto";
+        public const string WeebUser = "AnimeManiac";
         public const int YearAppBuild = 2024;
         public const string InterfacesPrefix = "I";
         public const string BaseServiceName = "IBaseService";
@@ -35,8 +40,6 @@
         public const string MangaMagazineDatasetFileName = "mangaMagazineMapping.json";
         public const string MangaRelationDatasetFileName = "mangaRelationMapping.json";
         public const string AppUserDatasetFileName = "user.json";
-        public const string AppRoleDatasetFileName = "role.json";
-        public const string UserRoleDatasetFileName = "userRole.json";
         public const string AppUserAnimeDatasetFileName = "userAnimeMapping.json";
         public const string AppUserMangaDatasetFileName = "userMangaMapping.json";
         public const string GeneralDateTimeFormat = "yyyy-MM-dd";

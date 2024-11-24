@@ -17,7 +17,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
 	public static class BuilderServicesExtensions
     {
-		public static void AddDatabase(this IServiceCollection services, IConfiguration configuration)
+		public static IServiceCollection AddDatabase(this IServiceCollection services, IConfiguration configuration)
 		{
 			var connectionString = configuration.GetConnectionString("SqlServer")
 				?? throw new InvalidOperationException("Connection string not found.");
@@ -25,9 +25,11 @@ namespace Microsoft.Extensions.DependencyInjection
 			services.AddDbContext<AnimeDbContext>(options =>
 				options.UseSqlServer(connectionString));
 			services.AddDatabaseDeveloperPageExceptionFilter();
+
+			return services;
 		}
 
-		public static void AddApplicationIdentity(this IServiceCollection services, IConfiguration configuration)
+		public static IServiceCollection AddApplicationIdentity(this IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddIdentity<AppUser, AppRole>(
 				options => options.IdentityOptions(configuration))
@@ -38,9 +40,10 @@ namespace Microsoft.Extensions.DependencyInjection
 			.AddUserManager<UserManager<AppUser>>();
 
 			services.ConfigureApplicationCookie(options => options.CookieOptions(configuration));
+			return services;
 		}
 
-		public static void AddApplicationServices(this IServiceCollection services, IConfiguration configuration, Assembly? assembly)
+		public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration configuration, Assembly? assembly)
 		{
 			if(assembly == null) throw new InvalidOperationException("Custom service HomeService not found.");
 
@@ -57,6 +60,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
 				if (currInterface != null) services.AddScoped(currInterface, service);
 			}
+			return services;
 		}
 
 		private static void IdentityOptions(this IdentityOptions options, IConfiguration configuration)
