@@ -1,4 +1,5 @@
-﻿@model AddedWithCountViewModel<AddedAnimeViewModel>
+﻿@using static AnimeDbWebApp.Common.GeneralConstants
+@model AddedWithCountViewModel<AddedAnimeViewModel>
 
 @{
 	int start = -2;
@@ -10,7 +11,7 @@
 	else if (Model.Page + 1 == Model.TotalPages) end = 1;
 }
 
-@if(User.IsInRole("AnimeWeeb"))
+@if(User.IsInRole(RoleAnimeWeeb))
 {
 	<h1 class="mb-4">You are proud anime weeb</h1>
 }
@@ -52,7 +53,7 @@
 				<th>Duration</th>
 				<th>Air Date</th>
 				<th>Finished Airing</th>
-				<th>Watching Status</th>
+				<th style="max-width:310px">Watching Status</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -73,13 +74,19 @@
 					<td>@anime.Duration</td>
 					<td>@anime.StartDate</td>
 					<td>@anime.EndDate</td>
-					<td style="max-width:180px">
-						<form asp-controller="Added" asp-action="AddAnime" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="row mx-0 justify-content-center">
-							<input name="id" type="hidden" value="@anime.Id">
-							<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)anime.WatchingStatus))">
-							</select>
-							<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
-						</form>
+					<td class="align-middle">
+						<div class="d-flex justify-content-center">
+							<form asp-controller="Added" asp-action="AddAnime" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" class="d-flex">
+								<input name="id" type="hidden" value="@anime.Id">
+								<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)anime.WatchingStatus))">
+								</select>
+								<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
+							</form>
+							<form asp-controller="Added" asp-action="RemoveAnime" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString">
+								<input name="id" type="hidden" value="@anime.Id">
+								<button type="submit" class="btn btn-primary" style="width:85px">Remove</button>
+							</form>
+						</div>
 					</td>
 				</tr>
 			}

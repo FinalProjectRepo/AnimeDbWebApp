@@ -5,6 +5,7 @@
         public const string RoleAdmin = "Admin";
         public const string RoleAnimeWeeb = "AnimeWeeb";
         public const string RoleMangaWeeb = "MangaWeeb";
+        public const int WeebTreshold = 50;
         public const string AdminUser = "Shefcheto";
         public const string WeebUser = "AnimeManiac";
         public const int YearAppBuild = 2024;

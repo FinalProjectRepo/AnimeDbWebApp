@@ -6,20 +6,23 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System;
 
 using static AnimeDbWebApp.Common.ValidationConstants.ProducerValidations;
-using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Producer : Primal
+    public class Producer
     {
-        [Comment("Url link to mal site of producer")]
+		[Key]
+		[Comment("Unique identifier that equals mal_id")]
+		public int Id { get; set; }
+
+		[Comment("Url link to mal site of producer")]
         [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
 
         [Required]
         [Comment("English name of the producer")]
         [MaxLength(MaxNameLength)]
-        public new string Name { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
         [Comment("Japanese name of the producer")]
         [MaxLength(MaxJpNameLength)]

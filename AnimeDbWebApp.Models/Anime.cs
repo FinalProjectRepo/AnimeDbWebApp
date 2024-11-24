@@ -8,13 +8,16 @@ using System.Collections.Generic;
 using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
-using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Anime : General
-    {
-        [Comment("Url link to mal site")]
+    public class Anime
+	{
+		[Key]
+		[Comment("Unique identifier that equals mal_id")]
+		public int Id { get; set; }
+
+		[Comment("Url link to mal site")]
         [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
 
@@ -29,7 +32,7 @@ namespace AnimeDbWebApp.Models
         [Required]
         [Comment("Anime title")]
         [MaxLength(MaxTitleLength)]
-        public new string Title { get; set; } = null!;
+        public string Title { get; set; } = null!;
 
         [Comment("Anime title in english translated")]
         [MaxLength(MaxEngTitleLength)]

@@ -12,6 +12,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 using AnimeDbWebApp.Models;
+using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Areas.Identity.Pages.Account
 {
@@ -90,7 +91,8 @@ namespace AnimeDbWebApp.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
+                    if (User.IsInRole("Admin")) return Redirect($"~/{RoleAdmin}");
+                    return Redirect($"~/Home/Index");
                 }
                 if (result.IsLockedOut)
                 {

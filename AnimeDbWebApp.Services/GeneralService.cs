@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
-using System.Reflection;
 using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Mapping;
-using AnimeDbWebApp.Models.BaseModels;
+using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Models.Enums;
 using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.ViewModels.ExtraForUser;
@@ -15,43 +14,38 @@ using AnimeDbWebApp.ViewModels.Generic;
 
 namespace AnimeDbWebApp.Services
 {
-    public class GeneralService(IRepository repository) : IGeneralService
+	public class GeneralService(IRepository repository) : IGeneralService
 	{
 		private readonly IRepository _repo = repository;
 
-		public async Task<GeneralWithCountViewModel<TT>> GetAll<T, TT, TU>
-			(string? userId, int page, int itemsPerPage, string search)
-			where T : General where TT : class where TU : UserGeneral
+		public async Task<GeneralWithCountViewModel<TT>> GetAll<T, TT, TU> (int page, int itemsPerPage,
+			Expression<Func<T, bool>>? whereSearch, Expression<Func<TU, bool>>? whereUser)
+			where T : class where TT : class where TU : class
 		{
 			if (page <= 0) page = 1;
 			if (itemsPerPage is not (10 or 20 or 50)) itemsPerPage = 50;
-
-			Expression<Func<T, bool>>? whereFunc = null;
-			if (!string.IsNullOrEmpty(search)) whereFunc = a => a.Title.Contains(search);
 			ICollection<T> entities = [];
 			int totalPages = 0;
-			(totalPages, entities) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereFunc, "Type");
+			(totalPages, entities) = await _repo.TakePageAsync<T>(itemsPerPage, page, whereSearch, "Type");
 
 			var viewModel = new GeneralWithCountViewModel<TT>()
 			{
 				TotalPages = totalPages,
 				Page = page > totalPages ? totalPages : page,
 				ItemsPerPage = itemsPerPage,
-				Search = search
 			};
 
 			var dict = new Dictionary<int, int>();
-			bool userParse = Guid.TryParse(userId, out Guid userGuid);
-			if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
+			if(whereUser != null) await FillDictionary<TU>(dict, whereUser);
 			viewModel.UserAdded = dict;
 			CustomMapper.MapAll(entities, viewModel.Entities, "view");
 			return viewModel;
 		}
 
-		public async Task<TT> GetModel<T, TT, TU>(string? userId, int id, string[] includes)
-			where T : General where TT : InheritedForWatchingStatus where TU : UserGeneral
+		public async Task<TT> GetModel<T, TT, TU>(int id, Expression<Func<T, bool>> firstFunc,
+			Expression<Func<TU, bool>>? whereUser, string[] includes)
+			where T : class where TT : InheritedForWatchingStatus where TU : class
 		{
-			Expression<Func<T, bool>> firstFunc = a => a.Id == id;
 			var entity = await _repo.FirstWithIncludeAsync<T>(firstFunc, includes);
 			var viewModel = Activator.CreateInstance(typeof(TT)) as TT;
 			if (entity == null) return viewModel!;			
@@ -61,20 +55,19 @@ namespace AnimeDbWebApp.Services
 			CustomMapper.MapViews(entity, viewModel!, inputProps, outputProps);
 
             var dict = new Dictionary<int, int>();
-            bool userParse = Guid.TryParse(userId, out Guid userGuid);
-            if (userParse) await FillDictionary<TU>(userGuid, dict, a => a.UserId == userGuid);
-            viewModel!.UserAdded = dict;
+            if(whereUser != null) await FillDictionary<TU>(dict, whereUser);
+			viewModel!.UserAdded = dict;
             return viewModel!;
 		}
 
-		private async Task FillDictionary<TU>(Guid userGuid, Dictionary<int, int> addedEntities, Expression<Func<TU, bool>> filter)
-			where TU : UserGeneral
+		private async Task FillDictionary<TU>(Dictionary<int, int> addedEntities, Expression<Func<TU, bool>> filter)
+			where TU : class
 		{
 			var userMangas = await _repo.WhereAsync<TU>(filter);
 			var props = typeof(TU).GetProperties();
 			var entityId = props.FirstOrDefault(p => p.Name == "Id");
 			var status = props.FirstOrDefault(p => p.Name.Contains("Status"));
-			if (status == null || entityId == null) return;
+			if (status == null || entityId == null) throw new ArgumentException("Properties in user entity mapping doesn't match", typeof(TU).Name);
 			foreach (var entity in userMangas)
 			{
 				Enum.TryParse($"{status.GetValue(entity)}", out WatchingStatus statusValue);

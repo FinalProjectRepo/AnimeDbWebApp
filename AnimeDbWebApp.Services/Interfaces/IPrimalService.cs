@@ -1,16 +1,16 @@
-﻿using System.Threading.Tasks;
-using AnimeDbWebApp.Models.BaseModels;
+﻿using System;
+using System.Linq.Expressions;
+using System.Threading.Tasks;
+
 using AnimeDbWebApp.ViewModels.Generic;
-using AnimeDbWebApp.ViewModels.Manga;
-using AnimeDbWebApp.ViewModels.Producer;
 
 namespace AnimeDbWebApp.Services.Interfaces
 {
-    public interface IPrimalService
+	public interface IPrimalService
 	{
-		public Task<PrimalWithCountViewModel<TT>> GetAll<T, TT>(int page, int itemsPerPage, string search)
-			where T : Primal where TT : class;
-		public Task<TT> GetModel<T, TT>(int id, string[] includes)
-			where T : Primal where TT : class;
+		public Task<PrimalWithCountViewModel<TT>> GetAll<T, TT>(int page, int itemsPerPage,
+			Expression<Func<T, bool>>? searchFunc) where T : class where TT : class;
+		public Task<TT> GetModel<T, TT>(int id, Expression<Func<T, bool>> firstFunc, string[] includes)
+			where T : class where TT : class;
 	}
 }

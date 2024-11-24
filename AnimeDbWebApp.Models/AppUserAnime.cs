@@ -5,20 +5,29 @@ using System.ComponentModel.DataAnnotations;
 using System;
 
 using AnimeDbWebApp.Models.Enums;
-using AnimeDbWebApp.Models.BaseModels;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.Models
 {
-    public class AppUserAnime : UserGeneral
+    public class AppUserAnime
     {
         [Required]
         [Comment("Unique identifier of anime")]
-        public new int Id { get; set; }
+        public int Id { get; set; }
+
         [ForeignKey(nameof(Id))]
         public Anime Anime { get; set; } = null!;
-        
 
-        [ForeignKey(nameof(UserId))]
+		[Required]
+		[Comment("User unique identifier")]
+		public Guid UserId { get; set; }
+
+		[ForeignKey(nameof(UserId))]
         public AppUser AppUser { get; set; } = null!;
-    }
+
+		[Required]
+		[Comment("Watching status")]
+		[Range(MinRangeWatchingStatus, MaxRangeWatchingStatus)]
+		public WatchingStatus WatchingStatus { get; set; }
+	}
 }

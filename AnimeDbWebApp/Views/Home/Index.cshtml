@@ -16,12 +16,15 @@
             </a>
         }
         </div>
-        @foreach (var anime in Model.Animes.Skip(5))
+        @for(int i = 5; i < Model.Animes.Count;)
         {
             <div class="carousel-item">
-                <a asp-controller="Anime" asp-action="Details" asp-route-id="anime.Id">
-                    <img class="col-sm-2" src="anime.PosterUrl" alt="First slide">
+            @for (int j = 1; j <= 5 && i < Model.Animes.Count; j++, i++)
+            {
+                <a asp-controller="Anime" asp-action="Details" asp-route-id="@Model.Animes[i].Id">
+                    <img class="col-sm-2" src="@Model.Animes[i].PosterUrl" alt="First slide">
                 </a>
+            }
             </div>
         }
             
@@ -48,12 +51,15 @@
                 </a>
             }
         </div>
-        @foreach (var manga in Model.Mangas.Skip(5))
+        @for (int i = 5; i < Model.Mangas.Count;)
         {
             <div class="carousel-item">
-                <a asp-controller="Manga" asp-action="Details" asp-route-id="@manga.Id">
-                    <img class="col-sm-2" src="@manga.PosterUrl" alt="First slide">
+            @for (int j = 1; j <= 5 && i < Model.Mangas.Count; j++, i++)
+            {
+                <a asp-controller="Manga" asp-action="Details" asp-route-id="@Model.Mangas[i].Id">
+                    <img class="col-sm-2" src="@Model.Mangas[i].PosterUrl" alt="First slide">
                 </a>
+            }
             </div>
         }
     </div>

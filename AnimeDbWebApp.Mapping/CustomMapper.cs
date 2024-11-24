@@ -184,5 +184,19 @@ namespace AnimeDbWebApp.Mapping
             }
             else outputProperty.SetValue(output, null);
         }
+
+		public static void MapAppUserMapping<T>(T input, int id, Guid userId, int status)
+		{
+			var props = typeof(T).GetProperties();
+			var propId = props.FirstOrDefault(p => p.Name == "Id");
+			var propUserId = props.FirstOrDefault(p => p.Name == "UserId");
+			var propStatus = props.FirstOrDefault(p => p.Name == "WatchingStatus");
+			if(propId != null &&propUserId != null && propStatus != null)
+			{
+				propId.SetValue(input, id);
+				propUserId.SetValue(input, userId);
+				propStatus.SetValue(input, (WatchingStatus)status);
+			}
+		}
     }
 }

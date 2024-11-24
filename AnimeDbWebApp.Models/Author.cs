@@ -6,13 +6,16 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 using static AnimeDbWebApp.Common.ValidationConstants.AuthorValidations;
-using AnimeDbWebApp.Models.BaseModels;
 
 namespace AnimeDbWebApp.Models
 {
-    public class Author : Primal
-    {
-        [Comment("Url link to mal site")]
+    public class Author
+	{
+		[Key]
+		[Comment("Unique identifier that equals mal_id")]
+		public int Id { get; set; }
+
+		[Comment("Url link to mal site")]
         [MaxLength(MaxUrlLength)]
         public string? Url { get; set; }
 
@@ -27,7 +30,7 @@ namespace AnimeDbWebApp.Models
         [Required]
         [Comment("Author name")]
         [MaxLength(MaxNameLength)]
-        public new string Name { get; set; } = null!;
+        public string Name { get; set; } = null!;
 
         [Comment("Author given name")]
         [MaxLength(MaxGivenNameLength)]
