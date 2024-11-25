@@ -1,0 +1,30 @@
+﻿@model MagazineImportViewModel
+
+<style>
+	div {
+		margin-bottom: 0.8em
+	}</style>
+
+@if (Model == null)
+{
+	<h1 class="py-5 text-danger">There is no Magazine With that Id</h1>
+}
+else
+{
+	<h2 class="py-4">Edit Magazine</h2>
+
+	<form asp-action="Edit" method="post" class="container-fluid col-sm-4 mb-4">
+		<input asp-for="Id" type="hidden" value="@Model.Id" class="form-control" />
+		<div>
+			<label for="Name">Magazine Name</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="Url">Magazine mal link</label>
+			<input asp-for="Url" class="form-control" />
+			<span asp-validation-for="Url" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">Add Magazine</button>
+	</form>
+}

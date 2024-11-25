@@ -1,0 +1,61 @@
+﻿@using static AnimeDbWebApp.Common.GeneralConstants
+@model AuthorImportViewModel
+
+<style>
+	div {
+		margin-bottom: 0.8em
+	}</style>
+
+@if (Model == null)
+{
+	<h1 class="py-5 text-danger">There is no Author With that Id</h1>
+}
+else
+{
+	<h2 class="py-4">Edit Author</h2>
+
+	<form asp-action="Edit" method="post" class="container-fluid col-sm-4 mb-4">
+		<input asp-for="Id" type="hidden" value="@Model.Id" class="form-control" />
+		<div>
+			<label for="PosterUrl">Link for poster</label>
+			<input asp-for="PosterUrl" class="form-control" />
+			<span asp-validation-for="PosterUrl" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="Name">Author Name</label>
+			<input asp-for="Name" class="form-control" />
+			<span asp-validation-for="Name" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="GivenName">Author Given Name</label>
+			<input asp-for="GivenName" class="form-control" />
+			<span asp-validation-for="GivenName" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="FamilyName">Author Family Name</label>
+			<input asp-for="FamilyName" type="month" class="form-control" />
+			<span asp-validation-for="FamilyName" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="Birthdate">Author Birthdate (format: @GeneralDateTimeFormat)</label>
+			<input asp-for="Birthdate" class="form-control" />
+			<span asp-validation-for="Birthdate" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="Website">Author Website</label>
+			<input asp-for="Website" class="form-control" />
+			<span asp-validation-for="Website" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="About">About Author</label>
+			<textarea asp-for="About" class="form-control"></textarea>
+			<span asp-validation-for="About" class="text-danger"></span>
+		</div>
+		<div>
+			<label for="Url">Auhtor mal link</label>
+			<input asp-for="Url" class="form-control" />
+			<span asp-validation-for="Url" class="text-danger"></span>
+		</div>
+		<button type="submit" class="btn btn-primary mt-2">Add Auhtor</button>
+	</form>
+}

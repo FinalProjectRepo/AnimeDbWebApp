@@ -1,0 +1,25 @@
+﻿@model MagazineImportViewModel
+
+<style>div{margin-bottom:0.8em}</style>
+
+@if (ViewData.ContainsKey("AddMagazine"))
+{
+	<h1 class="py-4 text-secondary">Magazine Added</h1>
+	ViewData.Remove("AddMagazine");
+}
+
+<h2 class="py-4">Add New Magazine</h2>
+
+<form asp-action="Add" method="post" class="container-fluid col-sm-4 mb-4">
+	<div>
+		<label for="Name">Magazine Name</label>
+		<input asp-for="Name" class="form-control" />
+		<span asp-validation-for="Name" class="text-danger"></span>
+	</div>
+	<div>
+		<label for="Url">Magazine mal link</label>
+		<input asp-for="Url" class="form-control" />
+		<span asp-validation-for="Url" class="text-danger"></span>
+	</div>
+	<button type="submit" class="btn btn-primary mt-2">Add Magazine</button>
+</form>

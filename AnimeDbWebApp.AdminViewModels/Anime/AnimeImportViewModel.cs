@@ -28,6 +28,7 @@ namespace AnimeDbWebApp.AdminViewModels.Anime
         public string? TrailerUrl { get; set; }
 
         [Required]
+        [MinLength(MinTitleLength)]
         [MaxLength(MaxTitleLength)]
         public string Title { get; set; } = null!;
 

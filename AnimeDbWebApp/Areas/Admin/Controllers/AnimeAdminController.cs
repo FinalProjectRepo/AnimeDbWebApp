@@ -1,15 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.DotNet.Scaffolding.Shared.Project;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
-using System.Linq.Expressions;
-using System;
 using System.Threading.Tasks;
 
-using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.AdminViewModels.Anime;
-using AnimeDbWebApp.AdminViewModels.AddGenre;
 using AnimeDbWebApp.Models;
+using AnimeDbWebApp.Services.Interfaces;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers
@@ -46,7 +42,7 @@ namespace AnimeDbWebApp.Areas.Admin.Controllers
 		[HttpPost]
 		public async Task<IActionResult> Remove(int id)
 		{
-			bool result = await _service.RemoveEntity<Anime>(a => a.Id == id);
+			await _service.RemoveEntity<Anime>(a => a.Id == id);
 			return RedirectToAction("Index", "HomeAdmin");
 		}
 
