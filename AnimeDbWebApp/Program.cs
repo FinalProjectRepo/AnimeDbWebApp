@@ -46,7 +46,7 @@ namespace AnimeDbWebApp
 
 			app.MapControllerRoute(
 				name: "Area",
-				pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+				pattern: "{area:exists}/{controller=HomeAdmin}/{action=Index}/{id?}");
 
 			app.MapControllerRoute(
                 name: "default",

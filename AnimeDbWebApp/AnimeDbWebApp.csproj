@@ -5,6 +5,13 @@
     <Nullable>enable</Nullable>
     <UserSecretsId>aspnet-AnimeDbWebApp-3f6e66c3-a688-4ec0-a21a-45be890b3bb9</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Admin\Models\**" />
+    <Content Remove="Areas\Admin\Models\**" />
+    <EmbeddedResource Remove="Areas\Admin\Models\**" />
+    <None Remove="Areas\Admin\Models\**" />
+  </ItemGroup>
 	
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.10" />
@@ -20,15 +27,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnimeDbWebApp.AdminViewModels\AnimeDbWebApp.AdminViewModels.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Extensions\AnimeDbWebApp.Extensions.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Models\AnimeDbWebApp.Models.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Services\AnimeDbWebApp.Services.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Areas\Admin\Views\Anime\" />
   </ItemGroup>
 
 </Project>

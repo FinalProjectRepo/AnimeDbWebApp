@@ -21,15 +21,16 @@ namespace AnimeDbWebApp.Data.Extensions
 
         public static ModelBuilder Seed(this ModelBuilder builder)
         {
-            Seed(builder, PrimalImportsNamespace, MultipleTypesSeparator, ImportModelLength);
-            Seed(builder, GeneralImportsNamespace, MultipleTypesSeparator, ImportModelLength);
-            Seed(builder, MappingImportsNamespace, MultipleTypesSeparator, ImportModelLength);
+            Seed(builder, PrimalImportsNamespace, MultipleTypesSeparator);
+            Seed(builder, GeneralImportsNamespace, MultipleTypesSeparator);
+            Seed(builder, MappingImportsNamespace, MultipleTypesSeparator);
 
             return builder;
 
 		}
 
-        private static void Seed(ModelBuilder builder,string namespaceToSeed, string multipleTypeSeparator, int extraCharsImportModel)
+        private static void Seed(ModelBuilder builder,string namespaceToSeed, string multipleTypeSeparator, 
+            int extraCharsImportModel = ImportModelLength)
         {
             var importTypes = Assembly.GetAssembly(typeof(AnimeImportModel))!
                             .GetTypes()

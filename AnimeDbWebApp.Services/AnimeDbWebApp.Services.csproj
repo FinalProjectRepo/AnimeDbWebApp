@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AnimeDbWebApp.AdminViewModels\AnimeDbWebApp.AdminViewModels.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.Data\AnimeDbWebApp.Data.csproj" />
     <ProjectReference Include="..\AnimeDbWebApp.ViewModels\AnimeDbWebApp.ViewModels.csproj" />
   </ItemGroup>
