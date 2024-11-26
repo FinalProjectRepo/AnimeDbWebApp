@@ -96,12 +96,18 @@
 		int option = 1;
 		if (Model.UserAdded.ContainsKey(Model.Id)) option = Model.UserAdded[Model.Id];
 		<div style="max-width:210px">
-			<form asp-controller="Added" asp-action="AddManga" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="row mx-0 justify-content-center">
-				<input name="id" type="hidden" value="@Model.Id">
-				<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", option))">
-				</select>
-				<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
-			</form>
+			<input name="id" type="hidden" value="@Model.Id">
+			<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", option))"></select>
+			<button type="button" class="btn btn-primary" style="width:70px" onclick="AddManga(this)">Add</button>
 		</div>
 	}
 </div>
+
+@*
+<form asp-controller="Added" asp-action="AddManga" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="row mx-0 justify-content-center">
+	<input name="id" type="hidden" value="@Model.Id">
+	<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", option))">
+	</select>
+	<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
+</form>
+*@

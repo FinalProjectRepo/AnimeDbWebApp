@@ -18,15 +18,14 @@ using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.Controllers
 {
-	[Route("[controller]")]
+	[Route("[controller]/")]
 	[ApiController]
 	[Authorize]
 	public class ApiController(IApiService service) : ControllerBase
 	{
 		private readonly IApiService _service = service;
 
-		[HttpGet]
-		[Route("[controller]/[action]")]
+		[HttpGet("[action]")]
 		[ProducesResponseType(typeof(ICollection<AddedAnimeViewModel>), StatusCodes.Status200OK)]
 		public async Task<ActionResult<ICollection<AddedAnimeViewModel>>> GetUserAnimeList (int status = 0)
 		{
@@ -39,8 +38,7 @@ namespace AnimeDbWebApp.Controllers
 			return Ok(model);	
 		}
 
-		[HttpGet]
-		[Route("[controller]/[action]")]
+		[HttpGet("[action]")]
 		[ProducesResponseType(typeof(ICollection<AddedMangaViewModel>), StatusCodes.Status200OK)]
 		public async Task<ActionResult<ICollection<AddedMangaViewModel>>> GetUserMangaList (int status = 0)
 		{
@@ -51,6 +49,30 @@ namespace AnimeDbWebApp.Controllers
 			else whereFunc = um => (um.UserId == userId && um.WatchingStatus == (WatchingStatus)status);
 			var model = await _service.GetAdded<AddedMangaViewModel, AppUserManga>(status, whereFunc, includes);
 			return Ok(model);
+		}
+
+		[HttpGet("[action]")]
+		[ProducesResponseType(typeof(ICollection<AddedMangaViewModel>), StatusCodes.Status200OK)]
+		public async Task<IActionResult> AddAnime(int id, int status)
+		{
+			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
+			Expression<Func<AppUserAnime, bool>> Tpredicate = ua => ua.UserId == userId && ua.Id == id;
+			Expression<Func<Anime, bool>> TTpredicate = a => a.Id == id;
+			Expression<Func<AppUserAnime, bool>> TUserPredicate = ua => ua.UserId == userId;
+			await _service.AddMapping<AppUserAnime, Anime>(userId!, id, status, Tpredicate, TTpredicate, TUserPredicate);
+			return Ok();
+		}
+
+		[HttpGet("[action]")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		public async Task<IActionResult> AddManga(int id, int status)
+		{
+			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
+			Expression<Func<AppUserManga, bool>> Tpredicate = um => um.UserId == userId && um.Id == id;
+			Expression<Func<Manga, bool>> TTpredicate = m => m.Id == id;
+			Expression<Func<AppUserManga, bool>> TUserPredicate = um => um.UserId == userId;
+			await _service.AddMapping<AppUserManga, Manga>(userId!, id, status, Tpredicate, TTpredicate, TUserPredicate);
+			return Ok();
 		}
 	}
 }

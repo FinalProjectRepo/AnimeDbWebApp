@@ -46,28 +46,6 @@ namespace AnimeDbWebApp.Controllers
         }
 
 		[HttpPost]
-		public async Task<IActionResult> AddAnime(int id , int status, string returnUrl)
-		{
-			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
-			Expression<Func<AppUserAnime, bool>> Tpredicate = ua => ua.UserId == userId && ua.Id == id;
-			Expression<Func<Anime, bool>> TTpredicate = a => a.Id == id;
-			Expression<Func<AppUserAnime, bool>> TUserPredicate = ua => ua.UserId == userId;
-			await _service.AddMapping<AppUserAnime, Anime>(userId!, id, status, Tpredicate, TTpredicate, TUserPredicate);
-			return Redirect(returnUrl);
-		}
-
-		[HttpPost]
-		public async Task<IActionResult> AddManga(int id, int status, string returnUrl)
-		{
-			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
-			Expression<Func<AppUserManga, bool>> Tpredicate = um => um.UserId == userId && um.Id == id;
-			Expression<Func<Manga, bool>> TTpredicate = m => m.Id == id;
-			Expression<Func<AppUserManga, bool>> TUserPredicate = um => um.UserId == userId;
-			await _service.AddMapping<AppUserManga, Manga>(userId!, id, status, Tpredicate, TTpredicate, TUserPredicate);
-			return Redirect(returnUrl);
-		}
-
-		[HttpPost]
 		public async Task<IActionResult> RemoveAnime(int id, string returnUrl)
 		{
 			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);

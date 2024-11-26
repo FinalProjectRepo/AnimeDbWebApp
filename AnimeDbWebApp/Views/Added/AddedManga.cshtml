@@ -76,12 +76,11 @@
 					<td>@manga.EndDate</td>
 					<td class="align-middle">
 						<div class="d-flex justify-content-center">
-							<form asp-controller="Added" asp-action="AddManga" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString" metod="get" class="d-flex">
+							<div class="d-flex">
 								<input name="id" type="hidden" value="@manga.Id">
-								<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)manga.WatchingStatus))">
-								</select>
-								<button type="submit" class="btn btn-primary" style="width:75px">Update</button>
-							</form>
+								<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)manga.WatchingStatus))"></select>
+								<button type="button" class="btn btn-primary" style="width:75px" onclick="AddManga(this)">Update</button>
+							</div>
 							<form asp-controller="Added" asp-action="RemoveManga" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString">
 								<input name="id" type="hidden" value="@manga.Id">
 								<button type="submit" class="btn btn-primary" style="width:85px">Remove</button>

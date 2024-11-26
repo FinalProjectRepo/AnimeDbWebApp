@@ -70,80 +70,88 @@
 	</div>
 </div>
 
-<h1 class="mt-5 mb-3">Mappings</h1>
+<h1 class="mt-5 mb-3 pt-5">Mappings</h1>
 <div class="container-fluid d-flex col-sm-8 justify-content-around">
 	<div class="d-flex flex-column" style="max-width:300px">
 		<h1 class="mb-4">Simple Add</h1>
-		<form asp-area="Admin" asp-controller="MappingAdmin" asp-action="Add" class="row mx-0">
-			<select name="first" class="form-control">
-				<option value="1">Anime</option>
-				<option value="2">Manga</option>
-			</select>
-			<select name="second" class="form-control">
-				<option value="1">Anime</option>
-				<option value="2">Manga</option>
-				<option value="3">Genre</option>
-				<option value="4">Producer</option>
-				<option value="5">Studio</option>
-				<option value="6">Licensor</option>
-				<option value="7">Author</option>
-				<option value="8">Magazine</option>
-			</select>
-			<input type="number" name="firstId" style="max-width:100px" />
-			<input type="number" name="secondId" style="max-width:100px" />
-			<button type="submit" class="btn btn-secondary text-light" style="width:80px">Add</button>
-		</form>
+		<div class="form flex-column">
+			<div class="d-flex justify-content-center">
+				<select name="first" class="form-control w-50">
+					<option value="1">Anime</option>
+					<option value="2">Manga</option>
+				</select>
+				<input type="number" name="firstId" style="max-width:100px" />
+			</div>
+			<div class="d-flex justify-content-center">
+				<select name="second" class="form-control w-50">
+					<option value="1">Anime</option>
+					<option value="2">Manga</option>
+					<option value="3">Genre</option>
+					<option value="4">Producer</option>
+					<option value="5">Studio</option>
+					<option value="6">Licensor</option>
+					<option value="7">Author</option>
+					<option value="8">Magazine</option>
+				</select>
+				<input type="number" name="secondId" style="max-width:100px" />
+			</div>
+			<button type="button" class="btn btn-secondary text-light" style="width:80px" onclick="AddSimpleMapping(this)">Add</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column" style="max-width:300px">
 		<h1 class="mb-4">Simple Remove</h1>
-		<form asp-area="Admin" asp-controller="MappingAdmin" asp-action="Remove" class="row mx-0">
-			<select name="first" class="form-control">
-				<option value="1">Anime</option>
-				<option value="2">Manga</option>
-			</select>
-			<select name="second" class="form-control">
-				<option value="1">Anime</option>
-				<option value="2">Manga</option>
-				<option value="3">Genre</option>
-				<option value="4">Producer</option>
-				<option value="5">Studio</option>
-				<option value="6">Licensor</option>
-				<option value="7">Author</option>
-				<option value="8">Magazine</option>
-			</select>
-			<input type="number" name="firstId" style="max-width:100px" />
-			<input type="number" name="secondId" style="max-width:100px" />
-			<button type="submit" class="btn btn-secondary text-light" style="width:80px">Remove</button>
-		</form>
+		<div class="form flex-column">
+			<div class="d-flex justify-content-center">
+				<select name="first" class="form-control w-50">
+					<option value="1">Anime</option>
+					<option value="2">Manga</option>
+				</select>
+				<input type="number" name="firstId" style="max-width:100px" />
+			</div>
+			<div class="d-flex justify-content-center">
+				<select name="second" class="form-control w-50">
+					<option value="1">Anime</option>
+					<option value="2">Manga</option>
+					<option value="3">Genre</option>
+					<option value="4">Producer</option>
+					<option value="5">Studio</option>
+					<option value="6">Licensor</option>
+					<option value="7">Author</option>
+					<option value="8">Magazine</option>
+				</select>
+				<input type="number" name="secondId" style="max-width:100px" />
+			</div>
+			<button class="btn btn-secondary text-light" style="width:80px" onclick="RemoveSimpleMapping(this)">Remove</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column" style="max-width:300px">
 		<h1 class="mb-4">Relation Add</h1>
-		<form asp-area="Admin" asp-controller="MappingAdmin" asp-action="AddOrEditRelation" class="row mx-0">
+		<div class="form row mx-0">
 			<select name="first" class="form-control">
 				<option value="1">Anime</option>
 				<option value="2">Manga</option>
 			</select>
 			<input type="number" name="firstId" style="max-width:100px" />
 			<input type="number" name="secondId" style="max-width:100px" />
-			<input type="text" name="relation" style="max-width:100px" />
-			<button type="submit" class="btn btn-secondary text-light" style="width:80px">Add</button>
-		</form>
+			<input type="text" name="relation" style="max-width:100px" placeholder="Relation"/>
+			<button class="btn btn-secondary text-light" style="width:80px" onclick="AddRelationMapping(this)">Add</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column" style="max-width:300px">
 		<h1 class="mb-4">Relation Remove</h1>
-		<form asp-area="Admin" asp-controller="MappingAdmin" asp-action="RemoveRelation" class="row mx-0">
+		<div class="form row mx-0">
 			<select name="first" class="form-control">
 				<option value="1">Anime</option>
 				<option value="2">Manga</option>
 			</select>
 			<input type="number" name="firstId" style="max-width:100px" />
 			<input type="number" name="secondId" style="max-width:100px" />
-			<button type="submit" class="btn btn-secondary text-light" style="width:80px">Remove</button>
-		</form>
+			<button class="btn btn-secondary text-light" style="width:80px" onclick="RemoveRelationMapping(this)">Remove</button>
+		</div>
 	</div>
 </div>
 
-<h1 class="mt-5 mb-3">Users and Roles</h1>
+<h1 class="mt-5 mb-3 pt-5">Users and Roles</h1>
 <div class="container-fluid d-flex col-sm-8 justify-content-around">
 	<div class="d-flex flex-column">
 		<h1 class="mb-4">Add To Role</h1>

@@ -6,120 +6,140 @@ using System.Threading.Tasks;
 using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.Models;
 using static AnimeDbWebApp.Common.GeneralConstants;
+using AnimeDbWebApp.ViewModels.Added;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
+using AnimeDbWebApp.AdminViewModels.Mapping;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers
 {
+	[Route("[Area]/[controller]/")]
 	[Authorize(Roles = RoleAdmin)]
 	[Area("Admin")]
-	public class MappingAdminController(IAdminService service) : Controller
+	[ApiController]
+	public class MappingAdminController(IAdminService service) : ControllerBase
 	{
 		private readonly IAdminService _service = service;
 
-		[HttpPost]
-		public async Task<IActionResult> Add(int first, int second, int firstId, int secondId)
+		[HttpPost("[action]")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> Add([FromBody] SimpleMapping mapping)
 		{
-			if (first == 1)
+			if (mapping.First == 1)
 			{
-				switch (second)
+				switch (mapping.Second)
 				{
-					case 2: await _service.AddMapping<AnimeManga>(firstId, secondId,
-						am => am.AnimeId == firstId && am.MangaId == secondId); break;
-					case 3: await _service.AddMapping<AnimeGenre>(firstId, secondId,
-						ag => ag.AnimeId == firstId && ag.GenreId == secondId); break;
-					case 4: await _service.AddMapping<AnimeProducer>(firstId, secondId,
-						ap => ap.AnimeId == firstId && ap.ProducerId == secondId); break;
-					case 5: await _service.AddMapping<AnimeStudio>(firstId, secondId,
-						ast => ast.AnimeId == firstId && ast.StudioId == secondId); break;
-					case 6: await _service.AddMapping<AnimeLicensor>(firstId, secondId,
-						al => al.AnimeId == firstId && al.LicensorId == secondId); break;
+					case 2: await _service.AddMapping<AnimeManga>(mapping.FirstId, mapping.SecondId,
+						am => am.AnimeId == mapping.FirstId && am.MangaId == mapping.SecondId); break;
+					case 3: await _service.AddMapping<AnimeGenre>(mapping.FirstId, mapping.SecondId,
+						ag => ag.AnimeId == mapping.FirstId && ag.GenreId == mapping.SecondId); break;
+					case 4: await _service.AddMapping<AnimeProducer>(mapping.FirstId, mapping.SecondId,
+						ap => ap.AnimeId == mapping.FirstId && ap.ProducerId == mapping.SecondId); break;
+					case 5: await _service.AddMapping<AnimeStudio>(mapping.FirstId, mapping.SecondId,
+						ast => ast.AnimeId == mapping.FirstId && ast.StudioId == mapping.SecondId); break;
+					case 6: await _service.AddMapping<AnimeLicensor>(mapping.FirstId, mapping.SecondId,
+						al => al.AnimeId == mapping.FirstId && al.LicensorId == mapping.SecondId); break;
+					default: return BadRequest();
 				}
 			}
-			else if (first == 2)
+			else if (mapping.First == 2)
 			{
-				switch (second)
+				switch (mapping.Second)
 				{
 					case 1:
-					await _service.AddMapping<AnimeManga>(secondId, firstId,
-							am => am.MangaId == firstId && am.AnimeId == secondId); break;
+					await _service.AddMapping<AnimeManga>(mapping.SecondId, mapping.FirstId,
+							am => am.MangaId == mapping.FirstId && am.AnimeId == mapping.SecondId); break;
 					case 3:
-						await _service.AddMapping<MangaGenre>(firstId, secondId,
-						mg => mg.MangaId == firstId && mg.GenreId == secondId); break;
+						await _service.AddMapping<MangaGenre>(mapping.FirstId, mapping.SecondId,
+						mg => mg.MangaId == mapping.FirstId && mg.GenreId == mapping.SecondId); break;
 					case 7:
-						await _service.AddMapping<MangaAuthor>(firstId, secondId,
-						ma => ma.MangaId == firstId && ma.AuthorId == secondId); break;
+						await _service.AddMapping<MangaAuthor>(mapping.FirstId, mapping.SecondId,
+						ma => ma.MangaId == mapping.FirstId && ma.AuthorId == mapping.SecondId); break;
 					case 8:
-						await _service.AddMapping<MangaMagazine>(firstId, secondId,
-						mm => mm.MangaId == firstId && mm.MagazineId == secondId); break;
+						await _service.AddMapping<MangaMagazine>(mapping.FirstId, mapping.SecondId,
+						mm => mm.MangaId == mapping.FirstId && mm.MagazineId == mapping.SecondId); break;
+					default: return BadRequest();
 				}
 			}
-			return RedirectToAction("Index", "HomeAdmin");
+			else return BadRequest();
+			return Ok();
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> Remove(int first, int second, int firstId, int secondId)
+		[HttpPost("[action]")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> Remove([FromBody] SimpleMapping mapping)
 		{
-			if (first == 1)
+			if (mapping.First == 1)
 			{
-				switch (second)
+				switch (mapping.Second)
 				{
 					case 2:
 						await _service.RemoveMapping<AnimeManga>(
-							am => am.AnimeId == firstId && am.MangaId == secondId); break;
+							am => am.AnimeId == mapping.FirstId && am.MangaId == mapping.SecondId); break;
 					case 3:
 						await _service.RemoveMapping<AnimeGenre>(
-							ag => ag.AnimeId == firstId && ag.GenreId == secondId); break;
+							ag => ag.AnimeId == mapping.FirstId && ag.GenreId == mapping.SecondId); break;
 					case 4:
 						await _service.RemoveMapping<AnimeProducer>(
-							ap => ap.AnimeId == firstId && ap.ProducerId == secondId); break;
+							ap => ap.AnimeId == mapping.FirstId && ap.ProducerId == mapping.SecondId); break;
 					case 5:
 						await _service.RemoveMapping<AnimeStudio>(
-						ast => ast.AnimeId == firstId && ast.StudioId == secondId); break;
+						ast => ast.AnimeId == mapping.FirstId && ast.StudioId == mapping.SecondId); break;
 					case 6:
 						await _service.RemoveMapping<AnimeLicensor>(
-						al => al.AnimeId == firstId && al.LicensorId == secondId); break;
+						al => al.AnimeId == mapping.FirstId && al.LicensorId == mapping.SecondId); break;
+					default: return BadRequest();
 				}
 			}
-			else if (first == 2)
+			else if (mapping.First == 2)
 			{
-				switch (second)
+				switch (mapping.Second)
 				{
 					case 1:
 						await _service.RemoveMapping<AnimeManga>(
-								am => am.MangaId == firstId && am.AnimeId == secondId); break;
+								am => am.MangaId == mapping.FirstId && am.AnimeId == mapping.SecondId); break;
 					case 3:
 						await _service.RemoveMapping<MangaGenre>(
-						mg => mg.MangaId == firstId && mg.GenreId == secondId); break;
+						mg => mg.MangaId == mapping.FirstId && mg.GenreId == mapping.SecondId); break;
 					case 7:
 						await _service.RemoveMapping<MangaAuthor>(
-						ma => ma.MangaId == firstId && ma.AuthorId == secondId); break;
+						ma => ma.MangaId == mapping.FirstId && ma.AuthorId == mapping.SecondId); break;
 					case 8:
 						await _service.RemoveMapping<MangaMagazine>(
-						mm => mm.MangaId == firstId && mm.MagazineId == secondId); break;
+						mm => mm.MangaId == mapping.FirstId && mm.MagazineId == mapping.SecondId); break;
+					default: return BadRequest();
 				}
 			}
-			return RedirectToAction("Index", "HomeAdmin");
+			else return BadRequest();
+			return Ok();
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> AddOrEditRelation(int first, string relation, int firstId, int secondId)
+		[HttpPost("[action]")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> AddOrEditRelation([FromBody] RelationMapping mapping)
 		{
-			if (first == 1) await _service.AddOrEditRelation<AnimeRelation>(firstId, secondId, relation,
-				ar => ar.AnimeId == firstId && ar.RelationId == secondId);
-			else await _service.AddOrEditRelation<MangaRelation>(firstId, secondId, relation,
-				mr => mr.MangaId == firstId && mr.RelationId == secondId);
-			return RedirectToAction("Index", "HomeAdmin");
+			if (mapping.First == 1) await _service.AddOrEditRelation<AnimeRelation>(mapping.FirstId, mapping.SecondId, mapping.Relation,
+				ar => ar.AnimeId == mapping.FirstId && ar.RelationId == mapping.SecondId);
+			else if (mapping.First == 2) await _service.AddOrEditRelation<MangaRelation>(mapping.FirstId, mapping.SecondId, mapping.Relation,
+				mr => mr.MangaId == mapping.FirstId && mr.RelationId == mapping.SecondId);
+			else return BadRequest();
+			return Ok();
 		}
 
-		[HttpPost]
-		public async Task<IActionResult> RemoveRelation(int first, int firstId, int secondId)
+		[HttpPost("[action]")]
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
+		public async Task<IActionResult> RemoveRelation([FromBody] RelationMapping mapping)
 		{
-			if (first == 1) await _service.RemoveEntity<AnimeRelation>(
-				ar => ar.AnimeId == firstId && ar.RelationId == secondId);
-			else await _service.RemoveEntity<MangaRelation>(
-				mr => mr.MangaId == firstId && mr.RelationId == secondId);
-			return RedirectToAction("Index", "HomeAdmin");
+			if (mapping.First == 1) await _service.RemoveEntity<AnimeRelation>(
+				ar => ar.AnimeId == mapping.FirstId && ar.RelationId == mapping.SecondId);
+			else if (mapping.First == 2) await _service.RemoveEntity<MangaRelation>(
+				mr => mr.MangaId == mapping.FirstId && mr.RelationId == mapping.SecondId);
+			else return BadRequest();
+			return Ok();
 		}
-
-
 	}
 }

@@ -45,38 +45,6 @@ namespace AnimeDbWebApp.Services
 			return viewModel;
 		}
 
-		public async Task AddMapping<T, TT>(Guid userId, int id, int status, Expression<Func<T, bool>> Tpredicate,
-			Expression<Func<TT, bool>> TTpredicate, Expression<Func<T, bool>> TUserPredicate)
-			where T : class where TT : class
-		{
-			if (!(await _repo.AnyAsync<TT>(TTpredicate))) return;
-			var user = await _userManager.FindByIdAsync(userId.ToString());
-			if (user == null) return;
-
-			var entity = await _repo.FirstOrDefaultAsync<T>(Tpredicate);
-			int threshold = WeebTreshold;
-			if (entity == null)
-			{
-				threshold -= 1;
-				entity = Activator.CreateInstance(typeof(T)) as T;
-				if (entity == null) return;
-				CustomMapper.MapAppUserMapping(entity, id, userId, status);
-				await _repo.AddAsync(entity);
-			}
-			else CustomMapper.MapAppUserMapping(entity, id, userId, status);
-
-			var prop = typeof(GeneralConstants).GetFields().FirstOrDefault(p => p.Name == $"Role{typeof(TT).Name}Weeb");
-			if(prop == null) throw new ArgumentException("Role name is not included in GeneralConstants", nameof(GeneralConstants));
-			string role = $"{prop.GetValue(typeof(GeneralConstants))}";
-			if (await _repo.EntitiesCountAsync<T>(TUserPredicate) >= threshold
-				&& !(await _userManager.IsInRoleAsync(user, role)))
-			{
-				await _userManager.AddToRoleAsync(user, role);
-			}
-
-			await _repo.SaveChangesAsync();
-		}
-
 		public async Task RemoveMapping<T, TT>(Guid userId, int id, Expression<Func<T, bool>> Tpredicate,
 			Expression<Func<T, bool>> TUserPredicate) where T : class where TT : class
 		{
