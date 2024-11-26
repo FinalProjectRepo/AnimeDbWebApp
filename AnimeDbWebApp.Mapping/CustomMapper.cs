@@ -22,15 +22,6 @@ namespace AnimeDbWebApp.Mapping
         {
             var inputProperties = typeof(T).GetProperties();
 			var outputProperties = typeof(TT).GetProperties();
-			if(mappingProp == null)
-			{
-                int mappingLength = GeneralModelLength;
-                if (typeof(T).Name.Contains(nameof(AppUser))) mappingLength = nameof(AppUser).Length;
-
-                mappingProp = typeof(T).Name.Substring(mappingLength);
-                if (typeof(TT).Name.Contains("General") && !typeof(TT).Name.StartsWith(mappingProp))
-                    mappingProp = typeof(T).Name.Substring(0, mappingLength);
-            }
 
             if (mappingType == "entity")
 			{
@@ -178,9 +169,16 @@ namespace AnimeDbWebApp.Mapping
                 var map = Method.MakeGenericMethod(methodTType, methodTTType);
                 var value = outputProperty.GetValue(output);
 
-                map.Invoke(typeof(CustomMapper), [inputProperty.GetValue(input), value,
-                            "withInner", null, GeneralDateTimeFormat]);
-                outputProperty.SetValue(output, value);
+				string mappingProp = methodTType.Name.Substring(GeneralModelLength);
+				if (methodTTType.Name.Contains("General"))
+				{
+					if (!inputProperty.Name.StartsWith(mappingProp))
+						mappingProp = methodTType.Name.Substring(0, GeneralModelLength);
+				}
+					
+				map.Invoke(typeof(CustomMapper), [inputProperty.GetValue(input), value,
+						"withInner", mappingProp, GeneralDateTimeFormat]);
+				outputProperty.SetValue(output, value);
             }
             else outputProperty.SetValue(output, null);
         }

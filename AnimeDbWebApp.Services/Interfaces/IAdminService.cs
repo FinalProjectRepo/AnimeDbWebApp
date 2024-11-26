@@ -22,5 +22,9 @@ namespace AnimeDbWebApp.Services.Interfaces
 		public Task RemoveMapping<T>(Expression<Func<T, bool>> predicate) where T : class;
 		public Task AddOrEditRelation<T>(int firstId, int secondId, string relation,
 			Expression<Func<T, bool>> predicate) where T : class;
+		public Task AssignRole(string userName, string role);
+		public Task RemoveFromRole(string userName, string role);
+		public Task AddRole(string role);
+		public Task RemoveRole(string role);
 	}
 }

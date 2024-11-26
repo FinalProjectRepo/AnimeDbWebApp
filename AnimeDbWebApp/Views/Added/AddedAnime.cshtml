@@ -80,7 +80,7 @@
 								<input name="id" type="hidden" value="@anime.Id">
 								<select name="status" class="form-control" style="max-width:140px" aria-required="true" asp-items="@(new SelectList(Model.Enums, "Id", "Name", (int)anime.WatchingStatus))">
 								</select>
-								<button type="submit" class="btn btn-primary" style="width:70px">Add</button>
+								<button type="submit" class="btn btn-primary" style="width:75px">Update</button>
 							</form>
 							<form asp-controller="Added" asp-action="RemoveAnime" asp-route-returnUrl="~@Context.Request.Path@Context.Request.QueryString">
 								<input name="id" type="hidden" value="@anime.Id">
