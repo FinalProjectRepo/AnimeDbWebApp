@@ -37,7 +37,7 @@ namespace AnimeDbWebApp
 			app.UseStatusCodePagesWithReExecute("/Home/Status", "?statusCode={0}");
 
 			app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles(); 
 
             app.UseRouting();
 

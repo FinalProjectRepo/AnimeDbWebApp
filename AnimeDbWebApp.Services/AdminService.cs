@@ -29,6 +29,7 @@ namespace AnimeDbWebApp.Services
 			CustomMapper.MapAll(entities, listModel);
 			return listModel;
 		}
+
 		public async Task AddEntity<T, TT>(TT model) 
 			where T : class where TT : class
 		{
@@ -38,10 +39,10 @@ namespace AnimeDbWebApp.Services
 			var outputEntities = typeof(T).GetProperties();
 			CustomMapper.Map(model, entity, inputEntities, outputEntities);
 			await _repo.AddAsync(entity);
-			await _repo.SaveChangesAsync();
-		}
+            await _repo.SaveChangesAsync();
+        }
 
-		public async Task RemoveEntity<T>(Expression<Func<T, bool>> predicate)
+        public async Task RemoveEntity<T>(Expression<Func<T, bool>> predicate)
 			where T : class
 		{
 			var entity = await _repo.FirstOrDefaultAsync(predicate);

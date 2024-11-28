@@ -15,7 +15,7 @@ namespace AnimeDbWebApp.Services.Interfaces
 		public Task RemoveEntity<T>(Expression<Func<T, bool>> predicate) where T : class;
 		public Task<TT?> GetEditEntity<T, TT>(Expression<Func<T, bool>> predicate) 
 			where T : class where TT : class;
-		public Task EditEntity<T, TT>(TT model, Expression<Func<T, bool>> predicate)
+        public Task EditEntity<T, TT>(TT model, Expression<Func<T, bool>> predicate) 
 			where T : class where TT : class;
 		public Task AddMapping<T>(int firstId, int secondId, Expression<Func<T, bool>> predicate)
 			where T : class;

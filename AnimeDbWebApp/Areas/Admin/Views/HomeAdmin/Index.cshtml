@@ -14,7 +14,10 @@
 			<input type="number" name="id" style="max-width:100px" />
 			<button type="submit" class="btn btn-secondary text-light" style="width:120px">Edit By Id</button>
 		</form>
-		<a asp-area="Admin" asp-controller="AnimeAdmin" asp-action="AddFromApi" class="btn btn-secondary">Add From Site</a>
+		<div class="row mx-0">
+			<input type="number" name="mal_id" style="max-width:100px" />
+			<button type="button" class="btn btn-secondary text-light" style="width:120px" onclick="AddAnimeSite(this)">Id from mal</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column">
 		<h1 class="mb-4">Manga</h1>
@@ -27,7 +30,10 @@
 			<input type="number" name="id" style="max-width:100px" />
 			<button type="submit" class="btn btn-secondary text-light" style="width:120px">Edit By Id</button>
 		</form>
-		<a asp-area="Admin" asp-controller="MangaAdmin" asp-action="AddFromApi" class="btn btn-secondary">Add From Site</a>
+		<div class="row mx-0">
+			<input type="number" name="mal_id" style="max-width:100px" />
+			<button type="button" class="btn btn-secondary text-light" style="width:120px" onclick="AddMangaSite(this)">Id from mal</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column">
 		<h1 class="mb-4">Author</h1>
@@ -40,7 +46,10 @@
 			<input type="number" name="id" style="max-width:100px" />
 			<button type="submit" class="btn btn-secondary text-light" style="width:120px">Edit By Id</button>
 		</form>
-		<a asp-area="Admin" asp-controller="AuthorAdmin" asp-action="AddFromApi" class="btn btn-secondary">Add From Site</a>
+		<div class="row mx-0">
+			<input type="number" name="mal_id" style="max-width:100px" />
+			<button type="button" class="btn btn-secondary text-light" style="width:120px" onclick="AddAuthorSite(this)">Id from mal</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column">
 		<h1 class="mb-4">Producer</h1>
@@ -53,7 +62,10 @@
 			<input type="number" name="id" style="max-width:100px" />
 			<button type="submit" class="btn btn-secondary text-light" style="width:120px">Edit By Id</button>
 		</form>
-		<a asp-area="Admin" asp-controller="ProducerAdmin" asp-action="AddFromApi" class="btn btn-secondary">Add From Site</a>
+		<div class="row mx-0">
+			<input type="number" name="mal_id" style="max-width:100px" />
+			<button type="button" class="btn btn-secondary text-light" style="width:120px" onclick="AddProducerSite(this)">Id from mal</button>
+		</div>
 	</div>
 	<div class="d-flex flex-column">
 		<h1 class="mb-4">Magazine</h1>
@@ -66,7 +78,10 @@
 			<input type="number" name="id" style="max-width:100px" />
 			<button type="submit" class="btn btn-secondary text-light" style="width:120px">Edit By Id</button>
 		</form>
-		<a asp-area="Admin" asp-controller="MagazineAdmin" asp-action="AddFromApi" class="btn btn-secondary">Add From Site</a>
+		@*<div class="row mx-0">
+			<input type="number" name="mal_id" style="max-width:100px" />
+			<button type="button" class="btn btn-secondary text-light" style="width:120px" onclick="AddMagazineSite(this)">Id from mal</button>
+		</div>*@
 	</div>
 </div>
 

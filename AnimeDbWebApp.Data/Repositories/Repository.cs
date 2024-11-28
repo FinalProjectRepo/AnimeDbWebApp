@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
+using System.Runtime.CompilerServices;
 
 namespace AnimeDbWebApp.Data.Repositories
 {
