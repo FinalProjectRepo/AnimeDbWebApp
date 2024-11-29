@@ -14,6 +14,7 @@ using AnimeDbWebApp.AdminViewModels.SelectEnum;
 using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Services.Interfaces;
 using static AnimeDbWebApp.Common.GeneralConstants;
+using Microsoft.AspNetCore.Cors;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers
 {

@@ -118,7 +118,6 @@ async function AddMangaSite(e) {
         alert(err)
     })
 }
-
 async function AddAuthorSite(e) {
     await new Promise(r => setTimeout(r, 3000));
     let id = e.parentElement.querySelector('input[name=mal_id]').value;
@@ -182,8 +181,7 @@ async function AddProducerSite(e) {
 async function AddMagazineSite(e) {
     await new Promise(r => setTimeout(r, 3000));
     let id = Number(e.parentElement.querySelector('input[name=mal_id]').value);
-    let str = await fetch(`https://myanimelist.net/manga/magazine/${id}`);
-    let str2 = await str.text();
+    let str = await fetch(`https://myanimelist.net/manga/magazine/${id}`).then(r => r.text());
     if (!str) return;
 
     let first = str.indexOf("<title>") + 8;

@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
 using AnimeDbWebApp.Services;
+using Microsoft.Net.Http.Headers;
 
 namespace AnimeDbWebApp
 {
@@ -36,8 +37,8 @@ namespace AnimeDbWebApp
 
 			app.UseStatusCodePagesWithReExecute("/Home/Status", "?statusCode={0}");
 
-			app.UseHttpsRedirection();
-            app.UseStaticFiles(); 
+            app.UseHttpsRedirection();
+            app.UseStaticFiles();
 
             app.UseRouting();
 
@@ -59,7 +60,7 @@ namespace AnimeDbWebApp
                 scope.ServiceProvider.AddRoleToUser().Wait();
             };
 
-            app.Run();
+			app.Run();
         }
     }
 }
