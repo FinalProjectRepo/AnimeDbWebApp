@@ -1,7 +1,9 @@
-﻿using AnimeDbWebApp.Services.Interfaces;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+
 using System.Threading.Tasks;
+
+using AnimeDbWebApp.Services.Interfaces;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers

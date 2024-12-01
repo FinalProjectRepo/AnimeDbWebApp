@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using System;
+
 using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Producer
 {
-    public class ProducerDetailsViewModel
+	public class ProducerDetailsViewModel
 	{
 		public int Id { get; set; }
 		public string? Url { get; set; }

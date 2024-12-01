@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
 using AnimeDbWebApp.Mapping;
-using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Models.Enums;
 using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.ViewModels.ExtraForUser;

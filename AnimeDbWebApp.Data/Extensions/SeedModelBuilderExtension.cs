@@ -8,14 +8,14 @@ using System.Linq;
 using System.Reflection;
 
 using AnimeDbWebApp.Common;
-using AnimeDbWebApp.DTOs.Generals;
 using AnimeDbWebApp.Mapping;
 using AnimeDbWebApp.Models;
+using AnimeDbWebApp.DTOs.Generals;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Data.Extensions
 {
-    public static class SeedModelBuilderExtension
+	public static class SeedModelBuilderExtension
     {
         private static readonly string PathDirectory = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory())!.FullName, DataFolderName, DatasetFolderName);
 

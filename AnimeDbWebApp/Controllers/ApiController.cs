@@ -1,19 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
-using System.Security.Claims;
-using System.Threading.Tasks;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Models.Enums;
 using AnimeDbWebApp.Services.Interfaces;
 using AnimeDbWebApp.ViewModels.Added;
-using AnimeDbWebApp.ViewModels.Generic;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.Controllers

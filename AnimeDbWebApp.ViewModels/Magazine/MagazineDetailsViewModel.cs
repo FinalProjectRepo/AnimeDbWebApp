@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using AnimeDbWebApp.ViewModels.MappingCollections;
 
 namespace AnimeDbWebApp.ViewModels.Magazine

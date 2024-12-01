@@ -5,7 +5,7 @@ using static AnimeDbWebApp.Common.ValidationConstants.AuthorValidations;
 
 namespace AnimeDbWebApp.AdminViewModels.Author
 {
-    public class AuthorApiImportModel
+	public class AuthorApiImportModel
     {
         [MaxLength(MaxUrlLength)]
         [AllowNull]

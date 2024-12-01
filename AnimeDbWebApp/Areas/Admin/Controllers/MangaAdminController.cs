@@ -3,10 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 using System.Threading.Tasks;
 
-using AnimeDbWebApp.AdminViewModels.Anime;
+using AnimeDbWebApp.AdminViewModels.Manga;
 using AnimeDbWebApp.Models;
 using AnimeDbWebApp.Services.Interfaces;
-using AnimeDbWebApp.AdminViewModels.Manga;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers

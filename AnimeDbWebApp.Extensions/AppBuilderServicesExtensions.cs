@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.DependencyInjection;
 
 using System;
 using System.Threading.Tasks;
 
 using AnimeDbWebApp.Models;
-using AnimeDbWebApp.Data;
 using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace Microsoft.Extensions.DependencyInjection

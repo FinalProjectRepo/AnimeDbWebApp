@@ -1,14 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 
 namespace AnimeDbWebApp.Data.Repositories.Interfaces
 {
-    public interface IRepository : IDisposable
+	public interface IRepository : IDisposable
     {
         public int EntitiesCount<T>(Expression<Func<T, bool>>? predicate = null) where T : class;
         public Task<int> EntitiesCountAsync<T>(Expression<Func<T, bool>>? predicate = null) where T : class;

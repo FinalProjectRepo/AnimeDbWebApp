@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 
 using System;
-
-using AnimeDbWebApp.Models;
 using System.Reflection;
+
 using AnimeDbWebApp.Data.Extensions;
+using AnimeDbWebApp.Models;
 
 namespace AnimeDbWebApp.Data
 {
-    public class AnimeDbContext : IdentityDbContext<AppUser, AppRole, Guid>
+	public class AnimeDbContext : IdentityDbContext<AppUser, AppRole, Guid>
     {
 		public AnimeDbContext() { }
 

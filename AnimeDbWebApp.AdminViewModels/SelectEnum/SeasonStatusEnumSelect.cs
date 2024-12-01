@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace AnimeDbWebApp.AdminViewModels.SelectEnum
+﻿namespace AnimeDbWebApp.AdminViewModels.SelectEnum
 {
 	public class SeasonStatusEnumSelect : AnimeStatusEnumSelect
 	{

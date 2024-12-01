@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
+
 using AnimeDbWebApp.ViewModels.ExtraForUser;
-using AnimeDbWebApp.ViewModels.Manga;
 
 namespace AnimeDbWebApp.ViewModels.Generic
 {
-    public class GeneralWithCountViewModel<T> : InheritedForWatchingStatus
+	public class GeneralWithCountViewModel<T> : InheritedForWatchingStatus
         where T : class 
 	{
         public int TotalPages { get; set; }

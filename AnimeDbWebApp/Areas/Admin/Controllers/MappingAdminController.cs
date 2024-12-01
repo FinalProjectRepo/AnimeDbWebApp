@@ -1,15 +1,13 @@
 ﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 using System.Threading.Tasks;
 
-using AnimeDbWebApp.Services.Interfaces;
-using AnimeDbWebApp.Models;
-using static AnimeDbWebApp.Common.GeneralConstants;
-using AnimeDbWebApp.ViewModels.Added;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
 using AnimeDbWebApp.AdminViewModels.Mapping;
+using AnimeDbWebApp.Models;
+using AnimeDbWebApp.Services.Interfaces;
+using static AnimeDbWebApp.Common.GeneralConstants;
 
 namespace AnimeDbWebApp.Areas.Admin.Controllers
 {

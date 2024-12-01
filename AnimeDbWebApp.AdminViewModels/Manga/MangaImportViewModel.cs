@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
-using System.ComponentModel.DataAnnotations;
-
-using AnimeDbWebApp.Models.Enums;
-using AnimeDbWebApp.Models;
-using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
-using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 using AnimeDbWebApp.AdminViewModels.SelectEnum;
+using AnimeDbWebApp.Models.Enums;
+using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
+using static AnimeDbWebApp.Common.ValidationConstants.MangaValidations;
 
 namespace AnimeDbWebApp.AdminViewModels.Manga
 {

@@ -5,7 +5,6 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
 using AnimeDbWebApp.Services;
-using Microsoft.Net.Http.Headers;
 
 namespace AnimeDbWebApp
 {

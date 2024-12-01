@@ -5,7 +5,7 @@ using static AnimeDbWebApp.Common.ValidationConstants.MagazineValidations;
 
 namespace AnimeDbWebApp.AdminViewModels.Magazine
 {
-    public class MagazineApiImportModel
+	public class MagazineApiImportModel
     {
         [MaxLength(MaxUrlLength)]
         [AllowNull]

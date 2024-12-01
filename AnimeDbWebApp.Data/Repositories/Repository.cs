@@ -2,16 +2,15 @@
 
 using System;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Threading.Tasks;
 
 using AnimeDbWebApp.Data.Repositories.Interfaces;
-using System.Runtime.CompilerServices;
 
 namespace AnimeDbWebApp.Data.Repositories
 {
-    public class Repository(AnimeDbContext dbContext) : IRepository
+	public class Repository(AnimeDbContext dbContext) : IRepository
     {
         protected DbContext _dbContext = dbContext;
         protected DbSet<T> DbSet<T>() where T : class => _dbContext.Set<T>();

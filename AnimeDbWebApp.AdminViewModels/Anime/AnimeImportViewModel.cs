@@ -1,20 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.ComponentModel.DataAnnotations;
 
-using System;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Collections;
-using System.Collections.Generic;
-
-using AnimeDbWebApp.Models.Enums;
-using AnimeDbWebApp.Models;
 using AnimeDbWebApp.AdminViewModels.SelectEnum;
+using AnimeDbWebApp.Models.Enums;
 using static AnimeDbWebApp.Common.ValidationConstants.AnimeValidation;
 using static AnimeDbWebApp.Common.ValidationConstants.EnumsRangeConstants;
 
 namespace AnimeDbWebApp.AdminViewModels.Anime
 {
-    public class AnimeImportViewModel : SeasonStatusEnumSelect
+	public class AnimeImportViewModel : SeasonStatusEnumSelect
 	{
         public int Id { get; set; }
 

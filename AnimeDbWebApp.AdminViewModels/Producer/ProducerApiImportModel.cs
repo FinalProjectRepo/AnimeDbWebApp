@@ -5,7 +5,7 @@ using static AnimeDbWebApp.Common.ValidationConstants.ProducerValidations;
 
 namespace AnimeDbWebApp.AdminViewModels.Producer
 {
-    public class ProducerApiImportModel
+	public class ProducerApiImportModel
     {
         [MaxLength(MaxUrlLength)]
         [AllowNull]
