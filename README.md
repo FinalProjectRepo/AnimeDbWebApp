@@ -25,9 +25,23 @@ Database Information:
     Database also has an abstraction layer Repository. A non-generic class, that uses generic methods to make CRUD operations between the database and services.
 
 Folder Infrastructure consist of Library projects that are connecting(adding layer of abstraction) and expandinding Database and Web.
-    -Extensions currently has only 1 extension method to IServiceCollection that registers all the services with help of reflection and naming convention for Services.
-    -Mapping has static class CustomMapping that is used for mapping. Mapping is done with help of methods Map: DTO -> Entity, when bool value 'view' is false, and MapView: Entity -> Views when bool value 'view' is true. It also has method MapAll for mapping of collections.
+    -Extensions has 3 classes:
+        -AppBuilderServicesExtensions - has method that seeds database with roles and assigns some to users.
+        -BuilderServicesExtensions - consist of methods that adds database, identity and services to builder.
+        -UserPrincipalExtensions - extension that returns userId as GUID
+    -Mapping has static class CustomMapping that is used for mapping. 
+        -MapAll method recieves collections and type of mapping and uses the other methods to map items inside colections.
+        -Map - used for maping between entitiesmodels.
+        -MapView - used for mapping for viewsmodel.
+        -MapInner - used to map when values has to bu taken from inner property - for example mapping table.
+        -MapInnerString - private method when output collection is string collection that need only "Name" property of inner property.
+        -MapDifferentPropType - private method for mapping when properties has different property types.
+        -MapAppUserMapping - used directly for mapping userMapping types.
     -Services consist of classes that implement methods used by controller to exchange information with database(Repository). It uses naming convention: controllername(withpout 'controller') + Service, as interfaces add "I" infront.
 
 Web uses MVC structure for generating of the web content. It need connection to internet, because bootstrap, jquery and css are loaded from respective links not physical files(it uses some local files, but as generel needs active internet connection).
-Planned web functionality: Different controllers for Anime, Manga, Producer, Author, Magazine. With each having Index and Details page. Index has pagination and search. Also each user have added UserStatus of anime and manga. Also adnim panel for administrators that add, edits, and removes entries.
+Key points in web are:
+    -The five presented entities have index and details view. Index has paging, search by name of entity, and items per page. For anime and manga there is additional colmn for adding and tracking user status fore anime/manga. Details shows all info for entities.
+    -Added mvc is visible only for logged user and is collection of user list of added anime/manga with status. Can be filtered by status and also pagging and items per page.
+    -There is additional api contoller called when user adds to his list. It created with purpose of not reloading the page and calling database again.
+There is also admin panel for users with admin role, that is used for managing the entities.

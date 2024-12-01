@@ -15,14 +15,14 @@ namespace AnimeDbWebApp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddDatabase(builder.Configuration);
+			builder.Services.AddDatabase(builder.Configuration);
             builder.Services.AddApplicationIdentity(builder.Configuration);
             builder.Services.AddApplicationServices(builder.Configuration, Assembly.GetAssembly(typeof(HomeService)));
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
 
-            var app = builder.Build();
+			var app = builder.Build();
 
             if (app.Environment.IsDevelopment())
             {
@@ -37,12 +37,12 @@ namespace AnimeDbWebApp
 
 			app.UseStatusCodePagesWithReExecute("/Home/Status", "?statusCode={0}");
 
-            app.UseHttpsRedirection();
+			app.UseHttpsRedirection();
             app.UseStaticFiles();
 
             app.UseRouting();
 
-            app.UseAuthentication();
+			app.UseAuthentication();
             app.UseAuthorization();
 
 			app.MapControllerRoute(
