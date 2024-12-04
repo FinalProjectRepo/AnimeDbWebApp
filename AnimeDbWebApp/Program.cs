@@ -20,6 +20,7 @@ namespace AnimeDbWebApp
 
 			builder.Services.AddControllersWithViews();
             builder.Services.AddRazorPages();
+			builder.Services.AddEndpointsApiExplorer();
 
 			var app = builder.Build();
 

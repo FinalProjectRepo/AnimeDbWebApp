@@ -181,28 +181,15 @@ async function AddProducerSite(e) {
 async function AddMagazineSite(e) {
     await new Promise(r => setTimeout(r, 3000));
     let id = Number(e.parentElement.querySelector('input[name=mal_id]').value);
-    let str = await fetch(`https://myanimelist.net/manga/magazine/${id}`).then(r => r.text());
+    let str = await fetch(`https://localhost:7292/Admin/SiteFetch/GetFromMALMagazine?id=${id}`);
     if (!str) return;
+    let obj = await str.json();
 
-    let first = str.indexOf("<title>") + 8;
-    let second = str.indexOf("</title>");
-    let title = str.substring(first, second).split(" - ")[0];
-
-    first = str.indexOf('<link rel="canonical" href=', second) + 28;
-    second = str.indexOf('" />', first);
-    let link = str.substring(first, second);
-
-    let obj = {
-        "Name": title,
-        "Url": link
-    }
-
-    let json = JSON.stringify(obj, null, 2);
     fetch(`https://localhost:7292/Admin/SiteFetch/AddMagazine`, {
         method: "POST",
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: json
+        body: JSON.stringify(obj)
     })
     .then(_ => {
         alert("Magazine added")
