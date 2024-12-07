@@ -53,6 +53,7 @@ namespace AnimeDbWebApp.Controllers
 		[ProducesResponseType(typeof(ICollection<AddedMangaViewModel>), StatusCodes.Status200OK)]
 		public async Task<IActionResult> AddAnime(int id, int status)
 		{
+			if (status < MinRangeWatchingStatus || status > MaxRangeWatchingStatus) status = 1;
 			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
 			Expression<Func<AppUserAnime, bool>> Tpredicate = ua => ua.UserId == userId && ua.Id == id;
 			Expression<Func<Anime, bool>> TTpredicate = a => a.Id == id;
@@ -65,6 +66,7 @@ namespace AnimeDbWebApp.Controllers
 		[ProducesResponseType(StatusCodes.Status200OK)]
 		public async Task<IActionResult> AddManga(int id, int status)
 		{
+			if (status < MinRangeWatchingStatus || status > MaxRangeWatchingStatus) status = 1;
 			var userId = User.FindFirstValueGuid(ClaimTypes.NameIdentifier);
 			Expression<Func<AppUserManga, bool>> Tpredicate = um => um.UserId == userId && um.Id == id;
 			Expression<Func<Manga, bool>> TTpredicate = m => m.Id == id;

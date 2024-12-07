@@ -62,12 +62,12 @@ namespace AnimeDbWebApp.Services
 		private async Task FillDictionary<TU>(Dictionary<int, int> addedEntities, Expression<Func<TU, bool>> filter)
 			where TU : class
 		{
-			var userMangas = await _repo.WhereAsync<TU>(filter);
+			var userEntities = await _repo.WhereAsync<TU>(filter);
 			var props = typeof(TU).GetProperties();
 			var entityId = props.FirstOrDefault(p => p.Name == "Id");
 			var status = props.FirstOrDefault(p => p.Name.Contains("Status"));
 			if (status == null || entityId == null) throw new ArgumentException("Properties in user entity mapping doesn't match", typeof(TU).Name);
-			foreach (var entity in userMangas)
+			foreach (var entity in userEntities)
 			{
 				Enum.TryParse($"{status.GetValue(entity)}", out WatchingStatus statusValue);
 				int.TryParse($"{entityId.GetValue(entity)}", out int id);

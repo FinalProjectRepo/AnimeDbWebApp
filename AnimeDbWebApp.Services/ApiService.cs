@@ -25,7 +25,8 @@ namespace AnimeDbWebApp.Services
 		{
 			ICollection<TU> entities = await _repo.WhereWithIncludeAsync(whereFunc, include);
 			var viewModel = new List<T>();
-			CustomMapper.MapAll(entities, viewModel, "withInner");
+			var mappingProp = typeof(TU).Name.Substring(7);
+			CustomMapper.MapAll(entities, viewModel, "withInner", mappingProp);
 			return viewModel;
 		}
 

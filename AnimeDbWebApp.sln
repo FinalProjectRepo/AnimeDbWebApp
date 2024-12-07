@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Extensions", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.Services", "AnimeDbWebApp.Services\AnimeDbWebApp.Services.csproj", "{52BD0536-5D0A-492F-8729-29B4898B4AD8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.AdminViewModels", "AnimeDbWebApp.AdminViewModels\AnimeDbWebApp.AdminViewModels.csproj", "{8CAEEF5F-AB59-42C0-9002-DB579022ED9D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AnimeDbWebApp.AdminViewModels", "AnimeDbWebApp.AdminViewModels\AnimeDbWebApp.AdminViewModels.csproj", "{8CAEEF5F-AB59-42C0-9002-DB579022ED9D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{A58FFA0F-71D6-4BBC-B9C7-0B9D253AA456}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimeDbWebApp.UnitTests", "AnimeDbWebApp.UnitTests\AnimeDbWebApp.UnitTests.csproj", "{E0912595-263A-41DC-8132-36C1A4778B0A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,10 @@ Global
 		{8CAEEF5F-AB59-42C0-9002-DB579022ED9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAEEF5F-AB59-42C0-9002-DB579022ED9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CAEEF5F-AB59-42C0-9002-DB579022ED9D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0912595-263A-41DC-8132-36C1A4778B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0912595-263A-41DC-8132-36C1A4778B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0912595-263A-41DC-8132-36C1A4778B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0912595-263A-41DC-8132-36C1A4778B0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -89,6 +97,7 @@ Global
 		{1D338962-F104-482A-84C0-6A77B49A2A84} = {EA97EE3F-C7EE-4B8D-BC60-7E0C5DC9502F}
 		{52BD0536-5D0A-492F-8729-29B4898B4AD8} = {EA97EE3F-C7EE-4B8D-BC60-7E0C5DC9502F}
 		{8CAEEF5F-AB59-42C0-9002-DB579022ED9D} = {6F6EF0DC-34CE-4AD6-9904-7CA01829CEFA}
+		{E0912595-263A-41DC-8132-36C1A4778B0A} = {A58FFA0F-71D6-4BBC-B9C7-0B9D253AA456}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4D289D47-F8B8-4B60-9F9A-4FAFC32FCC2C}

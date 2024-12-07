@@ -111,7 +111,6 @@ namespace AnimeDbWebApp.Data.Repositories
             }
             query = query.Where(predicate ?? (x => true));
 
-            int test = await query.CountAsync();
 			int total = (await query.CountAsync() - 1) / items + 1;
             if (total < page) page = total;
 
