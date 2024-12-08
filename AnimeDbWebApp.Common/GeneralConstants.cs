@@ -44,5 +44,6 @@
         public const string AppUserAnimeDatasetFileName = "userAnimeMapping.json";
         public const string AppUserMangaDatasetFileName = "userMangaMapping.json";
         public const string GeneralDateTimeFormat = "yyyy-MM-dd";
+        public const string ReceiveMessageMethodName = "ReceiveMessage";
     }
 }

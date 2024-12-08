@@ -1,0 +1,23 @@
+﻿<h1 class="pb-3">Chat with other users</h1>
+<div class="container-fluid col-md-8 mb-5">
+	<div class="d-flex justify-content-center">
+		<div id="messages" class="mb-5">
+			@foreach(var tuple in MessageHistory.Messages.TakeLast(10))
+			{
+				<div class="d-flex">
+					<h4>@tuple.Item1:&nbsp;</h4>
+					<h4>@tuple.Item2</h4>
+				</div>
+			}
+		</div>
+	</div>
+	@if(User?.Identity?.IsAuthenticated ?? false)
+	{
+		<div class="d-flex justify-content-center">
+			<div class="d-flex col-md-6 mb-3 justify-content-center">
+				<input type="text" id="message" class="form-control" placeholder="Message" />
+				<button id="sendButton" class="btn btn-secondary">Submit</button>
+			</div>
+		</div>
+	}
+</div>

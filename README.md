@@ -1,4 +1,5 @@
 # AnimeDbWebApp
+## Database
 All project constants are in AnimeDbWebApp.Data.Common project library
 Database Information:
     Database is created and managed with EntityFramework in AnimeDbWebApp.Data and consists of 2 main tables -> anime and manga.
@@ -24,6 +25,7 @@ Database Information:
 
     Database also has an abstraction layer Repository. A non-generic class, that uses generic methods to make CRUD operations between the database and services.
 
+## Infrastructure
 Folder Infrastructure consist of Library projects that are connecting(adding layer of abstraction) and expandinding Database and Web.
     -Extensions has 3 classes:
         -AppBuilderServicesExtensions - has method that seeds database with roles and assigns some to users.
@@ -39,9 +41,13 @@ Folder Infrastructure consist of Library projects that are connecting(adding lay
         -MapAppUserMapping - used directly for mapping userMapping types.
     -Services consist of classes that implement methods used by controller to exchange information with database(Repository). It uses naming convention: controllername(withpout 'controller') + Service, as interfaces add "I" infront.
 
+## MVC
 Web uses MVC structure for generating of the web content. It need connection to internet, because bootstrap, jquery and css are loaded from respective links not physical files(it uses some local files, but as generel needs active internet connection).
 Key points in web are:
     -The five presented entities have index and details view. Index has paging, search by name of entity, and items per page. For anime and manga there is additional colmn for adding and tracking user status fore anime/manga. Details shows all info for entities.
     -Added mvc is visible only for logged user and is collection of user list of added anime/manga with status. Can be filtered by status and also pagging and items per page.
     -There is additional api contoller called when user adds to his list. It created with purpose of not reloading the page and calling database again.
 There is also admin panel for users with admin role, that is used for managing the entities.
+
+## SignalR
+SignalR functionality is on home controller. If user is not logged, he can't write messages, but can see them(up to 10 messages). If he is logged, username is filled automaticly from claims.

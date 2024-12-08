@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection;
 
 using AnimeDbWebApp.Services;
+using AnimeDbWebApp.Hubs;
 
 namespace AnimeDbWebApp
 {
@@ -19,6 +20,7 @@ namespace AnimeDbWebApp
             builder.Services.AddApplicationServices(builder.Configuration, Assembly.GetAssembly(typeof(HomeService)));
 
 			builder.Services.AddControllersWithViews();
+            builder.Services.AddSignalR();
             builder.Services.AddRazorPages();
 			builder.Services.AddEndpointsApiExplorer();
 
@@ -59,6 +61,8 @@ namespace AnimeDbWebApp
             {
                 scope.ServiceProvider.AddRoleToUser().Wait();
             };
+
+            app.MapHub<ChatHub>("/chatHub");
 
 			app.Run();
         }

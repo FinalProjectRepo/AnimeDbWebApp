@@ -74,5 +74,13 @@ namespace AnimeDbWebApp.Controllers
 			await _service.AddMapping<AppUserManga, Manga>(userId!, id, status, Tpredicate, TTpredicate, TUserPredicate);
 			return Ok();
 		}
-	}
+
+        [HttpGet("[action]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public ActionResult<string?> GetUserName()
+        {
+            string? userName = User.FindFirstValue(ClaimTypes.Name);
+			return Ok(userName);
+        }
+    }
 }

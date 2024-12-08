@@ -72,3 +72,11 @@
         <span class="sr-only">Next</span>
     </a>
 </div>
+
+<partial name="_ChatHubPartial" />
+
+@section Scripts {
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js" asp-append-version="true"></script>
+    <script src="~/lib/microsoft/signalr/dist/browser/signalr.js" asp-append-version="true"></script>
+    <script src="~/js/chathub.js" asp-append-version="true"></script>
+}
