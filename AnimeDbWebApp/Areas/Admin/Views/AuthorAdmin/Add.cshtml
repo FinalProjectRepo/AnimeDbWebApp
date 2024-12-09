@@ -1,53 +1,51 @@
 ﻿@using static AnimeDbWebApp.Common.GeneralConstants
 @model AuthorImportViewModel
 
-<style>div{margin-bottom:0.8em}</style>
-
 @if (ViewData.ContainsKey("AddAuthor"))
 {
-	<h1 class="py-4 text-secondary">Author Added</h1>
+	<h1 class="pb-4 text-secondary">Author Added</h1>
 	ViewData.Remove("AddAuthor");
 }
 
-<h2 class="py-4">Add New Author</h2>
+<h2 class="pb-4">Add New Author</h2>
 
 <form asp-action="Add" method="post" class="container-fluid col-sm-4 mb-4">
-	<div>
+	<div class="mb-3">
 		<label for="PosterUrl">Link for poster</label>
 		<input asp-for="PosterUrl" class="form-control" />
 		<span asp-validation-for="PosterUrl" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Name">Author Name</label>
 		<input asp-for="Name" class="form-control" />
 		<span asp-validation-for="Name" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="GivenName">Author Given Name</label>
 		<input asp-for="GivenName" class="form-control" />
 		<span asp-validation-for="GivenName" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="FamilyName">Author Family Name</label>
 		<input asp-for="FamilyName" type="month" class="form-control" />
 		<span asp-validation-for="FamilyName" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Birthdate">Author Birthdate (format: @GeneralDateTimeFormat)</label>
 		<input asp-for="Birthdate" class="form-control" />
 		<span asp-validation-for="Birthdate" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Website">Author Website</label>
 		<input asp-for="Website" class="form-control" />
 		<span asp-validation-for="Website" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="About">About Author</label>
 		<textarea asp-for="About" class="form-control"></textarea>
 		<span asp-validation-for="About" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Url">Auhtor mal link</label>
 		<input asp-for="Url" class="form-control" />
 		<span asp-validation-for="Url" class="text-danger"></span>

@@ -1,90 +1,88 @@
 ﻿@using static AnimeDbWebApp.Common.GeneralConstants
 @model MangaImportViewModel
 
-<style>div{margin-bottom:0.8em}</style>
-
 @if (ViewData.ContainsKey("AddManga"))
 {
-	<h1 class="py-4 text-secondary">Manga Added</h1>
+	<h1 class="pb-4 text-secondary">Manga Added</h1>
 	ViewData.Remove("AddManga");
 }
 
-<h2 class="py-4">Add New Manga</h2>
+<h2 class="pb-4">Add New Manga</h2>
 
 <form asp-action="Add" method="post" class="container-fluid col-sm-4 mb-4">
-	<div>
+	<div class="mb-3">
 		<label for="PosterUrl">Link for poster</label>
 		<input asp-for="PosterUrl" class="form-control" />
 		<span asp-validation-for="PosterUrl" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Title">Manga Title</label>
 		<input asp-for="Title" class="form-control" />
 		<span asp-validation-for="Title" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="TitleEnglish">Title in english</label>
 		<input asp-for="TitleEnglish" class="form-control" />
 		<span asp-validation-for="TitleEnglish" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="TitleJapanese">Title in japanese</label>
 		<input asp-for="TitleJapanese" type="month" class="form-control" />
 		<span asp-validation-for="TitleJapanese" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Chapters">Chapters</label>
 		<input asp-for="Chapters" class="form-control" />
 		<span asp-validation-for="Chapters" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Volumes">Volumes that chapters where put in</label>
 		<input asp-for="Volumes" class="form-control" />
 		<span asp-validation-for="Volumes" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="TypeId">Type</label>
 		<select asp-for="TypeId" class="form-control" asp-items="@(new SelectList(Model.TypeList, "Id", "Name"))">
 			<option></option>
 		</select>
 		<span asp-validation-for="TypeId" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Status">Airing status</label>
 		<select asp-for="Status" class="form-control" asp-items="@(new SelectList(Model.StatusEnums, "Id", "Name"))"></select>
 		<span asp-validation-for="Status" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="StartDate">Airing start date (format: @GeneralDateTimeFormat)</label>
 		<input asp-for="StartDate" class="form-control" />
 		<span asp-validation-for="StartDate" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="EndDate">Airing end date (format: @GeneralDateTimeFormat)</label>
 		<input asp-for="EndDate" class="form-control" />
 		<span asp-validation-for="EndDate" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Score">Score</label>
 		<input asp-for="Score" class="form-control" />
 		<span asp-validation-for="Score" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Rank">Rank</label>
 		<input asp-for="Rank" class="form-control" />
 		<span asp-validation-for="Rank" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Synopsis">Synopsis</label>
 		<textarea asp-for="Synopsis" class="form-control"></textarea>
 		<span asp-validation-for="Synopsis" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Background">Background</label>
 		<textarea asp-for="Background" class="form-control"></textarea>
 		<span asp-validation-for="Background" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Url">Mal link</label>
 		<input asp-for="Url" class="form-control" />
 		<span asp-validation-for="Url" class="text-danger"></span>

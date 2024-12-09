@@ -1,43 +1,41 @@
 ﻿@using static AnimeDbWebApp.Common.GeneralConstants
 @model ProducerImportViewModel
 
-<style>div{margin-bottom:0.8em}</style>
-
 @if (ViewData.ContainsKey("AddProducer"))
 {
-	<h1 class="py-4 text-secondary">Producer Added</h1>
+	<h1 class="pb-4 text-secondary">Producer Added</h1>
 	ViewData.Remove("AddProducer");
 }
 
-<h2 class="py-4">Add New Producer</h2>
+<h2 class="pb-4">Add New Producer</h2>
 
 <form asp-action="Add" method="post" class="container-fluid col-sm-4 mb-4">
-	<div>
+	<div class="mb-3">
 		<label for="ImgUrl">Link for poster</label>
 		<input asp-for="ImgUrl" class="form-control" />
 		<span asp-validation-for="ImgUrl" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Name">Producer Name</label>
 		<input asp-for="Name" class="form-control" />
 		<span asp-validation-for="Name" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="JpName">Producer Japanesse Name</label>
 		<input asp-for="JpName" class="form-control" />
 		<span asp-validation-for="JpName" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Established">Producer established date (format: @GeneralDateTimeFormat)</label>
 		<input asp-for="Established" class="form-control" />
 		<span asp-validation-for="Established" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="About">About Producer</label>
 		<textarea asp-for="About" class="form-control"></textarea>
 		<span asp-validation-for="About" class="text-danger"></span>
 	</div>
-	<div>
+	<div class="mb-3">
 		<label for="Url">Producer mal link</label>
 		<input asp-for="Url" class="form-control" />
 		<span asp-validation-for="Url" class="text-danger"></span>

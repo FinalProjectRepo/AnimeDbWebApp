@@ -22,7 +22,7 @@
   {
     "Id": 126487,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 1
   },
   {
     "Id": 14368,
@@ -47,7 +47,7 @@
   {
     "Id": 154021,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 2
   },
   {
     "Id": 119161,
@@ -72,7 +72,7 @@
   {
     "Id": 10183,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 3
   },
   {
     "Id": 96766,
@@ -97,7 +97,7 @@
   {
     "Id": 169783,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 4
   },
   {
     "Id": 4658,
@@ -122,7 +122,7 @@
   {
     "Id": 104509,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 1
   },
   {
     "Id": 3008,
@@ -147,7 +147,7 @@
   {
     "Id": 3087,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 2
   },
   {
     "Id": 74695,
@@ -172,7 +172,7 @@
   {
     "Id": 157223,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 3
   },
   {
     "Id": 92839,
@@ -197,7 +197,7 @@
   {
     "Id": 172577,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 4
   },
   {
     "Id": 133341,
@@ -222,7 +222,7 @@
   {
     "Id": 96383,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 3
   },
   {
     "Id": 7,
@@ -247,6 +247,6 @@
   {
     "Id": 1,
     "UserId": "44CC80E4-84E1-437A-B943-90730089868A",
-    "WatchingStatus": 5
+    "WatchingStatus": 4
   }
 ]
